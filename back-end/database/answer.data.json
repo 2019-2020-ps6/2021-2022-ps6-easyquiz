@@ -18,12 +18,10 @@
     "id": 1647882703192
   },
   {
-<<<<<<< HEAD
     "value": "Audi Q5",
     "isCorrect": false,
     "questionId": 1647939736673,
     "id": 1647939736676
-=======
     "value": "NUL",
     "isCorrect": true,
     "questionId": 1647935853069,
@@ -34,6 +32,5 @@
     "isCorrect": false,
     "questionId": 1647935853069,
     "id": 1647935853070
->>>>>>> a510d681097c53fc3262fb58dabc12f377b80d3b
   }
 ]
