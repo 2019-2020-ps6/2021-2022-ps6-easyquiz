@@ -5,17 +5,30 @@
  #0f0c29, #302b63, #24243e linear-gradient(to right,#302b63, #0f0c29, #302b63);
  */
 :host {
-  color: $white;
-}
+  color: #ff7f50;
+  font-size: 1.5em;
+  }
 
 .header {
-  background: $blue;
-  padding: 0.5em;
+  background: #3d3b3b;
+  padding: 0.3em;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
 }
 
-.navigation {
-  font-size: 0.7em;
-  padding-left: 0.5em;
-  color: white;
+.navigationProfils {
+  font-size: 0.5em;
+  padding: 1em;
+  position : absolute;
+  right: 0px;
+  top: 0px;
+  color: #ff7f50;
+}
+
+.navigationQuiz {
+  font-size: 0.5em;
+  padding: 1em;
+  position : absolute;
+  right: 50px;
+  top: 0px;
+  color: #ff7f50;
 }
