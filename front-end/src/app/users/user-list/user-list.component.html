@@ -1,16 +1,23 @@
 <div class="user-list">
-  <h1 class="selectionnerProfil">Sélectionnez un profil
+  <h1 class="selectionnerProfil">Sélectionner un profil
   </h1>
+    <input id="searchbar" onkeyup="" type="text"
+           name="search" placeholder="Rechercher un profil">
   <br>
-  <div class="userlist">
-    <div class="user" *ngFor="let user of userList">
+  <div class="users">
+    <div *ngFor="let user of userList">
       <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
     </div>
   </div>
   <br>
-  <span class="creationProfil">
-  <a [routerLink]="['/user-create']" style="text-decoration: none">Créer un profil</a>
+  <div class="creationProfil">
+  <a class="iconProfil"[routerLink]="['/user-create']" style="text-decoration: none"><i class='fas fa-plus-circle'> <br>Ajouter un profil</i> </a>
+  </div>
   <br>
-  <a [routerLink]="['/quiz-list']" style="text-decoration: none">Créer un quiz</a>
-  </span>
+  <div class="creationQuiz">
+      <a [routerLink]="['/quiz-list']" style="text-decoration: none"><i class='fas fa-plus-circle'> <br>Créer un quiz</i></a>
+  </div>
 </div>
+
+<!-- Dans le "searchBar" et dans le onkeyup on doit mettre le nom d'une
+fonction qui retournera le profil choisi a parti du prenom ou nom -->

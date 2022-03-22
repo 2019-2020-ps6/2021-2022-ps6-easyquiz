@@ -2,14 +2,39 @@
   text-align: center;
 }
 
-.userlist{
+
+#searchbar{
+  border-radius: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
+  color: black;
+  width:40%;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.users{
   display:flex;
   margin: auto;
   justify-content: center;
-
+  margin-top: 40px;
 }
 
 .creationProfil{
+  margin-top: -50px;
   position: relative;
+  text-align: center;
+  font-size: 30px;
+}
+.fa-plus-circle{
+  color: #9a2c2c;
+}
+
+.creationQuiz{
+  bottom: 20px;
+  right: 20px;
+  position: absolute;
+  text-align: center;
+  font-size: 30px;
 }
 
