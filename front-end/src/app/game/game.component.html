@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
 </head>
 <body>
+  <div class = "question"> {{question}} </div>
+
+  <div class = "listQuestion" *ngFor="let rep of answerList">
+     <input class = button type="button" value="{{rep}}">
+  </div>
+
+
+
+
 
 </body>
 </html>
