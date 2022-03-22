@@ -5,5 +5,9 @@
     <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
   </div>
   <br>
-  <a [routerLink]="['/user-create']">Créer un profil</a>
-  </div>
+  <span>
+  <a [routerLink]="['/user-create']" style="text-decoration: none">Créer un profil</a>
+  <br>
+  <a [routerLink]="['/quiz-list']" style="text-decoration: none">Créer un quiz</a>
+  </span>
+</div>
