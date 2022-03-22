@@ -1,7 +1,13 @@
 <div class="card">
     <h2>
-        <i class="fas fa-user"></i>
-        {{user.firstName}} {{user.lastName}}
+      <a class="quizProfil" [routerLink]="['/quiz-list']"> <i class="fas fa-user"> </i> </a>
+        <br>
+        <span class="user-firstname">
+          {{user.firstName}}
+        </span>
+          <br>
+      <span class="user-lastname">
+          {{user.lastName}}
+        </span>
     </h2>
-    <button class="button-card" (click)="delete()">Delete</button>
 </div>
