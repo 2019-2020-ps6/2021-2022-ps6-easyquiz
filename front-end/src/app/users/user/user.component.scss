@@ -1,1 +1,28 @@
-@import '../../../styles/card.scss';
+.card{
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  padding: 0 1em 1em 1em;
+}
+
+.fa-user{
+  font-size: 2em;
+  text-align: center;
+  color: PINK;
+}
+
+.user-firstname{
+  font-size: 0.5em;
+  position: relative;
+  top:-5px;
+}
+.user-lastname{
+  font-size: 0.5em;
+  position: relative;
+  top: -25px;
+}
+
+
+
+
+
