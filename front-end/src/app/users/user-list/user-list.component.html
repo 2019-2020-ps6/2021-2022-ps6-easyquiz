@@ -1,6 +1,16 @@
-<app-user-form></app-user-form>
 <div class="user-list">
+  <h1 class="selectionnerProfil">Sélectionnez un profil
+  </h1>
+  <br>
+  <div class="userlist">
     <div class="user" *ngFor="let user of userList">
-        <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
+      <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
     </div>
   </div>
+  <br>
+  <span class="creationProfil">
+  <a [routerLink]="['/user-create']" style="text-decoration: none">Créer un profil</a>
+  <br>
+  <a [routerLink]="['/quiz-list']" style="text-decoration: none">Créer un quiz</a>
+  </span>
+</div>

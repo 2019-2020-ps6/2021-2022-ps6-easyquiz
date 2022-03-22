@@ -17,7 +17,10 @@ import { UserComponent } from './users/user/user.component';
 import { UserFormComponent } from './users/user-form/user-form.component';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { GameSettingComponent } from './game/settings/game-setting/game-setting.component';
-import { ChoiceComponentComponent } from './game/settings/game-setting/choice/choice-component/choice-component.component';
+import { UserCreateComponent} from './users/user-create/user-create.component';
+import {GameComponent} from './game/game.component';
+import { BoutonComponentComponent } from './bouton-component/bouton-component.component';
+import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choice-component/choice-component.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { ChoiceComponentComponent } from './game/settings/game-setting/choice/ch
     UserFormComponent,
     UserListComponent,
     GameSettingComponent,
+    UserCreateComponent,
+    GameComponent,
     ChoiceComponentComponent,
+    BoutonComponentComponent,
   ],
   imports: [
     BrowserModule,
