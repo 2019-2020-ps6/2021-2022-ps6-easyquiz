@@ -8,6 +8,7 @@
     <div *ngFor="let user of userList">
       <app-user [user]="user" (deleteUser)="deleteUser($event)"></app-user>
     </div>
+    <a class="quizProfil" [routerLink]="['/user-create']" style="text-decoration: none"> <i class="fas fa-plus-circle"> </i> </a>
   </div>
   <br>
   <div class="creationProfil">
@@ -17,6 +18,9 @@
   <div class="creationQuiz">
       <a [routerLink]="['/quiz-list']" style="text-decoration: none"><i class='fas fa-plus-circle'> <br>Créer un quiz</i></a>
   </div>
+  <span class="creationQuiz">
+  <a [routerLink]="['/quiz-list']" style="text-decoration: none">Créer un quiz</a>
+  </span>
 </div>
 
 <!-- Dans le "searchBar" et dans le onkeyup on doit mettre le nom d'une
