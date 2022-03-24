@@ -7,9 +7,13 @@
   <div class = "question"> {{question}} </div>
 
   <div class = "listQuestion" *ngFor="let rep of answerList">
-     <input class = button type="button" value="{{rep}}">
+  <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
   </div>
 
+
+  <div class="feeddback" *ngIf="activeFeedback">
+    <input class = buttonFeedback type="button" value="{{feedbackAction}}" (click)="refresh()">
+  </div>
 
 
 

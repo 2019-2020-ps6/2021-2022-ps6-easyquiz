@@ -1,7 +1,8 @@
 /* tslint:disable:whitespace no-trailing-whitespace */
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {Answer, Question} from '../../models/question.model';
+import {DOCUMENT} from "@angular/common";
 
 
 @Component({
@@ -13,18 +14,64 @@ import {Answer, Question} from '../../models/question.model';
 export class GameComponent implements OnInit {
 
   public quiz: Quiz;
-  public questionModel: Question;
   public question: string;
-  public answerList: string[];
+  public answerList: Answer[]=[];
+  public feedbackAction: string;
+  public activeFeedback: boolean;
+  public jeuActif: boolean =true;
 
 
 
-  constructor(){ }
+
+
+  constructor( @Inject(DOCUMENT) private _document: Document){ }
 
   ngOnInit(): void {
+    this.feedbackAction="";
+    this.activeFeedback=false;
     this.question = 'Quelle est la voiture représentée sur la photo ?';
-    this.answerList = ['Audi Q5','Fiat Ritmo','2 Chevaux', 'Fiat Panda'];
+
+    let Answer1: Answer = {
+      value: "Audi Q5",
+      isCorrect: false,
+    };
+    let Answer2: Answer = {
+      value: "Fiat Ritmo",
+      isCorrect: true,
+    };
+    let Answer3: Answer = {
+      value: "2 Chevaux",
+      isCorrect: false,
+    };
+    let Answer4: Answer = {
+      value: "Fiat Panda",
+      isCorrect: false,
+    };
+
+    console.log("a")
+
+    this.answerList.push(Answer1,Answer2,Answer3,Answer4);
+    console.log("a")
 
   }
+
+  gestionClick(repChoisie: boolean): void{
+    this.jeuActif=false;
+      if(repChoisie){
+        console.log("Bonne réponse");
+        this.feedbackAction= "Bien ouej"
+      }
+      else{
+        console.log("raté");
+        this.feedbackAction= "Dommage, reessayer"
+      }
+      this.activeFeedback=true;
+    }
+
+
+    refresh(): void{
+        this._document.defaultView.location.reload();
+    }
+
 
 }

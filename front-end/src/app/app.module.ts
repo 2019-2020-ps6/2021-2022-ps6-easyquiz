@@ -21,6 +21,7 @@ import {GameComponent} from './game/game.component';
 import {
   ChoiceComponentComponent
 } from './game/settings/game-setting/choice/choice-component/choice-component.component';
+import { AnswerButtonComponent } from './game/answer-button/answer-button.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {
     UserCreateComponent,
     GameComponent,
     ChoiceComponentComponent,
+    AnswerButtonComponent,
   ],
   imports: [
     BrowserModule,
