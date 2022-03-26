@@ -18,5 +18,11 @@
     "firstName": "Dimitry",
     "lastName": "Crackers",
     "id": 1648248001768
+  },
+  {
+    "firstName": "Jean",
+    "lastName": "Pierre",
+    "disease": "Cataracte",
+    "id": 1648334317552
   }
 ]
