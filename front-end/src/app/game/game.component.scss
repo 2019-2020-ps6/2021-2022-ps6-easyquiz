@@ -1,15 +1,59 @@
+
+html {min-height: 100vh; width: 100%; margin: 0; padding: 0;}
+body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: rgba(148, 239, 156, 0.65)
+}
+
 .question{
   display: inline-block;
   background-color: #146385;
   color: #eeeeee;
   text-align: center;
-  font-size: 50px;
-  padding: 20px;
-  width: 80%;
+  font-size: 60px;
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-weight: 700;
+  padding: 2%;
+  width: 90%;
   margin: 1%;
-  margin-bottom: 5%;
+  margin-bottom: 2%;
+
 
 }
+
+.photoBouton{
+  position: absolute;
+  width: 50%;
+  height: 60%;
+  top : 25%;
+  right: 5%;
+}
+
+.zoom{
+  position: absolute;
+  bottom: 1px;
+  background-color: #d88ce5;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 50px;
+  padding: 4px;
+  width: 60%;
+  left: 20%;
+  font-family:  Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+  font-weight: 500;
+  border-radius: 10px;
+
+
+}
+
+
+.photo{
+  width: 90%;
+  height: 80%;
+  top : 30%;
+  float : right;
+}
+
+
+
 
 
 
@@ -19,9 +63,10 @@
   color: #eeeeee;
   text-align: center;
   font-size: 60px;
-  padding: 20px;
+  padding: 1px;
   width: 50%;
   left: 20%;
-  margin-top: 5%;
+  margin-top: 1%;
+  border-radius: 10px;
 
 }

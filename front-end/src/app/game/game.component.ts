@@ -29,7 +29,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.feedbackAction="";
     this.activeFeedback=false;
-    this.question = 'Quelle est la voiture représentée sur la photo ?';
+    this.question = 'Quelle est la voiture sur la photo ?';
 
     let Answer1: Answer = {
       value: "Audi Q5",
@@ -59,11 +59,11 @@ export class GameComponent implements OnInit {
     this.jeuActif=false;
       if(repChoisie){
         console.log("Bonne réponse");
-        this.feedbackAction= "Bien ouej"
+        this.feedbackAction= "Bravo"
       }
       else{
         console.log("raté");
-        this.feedbackAction= "Dommage, reessayer"
+        this.feedbackAction= "Réessayer"
       }
       this.activeFeedback=true;
     }
