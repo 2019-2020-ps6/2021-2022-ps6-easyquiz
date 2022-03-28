@@ -6,6 +6,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choice-component/choice-component.component';
 import {GameComponent} from './game/game.component';
 import {UserCreateComponent} from './users/user-create/user-create.component';
+import {GameSettingComponent} from './game/settings/game-setting/game-setting.component';
 
 const routes: Routes = [
     {path: 'user-list', component: UserListComponent},
@@ -14,7 +15,7 @@ const routes: Routes = [
     {path: 'user-create', component: UserCreateComponent},
     {path: '', redirectTo: '/user-list', pathMatch: 'full' },
     {path: 'game', component: GameComponent},
-    { path: 'settings', component: ChoiceComponentComponent },
+    { path: 'settings', component: GameSettingComponent },
 ];
 
 @NgModule({

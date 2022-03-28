@@ -1,7 +1,12 @@
 <div class="settings-box-image">
   <meta charset="UTF-8">
-  <img class="image-display-setting" src="{{this.urlImage}}"
-       alt="Image n'a pas pu être affichée">
+  <p> Configuration </p>
+  <componentIm>
+    <img class="image-display-setting" [src]="choice.urlImage" alt="Erreur d'affichage"/>
+  </componentIm>
   <br>
-  <button class="button-select">Choisir</button>
+  <componentIm>
+    <button class="button-select">Choisir</button>
+  </componentIm>
+
 </div>

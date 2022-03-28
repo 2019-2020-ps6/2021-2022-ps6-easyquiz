@@ -1,8 +1,10 @@
 .image-display-setting {
-  margin: 5px;
   width : 650px;
   height : 480px;
-  box-shadow:8px 8px 10px 0 rgba(0,0,0,0.5);
+  //box-shadow:8px 8px 10px 0 rgba(0,0,0,0.5);
+
+  box-sizing: border-box;
+  box-shadow: lightgray 4px 4px 20px;
 }
 
 .button-select {
@@ -12,11 +14,21 @@
   border: none;
   border-radius: 4px;
   transition-duration: 0.4s;
-  margin-left: 250px;
   margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .button-select:hover {
   background-color: #cecece;
   color: #000000;
+}
+
+componentIm {
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin-top: 10px;
+  padding: 3px;
 }
