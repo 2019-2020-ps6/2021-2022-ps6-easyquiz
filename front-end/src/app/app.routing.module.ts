@@ -7,6 +7,7 @@ import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choi
 import {GameComponent} from './game/game.component';
 import {UserCreateComponent} from './users/user-create/user-create.component';
 import {ProfileComponent} from './userhome/profile/profile.component';
+import {ZoomPictureComponent} from "./game/zoom-picture/zoom-picture.component";
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'user-create', component: UserCreateComponent},
   {path: '', redirectTo: '/user-list', pathMatch: 'full'},
   {path: 'game', component: GameComponent},
+  {path: 'game/zoom', component: ZoomPictureComponent},
   {path: 'settings', component: ChoiceComponentComponent},
   {path: 'profile/:id', component: ProfileComponent},
 ];

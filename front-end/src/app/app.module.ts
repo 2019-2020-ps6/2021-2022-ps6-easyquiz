@@ -22,6 +22,7 @@ import {GameComponent} from './game/game.component';
 import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choice-component/choice-component.component';
 import {AnswerButtonComponent} from './game/answer-button/answer-button.component';
 import {ProfileComponent} from './userhome/profile/profile.component';
+import { ZoomPictureComponent } from './game/zoom-picture/zoom-picture.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {ProfileComponent} from './userhome/profile/profile.component';
     ChoiceComponentComponent,
     AnswerButtonComponent,
     ProfileComponent,
+    ZoomPictureComponent,
   ],
   imports: [
     BrowserModule,

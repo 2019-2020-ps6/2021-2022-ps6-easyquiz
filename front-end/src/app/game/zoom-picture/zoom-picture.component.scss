@@ -1,33 +1,23 @@
-.button{
+div{
+  min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: rgba(148, 239, 156, 0.65)
+}
 
+.photo{
+  padding: 40px;
+}
+
+.button{
   border-radius: 8px;
   color: #eeeeee;
   text-align: center;
   font-size: 60px;
   width: 40%;
+  font-size: 65px;
+  background-color: #8c5ece;
   padding: 6px;
   margin-bottom: 10px;
-  margin-left: 20px;
+  margin-left: 20%;
   font-family:   Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
   font-weight: 500;
-}
-
-*{
-  cursor: pointer;
-}
-.initial:hover{
-  font-size: 70px;
-  background-color: #8c5ece;
-}
-
-
-.initial{
-  background-color: #9d6ede;
-}
-.red{
-  background-color: #ef4250;
-}
-
-.green{
-  background-color: #377e3b;
+  vertical-align: bottom;
 }

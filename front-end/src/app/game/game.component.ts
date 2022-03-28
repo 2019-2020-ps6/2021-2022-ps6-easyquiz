@@ -3,6 +3,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -16,20 +17,19 @@ export class GameComponent implements OnInit {
   public quiz: Quiz;
   public question: string;
   public answerList: Answer[]=[];
+  public photoURL : string;
   public feedbackAction: string;
   public activeFeedback: boolean;
   public jeuActif: boolean =true;
 
 
-
-
-
-  constructor( @Inject(DOCUMENT) private _document: Document){ }
+  constructor( @Inject(DOCUMENT) private _document: Document, private router: Router){ }
 
   ngOnInit(): void {
     this.feedbackAction="";
     this.activeFeedback=false;
     this.question = 'Quelle est la voiture sur la photo ?';
+    this.photoURL = "https://www.autoscout24.fr/assets/auto/images/model/fiat/fiat-ritmo/fiat-ritmo-l-01.jpg";
 
     let Answer1: Answer = {
       value: "Audi Q5",
@@ -67,6 +67,13 @@ export class GameComponent implements OnInit {
       }
       this.activeFeedback=true;
     }
+
+  zoom(): void{
+    console.log("euhhh");
+
+    this.router.navigate(['/game/zoom/']);
+    console.log("euhhh");
+  }
 
 
     refresh(): void{
