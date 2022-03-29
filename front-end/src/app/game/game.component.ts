@@ -1,6 +1,5 @@
 /* tslint:disable:whitespace no-trailing-whitespace */
 import {Component, Inject, OnInit} from '@angular/core';
-import {Quiz} from '../../models/quiz.model';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -52,11 +51,7 @@ export class GameComponent implements OnInit {
       value: "Fiat Panda",
       isCorrect: false,
     };
-
-    console.log("a")
     this.answerList.push(Answer1,Answer2,Answer3,Answer4);
-    console.log("a")
-
   }
 
   gestionClick(repChoisie: boolean): void{
