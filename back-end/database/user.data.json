@@ -24,5 +24,11 @@
     "lastName": "Pierre",
     "disease": "Cataracte",
     "id": 1648334317552
+  },
+  {
+    "firstName": "Mathieu",
+    "lastName": "Schalkwijk",
+    "disease": "Cécité",
+    "id": 1648540371476
   }
 ]

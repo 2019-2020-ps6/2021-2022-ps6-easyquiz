@@ -22,7 +22,7 @@ const routes: Routes = [
   {path: 'game/:id', component: GameManagementComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
-  {path: 'profile/:id/theme', component: ThemeListComponent}
+  {path: ':id/theme', component: ThemeListComponent}
 ];
 
 @NgModule({
