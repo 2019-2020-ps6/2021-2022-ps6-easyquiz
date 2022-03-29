@@ -6,7 +6,7 @@
     <span class="username">
       Profil {{user.firstName}} {{user.lastName}}
     </span>
-    <a class="button"[routerLink]="['/quiz-list']" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
+    <a class="button" routerLink="/profile/{{user.id}}/theme" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
     <br><br>
     <a class="button"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-history'> </i><br><br>Historique </a>
     <br><br>

@@ -3,10 +3,12 @@ import {RouterModule, Routes} from '@angular/router';
 import {QuizListComponent} from './quizzes/quiz-list/quiz-list.component';
 import {EditQuizComponent} from './quizzes/edit-quiz/edit-quiz.component';
 import {UserListComponent} from './users/user-list/user-list.component';
-import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choice-component/choice-component.component';
 import {GameComponent} from './game/game.component';
 import {UserCreateComponent} from './users/user-create/user-create.component';
+import {GameSettingComponent} from './game/settings/game-setting/game-setting.component';
 import {ProfileComponent} from './userhome/profile/profile.component';
+import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
+import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -15,8 +17,10 @@ const routes: Routes = [
   {path: 'user-create', component: UserCreateComponent},
   {path: '', redirectTo: '/user-list', pathMatch: 'full'},
   {path: 'game', component: GameComponent},
-  {path: 'settings', component: ChoiceComponentComponent},
+  {path: 'game/zoom', component: ZoomPictureComponent},
   {path: 'profile/:id', component: ProfileComponent},
+  {path: 'settings', component: GameSettingComponent},
+  {path: 'profile/:id/theme', component: ThemeListComponent}
 ];
 
 @NgModule({

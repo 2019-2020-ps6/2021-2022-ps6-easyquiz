@@ -1,8 +1,9 @@
 <div class="settings">
-  <p>game-setting works!</p>
   <h2>
     <meta charset="UTF-8">
-    Réglage de quiz {{quiz.name}}
+    Réglage de quiz
   </h2>
+  <p>Choisissez votre configuration :</p>
+  <app-choice-component *ngFor="let choice of choises" [choice]="choice"></app-choice-component>
 
 </div>
