@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
 </head>
-<body>
-  <div class = "question"> {{question}} </div>
+<body [ngStyle]="{
+    'background-color': choice.pageBackGroung
+    }">
+
+  <div class = "question" [ngStyle]="{
+    'background-color': choice.questionBackGround
+    }"> {{question}} </div>
 
   <div class = "listQuestion" *ngFor="let rep of answerList">
   <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>

@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'game/zoom', component: ZoomPictureComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
-  {path: 'profile/:id/theme', component: ThemeListComponent}
+  {path: ':id/theme', component: ThemeListComponent}
 ];
 
 @NgModule({

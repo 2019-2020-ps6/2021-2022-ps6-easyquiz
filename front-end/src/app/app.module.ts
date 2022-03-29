@@ -25,6 +25,7 @@ import {ProfileComponent} from './userhome/profile/profile.component';
 import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
 import {ThemeComponent} from './themes/theme/theme.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
+import { GameManagementComponent } from './game-management/game-management.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import {ThemeListComponent} from './themes/theme-list/theme-list.component';
     ZoomPictureComponent,
     ThemeComponent,
     ThemeListComponent,
+    GameManagementComponent,
   ],
   imports: [
     BrowserModule,
