@@ -4,46 +4,63 @@
   justify-content: center;
   margin-top: 6%;
   font-size: 2em;
+  color: #3d3b3b;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
 }
 
 .button1{
   text-align: center;
   font-size: 2em;
-  color: black;
+  color: #ff7f50;
   font-family: Arial;
   position: absolute;
   left: 1%;
   top:45%;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
 }
 .button2{
   text-align: center;
   font-size: 2em;
-  color: black;
+  color: #ff7f50;
   font-family: Arial;
   position: absolute;
   left: 35.5%;
   top:45%;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
 }
 .button3{
   text-align: center;
   font-size: 2em;
-  color: black;
+  color: #ff7f50;
   font-family: Arial;
   position: absolute;
   top:45%;
   right: 1%;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
 }
 
-.fa-home{
+.fa-user{
   font-size: 2em;
-  color: black;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
   position: absolute;
-  right: 3%;
-  top: 17%;
+  right:2.5%;
+  top: 9%;
+  text-align: center;
+  background-color: #3f51b5;
+}
+
+.profiltext{
+  color: #3d3b3b;
+  font-size: 40px;
+  padding-top: -10px;
+
+
 }
 
 .trouble{
   position: absolute;
-  top: 80%;
-
+  bottom:10px;
+  color: #3d3b3b;
 }
+

@@ -3,4 +3,5 @@ export interface User {
     firstName: string;
     lastName: string;
     disease: string;
+    birthday: string;
 }

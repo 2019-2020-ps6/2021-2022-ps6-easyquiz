@@ -1,12 +1,13 @@
 <div class="card">
   <h2>
     <div align="right">
-    <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-home'> <br></i> </a>
+    <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <br> <span class="profiltext">{{user.firstName}} </span></i>  <br>
+    </a>
       </div>
     <span class="username">
       Profil {{user.firstName}} {{user.lastName}}
     </span>
-    <a class="button1" routerLink="/game" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
+    <a class="button1" routerLink="/theme" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
     <br><br>
     <a class="button2"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-history'> </i><br><br>Historique </a>
     <br><br>
