@@ -5,7 +5,7 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
 
 
 *{
-    cursor:  url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' ") 16 16, pointer;
+  cursor:url(https://zupimages.net/up/22/13/5yh0.png), auto;
 }
 
 
@@ -45,22 +45,21 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
   font-family:  Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
   font-weight: 500;
   border-radius: 10px;
+}
 
+.zoom:hover{
+  font-size: 55px;
+  background-color: #d67ce5;
 
 }
 
 
 .photo{
-  width: 90%;
+  width: 100%;
   height: 80%;
   top : 30%;
   float : right;
 }
-
-
-
-
-
 
 .buttonFeedback{
   position: relative;

@@ -3,7 +3,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {QuizService} from "../../services/quiz.service";
 
 
 @Component({
@@ -14,7 +15,6 @@ import {Router} from "@angular/router";
 
 export class GameComponent implements OnInit {
 
-  public quiz: Quiz;
   public question: string;
   public answerList: Answer[]=[];
   public photoURL : string;
@@ -23,7 +23,12 @@ export class GameComponent implements OnInit {
   public jeuActif: boolean =true;
 
 
-  constructor( @Inject(DOCUMENT) private _document: Document, private router: Router){ }
+
+
+
+  constructor( @Inject(DOCUMENT) private _document: Document,private router: Router){
+    }
+
 
   ngOnInit(): void {
     this.feedbackAction="";
@@ -49,7 +54,6 @@ export class GameComponent implements OnInit {
     };
 
     console.log("a")
-
     this.answerList.push(Answer1,Answer2,Answer3,Answer4);
     console.log("a")
 
@@ -69,12 +73,8 @@ export class GameComponent implements OnInit {
     }
 
   zoom(): void{
-    console.log("euhhh");
-
     this.router.navigate(['/game/zoom/']);
-    console.log("euhhh");
   }
-
 
     refresh(): void{
         this._document.defaultView.location.reload();
