@@ -25,6 +25,7 @@
 }
 
 .componentIm {
+  margin-left: 5px;
   display: flex;
   justify-content: center;
 }
@@ -32,4 +33,12 @@
 p {
   margin-top: 10px;
   padding: 3px;
+}
+
+.settings-box-image {
+  float: left;
+  width: auto;
+  justify-content: center;
+  display: inline-block;
+  margin-left: 5px;
 }

@@ -5,6 +5,8 @@ import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {QuizService} from "../../services/quiz.service";
+import {SettingService} from '../../services/setting.service';
+import {Choice} from './settings/game-setting/choice/models/choice.model';
 
 
 @Component({
@@ -21,16 +23,22 @@ export class GameComponent implements OnInit {
   public feedbackAction: string;
   public activeFeedback: boolean;
   public jeuActif: boolean =true;
+  public choice: Choice;
 
 
 
 
 
-  constructor( @Inject(DOCUMENT) private _document: Document,private router: Router){
+  constructor( @Inject(DOCUMENT) private _document: Document,private router: Router,
+               private settingsService: SettingService
+               ){
     }
 
 
   ngOnInit(): void {
+
+    this.choice = this.settingsService.getSelectedChoice();
+
     this.feedbackAction="";
     this.activeFeedback=false;
     this.question = 'Quelle est la voiture sur la photo ?';
