@@ -47,12 +47,13 @@
   right:2.5%;
   top: 9%;
   text-align: center;
-  background-color: #3f51b5;
+  display: flex;
+  flex-direction: column;
 }
 
 .profiltext{
   color: #3d3b3b;
-  font-size: 40px;
+  font-size: 30px;
   padding-top: -10px;
 
 
