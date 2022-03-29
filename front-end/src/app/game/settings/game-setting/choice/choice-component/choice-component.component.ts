@@ -13,4 +13,8 @@ export class ChoiceComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onChoisirClick(): void {
+    this.choice.buttonColor = 'red';
+  }
+
 }

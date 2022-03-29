@@ -6,7 +6,9 @@
   </div>
   <br>
   <div class="componentIm">
-    <button class="button-select">Choisir</button>
+    <button (click)="onChoisirClick()" class="button-select" [ngStyle]="{
+    'background-color': choice.buttonColor
+    }" >Choisir</button>
   </div>
 
 </div>
