@@ -2,18 +2,48 @@
   display:flex;
   margin: auto;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 6%;
   font-size: 2em;
 }
 
-.button{
+.button1{
   text-align: center;
   font-size: 2em;
   color: black;
   font-family: Arial;
+  position: absolute;
+  left: 1%;
+  top:45%;
+}
+.button2{
+  text-align: center;
+  font-size: 2em;
+  color: black;
+  font-family: Arial;
+  position: absolute;
+  left: 35.5%;
+  top:45%;
+}
+.button3{
+  text-align: center;
+  font-size: 2em;
+  color: black;
+  font-family: Arial;
+  position: absolute;
+  top:45%;
+  right: 1%;
 }
 
 .fa-home{
-  font-size: 3em;
+  font-size: 2em;
   color: black;
+  position: absolute;
+  right: 3%;
+  top: 17%;
+}
+
+.trouble{
+  position: absolute;
+  top: 80%;
+
 }

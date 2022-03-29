@@ -6,12 +6,14 @@
     <span class="username">
       Profil {{user.firstName}} {{user.lastName}}
     </span>
-    <a class="button" routerLink="/profile/{{user.id}}/theme" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
+    <a class="button1" routerLink="/game" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
     <br><br>
-    <a class="button"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-history'> </i><br><br>Historique </a>
+    <a class="button2"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-history'> </i><br><br>Historique </a>
     <br><br>
-    <a class="button"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-cog'> </i><br><br>Configurer le profil </a>
+    <a class="button3"[routerLink]="['/settings']" style="text-decoration: none"><i class='fas fa-cog'> </i><br><br>Configurer le profil </a>
     <br><br>
+    <span class="trouble">
     Trouble : {{user.disease}}
+    </span>
   </h2>
 </div>
