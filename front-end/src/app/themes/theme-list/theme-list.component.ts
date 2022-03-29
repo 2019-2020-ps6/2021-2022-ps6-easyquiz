@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Quiz} from "../../../models/quiz.model";
-import {Router} from "@angular/router";
-import {QuizService} from "../../../services/quiz.service";
+import {Quiz} from '../../../models/quiz.model';
+import {Router} from '@angular/router';
+import {QuizService} from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-theme-list',
@@ -11,12 +11,7 @@ import {QuizService} from "../../../services/quiz.service";
 
 export class ThemeListComponent implements OnInit {
 
-  public themeList: Theme[] = [];
-
   constructor(private router: Router, public quizService: QuizService) {
-    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
-      this.quizList = quizzes;
-    });
   }
 
   ngOnInit(): void {
