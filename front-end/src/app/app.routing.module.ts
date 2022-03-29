@@ -9,7 +9,9 @@ import {GameSettingComponent} from './game/settings/game-setting/game-setting.co
 import {ProfileComponent} from './userhome/profile/profile.component';
 import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
-import {GameManagementComponent} from "./game-management/game-management.component";
+import {GameManagementComponent} from './game-management/game-management.component';
+import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
+import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path: 'game/:id', component: GameManagementComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
-  {path: ':id/theme', component: ThemeListComponent}
+  {path: ':id/theme', component: ThemeListComponent},
+  {path: ':id/configuration', component : ConfigurationProfilComponent}
 ];
 
 @NgModule({
