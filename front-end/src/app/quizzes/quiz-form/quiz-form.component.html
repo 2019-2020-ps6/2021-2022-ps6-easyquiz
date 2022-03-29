@@ -1,7 +1,7 @@
 <div class="card">
   <h2>Create a new Quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
-    <label for="title">
+    <label for="name">
       Title <br>
       <input class="input-custom" type="text" id="name" [formControlName]="'name'">
     </label>
@@ -10,6 +10,15 @@
       Theme <br>
       <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
     </label>
+    <br>
+    <input type="checkbox" [formControlName]="'cataracteOk'">
+    Convient à la cataracte
+    <br>
+    <input type="checkbox" [formControlName]="'ceciteOk'">
+    Convient à la cécité
+    <br>
+    <input type="checkbox" [formControlName]="'alzheimerOk'">
+    Convient à Alzheimer
     <br>
     <button type="submit" class="button-card" (click)="addQuiz()">Create</button>
   </form>

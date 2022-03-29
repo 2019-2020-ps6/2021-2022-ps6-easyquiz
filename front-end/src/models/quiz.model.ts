@@ -5,4 +5,7 @@ export interface Quiz {
     name: string;
     theme?: string;
     questions: Question[];
+    cataracteOk: boolean;
+    ceciteOk: boolean;
+    alzheimerOk: boolean;
 }

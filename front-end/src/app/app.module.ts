@@ -1,26 +1,28 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { QuizListComponent } from './quizzes/quiz-list/quiz-list.component';
-import { QuizComponent } from './quizzes/quiz/quiz.component';
-import { HeaderComponent } from './header/header.component';
-import { QuizFormComponent } from './quizzes/quiz-form/quiz-form.component';
-import { EditQuizComponent } from './quizzes/edit-quiz/edit-quiz.component';
-import { AppRoutingModule } from './app.routing.module';
-import { QuestionListComponent } from './questions/question-list/question-list.component';
-import { QuestionFormComponent } from './questions/question-form/question-form.component';
-import { QuestionComponent } from './questions/question/question.component';
-import { UserComponent } from './users/user/user.component';
-import { UserFormComponent } from './users/user-form/user-form.component';
-import { UserListComponent } from './users/user-list/user-list.component';
-import { GameSettingComponent } from './game/settings/game-setting/game-setting.component';
-import { UserCreateComponent} from './users/user-create/user-create.component';
+import {AppComponent} from './app.component';
+import {QuizListComponent} from './quizzes/quiz-list/quiz-list.component';
+import {QuizComponent} from './quizzes/quiz/quiz.component';
+import {HeaderComponent} from './header/header.component';
+import {QuizFormComponent} from './quizzes/quiz-form/quiz-form.component';
+import {EditQuizComponent} from './quizzes/edit-quiz/edit-quiz.component';
+import {AppRoutingModule} from './app.routing.module';
+import {QuestionListComponent} from './questions/question-list/question-list.component';
+import {QuestionFormComponent} from './questions/question-form/question-form.component';
+import {QuestionComponent} from './questions/question/question.component';
+import {UserComponent} from './users/user/user.component';
+import {UserFormComponent} from './users/user-form/user-form.component';
+import {UserListComponent} from './users/user-list/user-list.component';
+import {GameSettingComponent} from './game/settings/game-setting/game-setting.component';
+import {UserCreateComponent} from './users/user-create/user-create.component';
 import {GameComponent} from './game/game.component';
-import { BoutonComponentComponent } from './bouton-component/bouton-component.component';
 import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choice-component/choice-component.component';
+import {AnswerButtonComponent} from './game/answer-button/answer-button.component';
+import {ProfileComponent} from './userhome/profile/profile.component';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choi
     UserCreateComponent,
     GameComponent,
     ChoiceComponentComponent,
-    BoutonComponentComponent,
+    AnswerButtonComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,4 +54,5 @@ import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choi
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

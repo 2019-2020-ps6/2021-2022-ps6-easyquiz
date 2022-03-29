@@ -1,0 +1,30 @@
+.button{
+
+  border-radius: 8px;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 60px;
+  width: 40%;
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-family:   Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+  font-weight: 500;
+}
+
+.initial:hover{
+  font-size: 65px;
+  background-color: #8c5ece;
+}
+
+
+.initial{
+  background-color: #9d6ede;
+}
+.red{
+  background-color: #ef4250;
+}
+
+.green{
+  background-color: #377e3b;
+}

@@ -1,0 +1,17 @@
+<div class="card">
+  <h2>
+    <div align="right">
+    <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-home'> <br></i> </a>
+      </div>
+    <span class="username">
+      Profil {{user.firstName}} {{user.lastName}}
+    </span>
+    <a class="button"[routerLink]="['/quiz-list']" style="text-decoration: none"><i class='fas fa-play-circle'></i><br><br>Jouer un quiz</a>
+    <br><br>
+    <a class="button"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-history'> </i><br><br>Historique </a>
+    <br><br>
+    <a class="button"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-cog'> </i><br><br>Configurer le profil </a>
+    <br><br>
+    Trouble : {{user.disease}}
+  </h2>
+</div>

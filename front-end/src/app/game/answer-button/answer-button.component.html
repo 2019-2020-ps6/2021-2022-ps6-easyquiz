@@ -1,0 +1,8 @@
+
+<div>
+  <input class = button type="button" value="{{answer.value}}" (click)="clickAnswer($event)"
+         [ngClass]="{'green' : bonClick,'red' : mauvaisClick, 'initial' : aucunClick}"
+         [disabled]="!actif"
+
+  >
+</div>
