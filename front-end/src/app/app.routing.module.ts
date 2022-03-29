@@ -8,6 +8,7 @@ import {UserCreateComponent} from './users/user-create/user-create.component';
 import {GameSettingComponent} from './game/settings/game-setting/game-setting.component';
 import {ProfileComponent} from './userhome/profile/profile.component';
 import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
+import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'game/zoom', component: ZoomPictureComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
+  {path: 'profile/:id/theme', component: ThemeListComponent}
 ];
 
 @NgModule({

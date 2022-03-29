@@ -1,26 +1,2 @@
 [
-  {
-    "name": "Minecraft",
-    "theme": "Jeux Vidéo",
-    "id": 1648248128308,
-    "cataracteOk": true,
-    "ceciteOk": true,
-    "alzheimerOk": false
-  },
-  {
-    "name": "La camargue",
-    "theme": "France",
-    "cataracteOk": false,
-    "ceciteOk": true,
-    "alzheimerOk": false,
-    "id": 1648330025225
-  },
-  {
-    "name": "a",
-    "theme": "a",
-    "cataracteOk": true,
-    "ceciteOk": true,
-    "alzheimerOk": true,
-    "id": 1648403268030
-  }
 ]
