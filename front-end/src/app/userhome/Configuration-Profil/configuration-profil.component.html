@@ -1,0 +1,16 @@
+
+  <div class = "infoProfil">
+    Prénom : {{user.firstName}}
+    <br>
+    Nom : {{user.lastName}}
+    <br>
+    Date de naissance : en chantier...
+    <br>
+    Trouble : {{user.disease}}
+    <br>
+    Ici le profil de la personne selectionner
+  </div>
+
+  <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <span class="changeText">Changer de profil</span></i></a>
+  <a class="return" href="javascript:history.go(-1)" style="text-decoration: none">Retour</a>
+  <a class="config" [routerLink]="['/settings']" style="text-decoration: none"> <i class='fas fa-cog'> <span class="configText">Configuration des questions</span></i></a>

@@ -26,6 +26,8 @@ import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
 import {ThemeComponent} from './themes/theme/theme.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
+import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
+import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 
 
 @NgModule({
@@ -52,6 +54,7 @@ import { GameManagementComponent } from './game-management/game-management.compo
     ThemeComponent,
     ThemeListComponent,
     GameManagementComponent,
+    ConfigurationProfilComponent,
   ],
   imports: [
     BrowserModule,

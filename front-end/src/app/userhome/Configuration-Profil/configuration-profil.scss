@@ -1,0 +1,41 @@
+.fa-user{
+  font-size: 2em;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+  position: absolute;
+  bottom: 1%;
+  text-align: center;
+  right: 40%;
+  left: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.changeText{
+  font-size: 30px;
+}
+
+.return{
+  font-size: 30px ;
+  position: absolute;
+  color: coral;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+  left: 1%;
+  bottom: 1%;
+}
+
+.fa-cog{
+    font-size: 2em;
+    color: #ff7f50;
+    text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+    position: absolute;
+    bottom: 1%;
+    text-align: center;
+    right: 0%;
+    left: 75%;
+    display: flex;
+    flex-direction: column;
+}
+
+.configText{
+  font-size: 30px;
+}
