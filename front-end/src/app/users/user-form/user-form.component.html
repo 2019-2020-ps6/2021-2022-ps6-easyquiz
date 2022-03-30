@@ -11,7 +11,8 @@
       <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
     </label>
     <br>
-    Trouble
+    <br>
+    Trouble :
     <br>
     <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
     <label for="cataracte">Cataracte</label>
@@ -22,6 +23,8 @@
     <input type="radio" id="alzheimer" name="groupe1" value="Alzheimer" [formControlName]="'disease'">
     <label for="alzheimer">Alzheimer</label>
     <br><br>
-    <button type="submit" class="button-card" (click)="addUser()"> Créer</button>
+    <button type="submit" class="button-card" (click)="addUser()"> Créer un profil</button>
+    <br>
+    <button type="submit" class="button-card" [routerLink]="['/user-list']" style="text-decoration: none" > Retour</button>
   </form>
 </div>
