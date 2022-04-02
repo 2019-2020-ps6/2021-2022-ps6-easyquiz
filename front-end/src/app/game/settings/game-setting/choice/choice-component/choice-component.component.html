@@ -3,7 +3,14 @@
   <p> Configuration {{choice.Id}} </p>
   <div class="block">
     <div class="componentIm">
-      <img class="image-display-setting" [src]="choice.urlImage" alt="Erreur d'affichage"/>
+      <div class = "display-setting" [ngStyle]="{'background-color': choice.pageBackGroung}">
+        <h2 class="questionQuiz" [ngStyle]="{'background-color': choice.questionBackGround}"> Question ?</h2>
+        <button class="reponse">Réponse</button>
+        <br>
+        <button class="reponse">Réponse</button>
+        <br>
+        <button class="reponse">Réponse</button>
+      </div>
     </div>
     <br>
     <div class="componentIm">

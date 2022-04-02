@@ -26,7 +26,7 @@ export class SettingService{
     {
       Id: 3,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
-      buttonColor: '#ce0f0f',
+      buttonColor: '#fca14e',
       pageBackGroung: '#ffffff',
       questionBackGround: '#797777'
     }
