@@ -1,3 +1,23 @@
 p {
   font-family: Comic Sans MS;
 }
+
+h2 {
+  font-family: Comic Sans MS;
+}
+
+.goBack-button {
+  background-color: #fca14e;
+  font-size: 30px;
+  padding: 8px 32px;
+  border: none;
+  border-radius: 4px;
+  transition-duration: 0.3s;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.goBack-button:hover {
+  color: #ffffff;
+}
+

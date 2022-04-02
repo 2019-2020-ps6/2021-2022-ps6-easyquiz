@@ -1,8 +1,10 @@
 <div class="settings">
   <h2>
     <meta charset="UTF-8">
-    <img src="https://download.flaticon.com/download/icon/271218?icon_id=271218&author=174&team=174&keyword=Left+arrow&pack=271193&style=Solid&style_id=890&format=png&color=%23000000&colored=1&size=16&selection=1&premium=&type=standard&_gl=1*lb1xhu*fp_ga*MTU2OTU3ODQ5OS4xNjQ4NTQ1MDY3*fp_ga_1ZY8468CQB*MTY0ODU0NTA2Ni4xLjEuMTY0ODU0NzMwMC41OQ..*_ga*MTU2OTU3ODQ5OS4xNjQ4NTQ1MDY3*_ga_3Q8LH3P0VP*MTY0ODU0NTA2Ni4xLjEuMTY0ODU0NzMwMC4w*test_ga*MTU2OTU3ODQ5OS4xNjQ4NTQ1MDY3*test_ga_523JXC6VL7*MTY0ODU0NTA2Ni4xLjEuMTY0ODU0NzMwMC41OQ.." alt="back"
-         (click)="goBack()"> Réglage du quiz
+    <button class="goBack-button"
+         (click)="goBack()"> < Retour
+    </button>
+    Réglage du quiz
   </h2>
   <p>Choisissez votre configuration :</p>
   <app-choice-component *ngFor="let choice of choises" [choice]="choice"></app-choice-component>
