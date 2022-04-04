@@ -11,6 +11,7 @@ import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import {GameManagementComponent} from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
+import {GameSpeechComponent} from './game-speech/game-speech.component';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
   {path: ':id/theme', component: ThemeListComponent},
-  {path: ':id/configuration', component : ConfigurationProfilComponent}
+  {path: ':id/configuration', component : ConfigurationProfilComponent},
+  {path: 'bonjour', component : GameSpeechComponent},
 ];
 
 @NgModule({

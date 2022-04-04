@@ -1,0 +1,47 @@
+<meta charset="utf-8"/>
+<body>
+
+<p class="Question">La premiere question est : Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953 ?   Lénine. Staline. Molotov. Trotski</p>
+
+<form class="Changeme">
+  <div>
+    <label for="rate">Vitesse:</label><input type="range" min="0.5" max="2" value="1" step="0.1" id="rate">
+    <div class="rate-value">1</div>
+    <div class="clearfix"></div>
+  </div>
+  <div>
+    <label for="pitch">Hauteur:</label><input type="range" min="0" max="2" value="1" step="0.1" id="pitch">
+    <div class="pitch-value">1</div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="controls">
+    <button id="play" type="submit">Play</button>
+  </div>
+</form>
+
+<script src="game-speech.component.js"></script>
+<script>
+  'use strict';
+  document.addEventListener('keydown', (event) => {
+    const nomTouche = event.key;
+    if (nomTouche === ' ') {
+      alert('je réecoute la question');
+      return;}
+    if (nomTouche === 'ArrowRight') {
+      alert('Je choisis la réponse de droite');
+      return;}
+    if (nomTouche === 'ArrowLeft') {
+      alert('Je choisis la réponse de gauche');
+      return;}
+    if (nomTouche === 'ArrowUp') {
+      alert('Je choisis la réponse du haut');
+      return;}
+    if (nomTouche === 'ArrowDown') {
+      alert("Je choisis la réponse du bas");
+      return;}
+      alert(`Mauvaise touche ${nomTouche}`);
+  }, true);
+</script>
+</body>
+
+

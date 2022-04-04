@@ -27,6 +27,7 @@ import {ThemeComponent} from './themes/theme/theme.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
+import {GameSpeechComponent} from './game-speech/game-speech.component';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 
 
@@ -55,6 +56,7 @@ import {Configuration} from 'jasmine-spec-reporter/built/configuration';
     ThemeListComponent,
     GameManagementComponent,
     ConfigurationProfilComponent,
+    GameSpeechComponent,
   ],
   imports: [
     BrowserModule,
