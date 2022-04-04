@@ -3,6 +3,6 @@
 </h1>
 <div class="quiz-list">
   <div class="quiz-list" *ngFor="let quiz of quizList">
-    <a class="selectQuiz" style="text-decoration: none" routerLink="/quiz-list"> {{quiz.name}}<br><br></a>
+    <a class="selectQuiz" style="text-decoration: none" routerLink="/game/{{userId}}/{{quiz.id}}"> {{quiz.name}}<br><br></a>
   </div>
 </div>
