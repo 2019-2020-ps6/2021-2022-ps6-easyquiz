@@ -1,4 +1,6 @@
 const { Router } = require('express')
+const logger = require('../../../utils/logger')
+
 
 const { Answer, Quiz, Question } = require('../../../models')
 const manageAllErrors = require('../../../utils/routes/error-management')
@@ -30,13 +32,27 @@ router.post('/', (req, res) => {
   try {
     // Check if quizId exists, if not it will throw a NotFoundError
     Quiz.getById(req.params.quizId)
+    logger.info(req.body)
+    logger.info('ok Roger')
+    logger.info('ok 2Roger')
+
     const quizId = parseInt(req.params.quizId, 10)
-    let question = Question.create({ label: req.body.label, quizId })
+    let question = null
+    if (req.body.urlIMG === "") {
+      logger.info('est null')
+
+      question = Question.create({ label: req.body.label, quizId })
+    } else {
+      logger.info('IMAGE')
+
+      question = Question.create({ label: req.body.label, quizId, urlIMG: req.body.urlIMG })
+    }
     // If answers have been provided in the request, we create the answer and update the response to send.
     if (req.body.answers && req.body.answers.length > 0) {
       const answers = req.body.answers.map((answer) => Answer.create({ ...answer, questionId: question.id }))
       question = { ...question, answers }
     }
+    logger.info(question)
     res.status(201).json(question)
   } catch (err) {
     manageAllErrors(res, err)

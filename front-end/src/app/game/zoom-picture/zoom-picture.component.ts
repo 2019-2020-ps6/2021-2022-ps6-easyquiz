@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-zoom-picture',
@@ -8,9 +9,13 @@ import {Location} from "@angular/common";
 })
 export class ZoomPictureComponent implements OnInit {
 
-  constructor(private _location: Location) { }
+  public urlPhoto: string;
+
+  constructor(private _location: Location, private router: Router) { }
 
   ngOnInit(): void {
+    this.urlPhoto = this.router.getCurrentNavigation().extras.state.link;
+
   }
 
   backClicked() {

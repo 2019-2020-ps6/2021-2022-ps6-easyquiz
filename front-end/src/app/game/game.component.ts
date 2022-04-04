@@ -1,11 +1,12 @@
 /* tslint:disable:whitespace no-trailing-whitespace */
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
 import {ActivatedRoute, Router} from "@angular/router";
 import {QuizService} from "../../services/quiz.service";
 import {SettingService} from '../../services/setting.service';
 import {Choice} from './settings/game-setting/choice/models/choice.model';
+import {Quiz} from "../../models/quiz.model";
 
 
 @Component({
@@ -16,72 +17,103 @@ import {Choice} from './settings/game-setting/choice/models/choice.model';
 
 export class GameComponent implements OnInit {
 
+  @Input()
+  tout: Question[];
+
+  @Output()
+  juste: EventEmitter<boolean> = new EventEmitter();
+
+
   public question: string;
-  public answerList: Answer[]=[];
-  public photoURL : string;
+  public answerList: Answer[] = [];
+  public photoURL: string;
   public feedbackAction: string;
   public activeFeedback: boolean;
-  public jeuActif: boolean =true;
+  public jeuActif: boolean = true;
   public choice: Choice;
+  public aJuste: boolean;
+  public questionTotale: Question;
 
 
-
-
-
-  constructor( @Inject(DOCUMENT) private _document: Document,private router: Router,
-               private settingsService: SettingService
-               ){
-    }
+  constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
+              private settingsService: SettingService
+  ) {
+  }
 
 
   ngOnInit(): void {
 
+    console.log("TAILLLLLLE" + this.tout.length);
+
+
+    this.questionTotale = this.tout[0];
+
+    console.log("///////" + this.questionTotale.label);
+    console.log("444444" + this.tout[0].label);
+    console.log("444444" + this.tout[1].label);
+
+    this.reset();
+
+  }
+
+
+  reset(): void {
     this.choice = this.settingsService.getSelectedChoice();
-
-    this.feedbackAction="";
-    this.activeFeedback=false;
-    this.question = 'Quelle est la voiture sur la photo ?';
-    this.photoURL = "https://www.autoscout24.fr/assets/auto/images/model/fiat/fiat-ritmo/fiat-ritmo-l-01.jpg";
-
-    let Answer1: Answer = {
-      value: "Audi Q5",
-      isCorrect: false,
-    };
-    let Answer2: Answer = {
-      value: "Fiat Ritmo",
-      isCorrect: true,
-    };
-    let Answer3: Answer = {
-      value: "2 Chevaux",
-      isCorrect: false,
-    };
-    let Answer4: Answer = {
-      value: "Fiat Panda",
-      isCorrect: false,
-    };
-    this.answerList.push(Answer1,Answer2,Answer3,Answer4);
+    this.feedbackAction = "";
+    this.activeFeedback = false;
+    this.aJuste = false;
+    this.jeuActif = true;
+    this.question = this.questionTotale.label;
+    this.photoURL = this.questionTotale.urlIMG;
+    this.answerList = this.questionTotale.answers;
   }
 
-  gestionClick(repChoisie: boolean): void{
-    this.jeuActif=false;
-      if(repChoisie){
-        console.log("Bonne réponse");
-        this.feedbackAction= "Bravo"
-      }
-      else{
-        console.log("raté");
-        this.feedbackAction= "Réessayer"
-      }
-      this.activeFeedback=true;
-    }
+  gestionClick(repChoisie: boolean): void {
 
-  zoom(): void{
-    this.router.navigate(['/game/zoom/']);
+
+    this.jeuActif = false;
+    if (repChoisie) {
+      console.log("Bonne réponse");
+      this.aJuste = true;
+      this.feedbackAction = "Bravo";
+    } else {
+      console.log("raté");
+      this.feedbackAction = "Dommage"
+    }
+    this.activeFeedback = true;
   }
 
-    refresh(): void{
-        this._document.defaultView.location.reload();
+  zoom(): void {
+    this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
+  }
+
+  refresh(): void {
+    this.juste.emit(this.aJuste);
+    this.tout.shift();
+    this.questionTotale = this.tout[0];
+
+    if(this.tout.length===0){
+      this.router.navigate(['/fin/']);
     }
+    else {
+
+
+      console.log("///////" + this.questionTotale.label);
+      console.log("444444" + this.tout[0].label);
+
+
+      this.questionTotale = this.tout[0];
+
+      console.log(this.tout[0]);
+
+      console.log(this.questionTotale);
+
+      console.log("cest le new");
+      this.reset();
+    }
+
+    //this._document.defaultView.location.reload();
+  }
 
 
 }

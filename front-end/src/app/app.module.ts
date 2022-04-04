@@ -28,6 +28,7 @@ import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import {Configuration} from 'jasmine-spec-reporter/built/configuration';
     ThemeListComponent,
     GameManagementComponent,
     ConfigurationProfilComponent,
+    FinPartieComponent,
   ],
   imports: [
     BrowserModule,

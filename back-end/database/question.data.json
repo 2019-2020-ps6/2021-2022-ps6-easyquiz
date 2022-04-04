@@ -23,5 +23,17 @@
     "label": "Quelle est l'année de sortie officielle du jeu ?",
     "quizId": 1648248128308,
     "id": 1648248647675
+  },
+  {
+    "label": "Quelle est la voiture représentée",
+    "quizId": 1649082053224,
+    "urlIMG": "https://www.autoscout24.fr/assets/auto/images/model/fiat/fiat-ritmo/fiat-ritmo-l-01.jpg",
+    "id": 1649094182688
+  },
+  {
+    "label": "Qui a une Ferrari ?",
+    "quizId": 1649082053224,
+    "urlIMG": "https://pro.largus.fr/images/images/01-ferrari-f8-tributoredimensionner.jpg?width=620&quality=80",
+    "id": 1649096553173
   }
 ]

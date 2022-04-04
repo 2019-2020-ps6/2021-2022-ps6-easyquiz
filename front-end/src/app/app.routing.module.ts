@@ -12,6 +12,7 @@ import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import {GameManagementComponent} from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+import {FinPartieComponent} from "./game/fin-partie/fin-partie.component";
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -21,11 +22,13 @@ const routes: Routes = [
   {path: '', redirectTo: '/user-list', pathMatch: 'full'},
   {path: 'game', component: GameComponent},
   {path: 'game/zoom', component: ZoomPictureComponent},
-  {path: 'game/:id', component: GameManagementComponent},
+  {path: 'game/:user/:id', component: GameManagementComponent},
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
   {path: ':id/theme', component: ThemeListComponent},
-  {path: ':id/configuration', component : ConfigurationProfilComponent}
+  {path: ':id/configuration', component : ConfigurationProfilComponent},
+  {path: 'fin', component : FinPartieComponent}
+
 ];
 
 @NgModule({

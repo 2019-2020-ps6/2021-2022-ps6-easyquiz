@@ -4,6 +4,8 @@ const { Quiz } = require('../../models')
 const manageAllErrors = require('../../utils/routes/error-management')
 const QuestionsRouter = require('./questions')
 const { buildQuizz, buildQuizzes } = require('./manager')
+const logger = require('../../utils/logger')
+
 
 const router = new Router()
 
@@ -20,6 +22,7 @@ router.get('/', (req, res) => {
 
 router.get('/:quizId', (req, res) => {
   try {
+
     const quizz = buildQuizz(req.params.quizId)
     res.status(200).json(quizz)
   } catch (err) {
