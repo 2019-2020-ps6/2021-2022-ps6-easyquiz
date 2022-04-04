@@ -5,6 +5,13 @@
       Title <br>
       <input class="input-custom" type="text" id="label" [formControlName]="'label'">
     </label>
+
+    <label for="urlIMG">
+      <br>
+      <input class="input-custom" type="text" id="urlIMG" [formControlName]="'urlIMG'">
+      <br> URL
+
+    </label>
     <br>
     <button class="button-card" (click)="addAnswer()">Add Answer</button>
     <div class="answer" formArrayName="answers">

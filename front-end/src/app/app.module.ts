@@ -29,6 +29,7 @@ import { GameManagementComponent } from './game-management/game-management.compo
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
+import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-sele
     GameManagementComponent,
     ConfigurationProfilComponent,
     QuizListSelectComponent,
+    FinPartieComponent,
   ],
   imports: [
     BrowserModule,

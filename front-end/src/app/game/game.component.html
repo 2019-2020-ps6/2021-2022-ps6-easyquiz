@@ -15,14 +15,14 @@
   <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
   </div>
 
-  <div class = photoBouton>
-  <img class ="photo" src= {{photoURL}}  alt="voiture">
+  <div class = photoBouton *ngIf="photoURL">
+  <img class ="photo" src= {{photoURL}} alt=" ">
   <input class = zoom type="button" value="Agrandir" (click)="zoom()">
   </div>
 
 
   <div class="feeddback" *ngIf="activeFeedback">
-    <input class = buttonFeedback type="button" value="{{feedbackAction}}" (click)="refresh()">
+    <input class = buttonFeedback type="button" value="{{feedbackAction}}" (click)="refresh($event)">
   </div>
 
 
