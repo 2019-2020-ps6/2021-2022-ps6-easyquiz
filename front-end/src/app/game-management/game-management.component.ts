@@ -15,14 +15,10 @@ export class GameManagementComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private quizService: QuizService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
-    console.log(this.quiz);
+
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
-    console.log(this.quizService.quizSelected$);
-    console.log(this.quiz);
   }
 
 }
