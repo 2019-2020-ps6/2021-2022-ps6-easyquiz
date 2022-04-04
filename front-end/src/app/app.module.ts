@@ -28,7 +28,10 @@ import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+<<<<<<< HEAD
 import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
+=======
+>>>>>>> main
 import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
 
 
@@ -57,7 +60,10 @@ import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
     ThemeListComponent,
     GameManagementComponent,
     ConfigurationProfilComponent,
+<<<<<<< HEAD
     QuizListSelectComponent,
+=======
+>>>>>>> main
     FinPartieComponent,
   ],
   imports: [
