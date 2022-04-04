@@ -12,6 +12,7 @@ import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import {GameManagementComponent} from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
 
 const routes: Routes = [
   {path: 'user-list', component: UserListComponent},
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'profile/:id', component: ProfileComponent},
   {path: 'settings', component: GameSettingComponent},
   {path: ':id/theme', component: ThemeListComponent},
-  {path: ':id/configuration', component : ConfigurationProfilComponent}
+  {path: ':id/configuration', component : ConfigurationProfilComponent},
+  {path: ':id/:theme', component : QuizListSelectComponent}
 ];
 
 @NgModule({
