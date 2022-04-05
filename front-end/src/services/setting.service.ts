@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Choice} from '../app/game/settings/game-setting/choice/models/choice.model';
 import {HttpClient} from '@angular/common/http';
-import {User} from '../models/user.model';
+
 import {BehaviorSubject} from 'rxjs';
 import {serverUrl} from '../configs/server.config';
 
@@ -11,7 +11,6 @@ import {serverUrl} from '../configs/server.config';
 })
 
 export class SettingService{
-
   /*
    The list of user.
    */
@@ -28,6 +27,7 @@ export class SettingService{
   constructor(private http: HttpClient) {
       this.retrieveSettings();
   }
+
 
   choises: Choice[] = [
     {
@@ -54,6 +54,7 @@ export class SettingService{
   ];
 
   choiceSelected: Choice = this.choises[0];
+
 
   retrieveSettings(): void {
     this.http.get<Choice[]>(this.userUrl).subscribe((choiceList) => {

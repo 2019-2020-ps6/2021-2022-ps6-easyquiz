@@ -2,11 +2,9 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
-import {ActivatedRoute, Router} from "@angular/router";
-import {QuizService} from "../../services/quiz.service";
 import {SettingService} from '../../services/setting.service';
 import {Choice} from './settings/game-setting/choice/models/choice.model';
-import {Quiz} from "../../models/quiz.model";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -72,12 +70,12 @@ export class GameComponent implements OnInit {
 
     this.jeuActif = false;
     if (repChoisie) {
-      console.log("Bonne réponse");
+      console.log("Bonne réponse =>");
       this.aJuste = true;
       this.feedbackAction = "Bravo";
     } else {
       console.log("raté");
-      this.feedbackAction = "Dommage"
+      this.feedbackAction = "Dommage =>"
     }
     this.activeFeedback = true;
   }

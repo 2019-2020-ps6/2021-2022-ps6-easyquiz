@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Quiz} from "../../models/quiz.model";
-import {QuizService} from "../../services/quiz.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Question} from "../../models/question.model";
-import {BehaviorSubject} from "rxjs";
+import {Quiz} from '../../models/quiz.model';
+import {QuizService} from '../../services/quiz.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-game-management',
@@ -15,6 +13,7 @@ export class GameManagementComponent implements OnInit {
 
   public quiz: Quiz;
   private nbCorrecte : number;
+
 
 
   constructor(private route: ActivatedRoute,private quizService: QuizService, private router: Router) {

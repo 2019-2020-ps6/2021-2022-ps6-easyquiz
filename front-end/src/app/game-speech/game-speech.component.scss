@@ -1,0 +1,52 @@
+
+body {
+  bottom: 10%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+p {
+  bottom: 1%;
+  font-family: sans-serif;
+  text-align: center;
+}
+.clearfix {
+  clear: both;
+}
+
+label {
+  float: left;
+  width: 20%;
+  line-height: 1.5;
+}
+
+.rate-value, .pitch-value {
+  float: right;
+  width: 5%;
+  margin-left: 15px;
+  line-height: 1.5;
+}
+
+#rate, #pitch {
+  float: right;
+  width: 60%;
+  margin-top: 7px;
+}
+
+.controls {
+  text-align: center;
+}
+
+.Changeme{
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+}
+
+#play{
+  position: absolute;
+  bottom: 1%;
+  margin-left: 600px;
+}
+
+
