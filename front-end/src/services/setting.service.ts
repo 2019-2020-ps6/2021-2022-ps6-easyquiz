@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Choice} from '../app/game/settings/game-setting/choice/models/choice.model';
+import {HttpClient} from '@angular/common/http';
 
 
 @Injectable({
@@ -8,12 +9,16 @@ import {Choice} from '../app/game/settings/game-setting/choice/models/choice.mod
 
 export class SettingService{
 
+  constructor(private http: HttpClient) {
+
+  }
+
   choises: Choice[] = [
     {
       Id: 1,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
       buttonColor: '#fca14e',
-      pageBackGroung: '#ebffb0',
+      pageBackGroung: '#56a934',
       questionBackGround: '#6696ff'
     },
     {
@@ -33,6 +38,10 @@ export class SettingService{
   ];
 
   choiceSelected: Choice = this.choises[0];
+
+  retrieveSettings(): void {
+
+  }
 
   getSelectedChoice(): Choice {
     return this.choiceSelected;
