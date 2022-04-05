@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Location} from "@angular/common";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fin-partie',
@@ -7,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinPartieComponent implements OnInit {
 
-  constructor() { }
+   public nbGoodAnswer: number;
+   public totalAnswer : number;
+
+  constructor(private _location: Location, private router: Router) {
+    this.nbGoodAnswer = this.router.getCurrentNavigation().extras.state.nb;
+    this.totalAnswer = this.router.getCurrentNavigation().extras.state.tot;
+
+  }
 
   ngOnInit(): void {
   }
