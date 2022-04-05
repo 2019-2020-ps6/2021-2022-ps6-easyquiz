@@ -42,18 +42,8 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    console.log("TAILLLLLLE" + this.tout.length);
-
-
     this.questionTotale = this.tout[0];
-
-    console.log("///////" + this.questionTotale.label);
-    console.log("444444" + this.tout[0].label);
-    console.log("444444" + this.tout[1].label);
-
     this.reset();
-
   }
 
 
@@ -84,6 +74,7 @@ export class GameComponent implements OnInit {
   }
 
   zoom(): void {
+    console.log("on envoie "+this.photoURL);
     this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
   }
 
@@ -96,11 +87,6 @@ export class GameComponent implements OnInit {
       this.router.navigate(['/fin/']);
     }
     else {
-
-
-      console.log("///////" + this.questionTotale.label);
-      console.log("444444" + this.tout[0].label);
-
 
       this.questionTotale = this.tout[0];
 

@@ -27,7 +27,6 @@ export class GameManagementComponent implements OnInit {
       this.quizService.setSelectedQuiz(idQuiz);
       console.log("Nous on a quiz "+this.quiz);
       this.nbCorrecte=0;
-      console.log("TAILLLLLLE"+this.quiz.questions.length);
     }
 
 

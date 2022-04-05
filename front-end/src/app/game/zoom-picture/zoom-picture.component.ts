@@ -11,11 +11,13 @@ export class ZoomPictureComponent implements OnInit {
 
   public urlPhoto: string;
 
-  constructor(private _location: Location, private router: Router) { }
-
-  ngOnInit(): void {
+  constructor(private _location: Location, private router: Router) {
     this.urlPhoto = this.router.getCurrentNavigation().extras.state.link;
 
+  }
+
+  ngOnInit(): void {
+    console.log("passse");
   }
 
   backClicked() {
