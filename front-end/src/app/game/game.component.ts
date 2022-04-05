@@ -47,6 +47,9 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.questionTotale = this.tout[0];
     this.nbQuestions = this.tout.length;
+    if(this.nbQuestions===0){
+      this.finPartie(0);
+    }
     this.reset();
   }
 
