@@ -13,8 +13,8 @@ export class SettingService{
       Id: 1,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
       buttonColor: '#fca14e',
-      pageBackGroung: '#ebffb0',
-      questionBackGround: '#6696ff'
+      pageBackGroung: 'rgba(148, 239, 156, 0.65)',
+      questionBackGround: '#146385'
     },
     {
       Id: 2,
