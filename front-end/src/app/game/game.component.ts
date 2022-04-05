@@ -23,6 +23,8 @@ export class GameComponent implements OnInit {
   @Output()
   juste: EventEmitter<boolean> = new EventEmitter();
 
+  @Output()
+  fin: EventEmitter<number> = new EventEmitter();
 
   public question: string;
   public answerList: Answer[] = [];
@@ -33,6 +35,7 @@ export class GameComponent implements OnInit {
   public choice: Choice;
   public aJuste: boolean;
   public questionTotale: Question;
+  public nbQuestions : number;
 
 
   constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
@@ -43,6 +46,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionTotale = this.tout[0];
+    this.nbQuestions = this.tout.length;
     this.reset();
   }
 
@@ -56,6 +60,8 @@ export class GameComponent implements OnInit {
     this.question = this.questionTotale.label;
     this.photoURL = this.questionTotale.urlIMG;
     this.answerList = this.questionTotale.answers;
+
+
   }
 
   gestionClick(repChoisie: boolean): void {
@@ -78,27 +84,24 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
   }
 
-  refresh(): void {
+  refresh(event): void {
     this.juste.emit(this.aJuste);
     this.tout.shift();
     this.questionTotale = this.tout[0];
 
-    if(this.tout.length===0){
-      this.router.navigate(['/fin/']);
-    }
-    else {
-
+    if (this.tout.length === 0) {
+      this.finPartie(event);
+    } else {
       this.questionTotale = this.tout[0];
-
-      console.log(this.tout[0]);
-
-      console.log(this.questionTotale);
-
       console.log("cest le new");
       this.reset();
+      //this._document.defaultView.location.reload();
     }
+  }
 
-    //this._document.defaultView.location.reload();
+  finPartie(event): void{
+    this.fin.emit(this.nbQuestions);
+
   }
 
 
