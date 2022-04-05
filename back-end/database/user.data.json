@@ -2,21 +2,25 @@
   {
     "firstName": "Jean Claude",
     "lastName": "Van Damme",
+    "disease": "Cataracte",
     "id": 1647934074078
   },
   {
     "firstName": "Valentin",
     "lastName": "Nasone",
+    "disease": "Alzheimer",
     "id": 1647945826589
   },
   {
     "firstName": "Pierre-Aymeric",
     "lastName": "Le Nervuré",
+    "disease": "Cécité",
     "id": 1648247963297
   },
   {
     "firstName": "Dimitry",
     "lastName": "Crackers",
+    "disease": "Alzheimer",
     "id": 1648248001768
   },
   {
