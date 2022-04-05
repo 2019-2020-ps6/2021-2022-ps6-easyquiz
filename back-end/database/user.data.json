@@ -36,10 +36,17 @@
     "lastName": "Schalkwijktt",
     "disease": "Alzheimer",
     "id": 1648541494856
-  },{
+  },
+  {
     "firstName": "Mathieu",
     "lastName": "Schalkwijk",
     "disease": "Cécité",
     "id": 1648540371476
+  },
+  {
+    "firstName": "Amar",
+    "lastName": "Di",
+    "disease": "Cataracte",
+    "id": 1649138432529
   }
 ]
