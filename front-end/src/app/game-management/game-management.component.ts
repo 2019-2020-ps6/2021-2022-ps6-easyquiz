@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {QuizService} from '../../services/quiz.service';
 import {ActivatedRoute} from '@angular/router';
+import {Quiz} from "../../models/quiz.model";
+import {QuizService} from "../../services/quiz.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Question} from "../../models/question.model";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
   selector: 'app-game-management',
@@ -10,20 +15,41 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class GameManagementComponent implements OnInit {
 
+
   public quiz: Quiz;
+  private nbCorrecte : number;
 
 
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService) {
+  constructor(private route: ActivatedRoute,private quizService: QuizService, private router: Router) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
-    console.log(this.quiz);
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(id);
-    console.log(this.quizService.quizSelected$);
-    console.log(this.quiz);
-  }
+      const idUser = this.route.snapshot.paramMap.get('user');
+      const idQuiz = this.route.snapshot.paramMap.get('id');
+      this.quizService.setSelectedQuiz(idQuiz);
+      this.nbCorrecte=0;
+    }
+
+
+    goNextQuestion(juste : boolean): void{
+    console.log("On est dans goNext")
+      console.log(juste);
+
+      if(juste){
+        this.nbCorrecte++;
+      }
+
+    }
+
+    finGame(tot: number): void{
+    console.log("on recoitttt" + tot);
+      this.router.navigate(['/fin/'],{state: {nb: this.nbCorrecte, tot: tot}});
+
+
+    }
+
+
 
 }

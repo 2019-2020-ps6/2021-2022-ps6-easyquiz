@@ -51,10 +51,11 @@ export class QuizService {
   }
 
   setSelectedQuiz(quizId: string): void {
+    console.log("bbbb");
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);
-      console.log(quiz);
+      console.log(quiz.questions[0]);
     });
   }
 
@@ -64,6 +65,8 @@ export class QuizService {
   }
 
   addQuestion(quiz: Quiz, question: Question): void {
+    console.log("aaaaaaaaaaaa");
+    console.log("on voit l'ulr" +question.urlIMG);
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }

@@ -6,6 +6,8 @@
     "ceciteOk": true,
     "alzheimerOk": false,
     "id": 1648542941487
+  },
+  {
     "name": "Tom Hanks",
     "theme": "Cinéma",
     "cataracteOk": true,
@@ -28,5 +30,13 @@
     "ceciteOk": false,
     "alzheimerOk": false,
     "id": 1648541930986
+  },
+  {
+    "name": "Voiture",
+    "theme": "Auto",
+    "cataracteOk": true,
+    "ceciteOk": false,
+    "alzheimerOk": false,
+    "id": 1649082053224
   }
 ]

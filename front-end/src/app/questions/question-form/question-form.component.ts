@@ -24,8 +24,11 @@ export class QuestionFormComponent implements OnInit {
   private initializeQuestionForm(): void {
     this.questionForm = this.formBuilder.group({
       label: ['', Validators.required],
-      answers: this.formBuilder.array([])
+      answers: this.formBuilder.array([]),
+      urlIMG: ['']
     });
+
+    console.log(this.questionForm);
   }
 
   ngOnInit(): void {
@@ -49,6 +52,8 @@ export class QuestionFormComponent implements OnInit {
   addQuestion(): void {
     if (this.questionForm.valid) {
       const question = this.questionForm.getRawValue() as Question;
+      console.log(question);
+      console.log(question.urlIMG);
       this.quizService.addQuestion(this.quiz, question);
       this.initializeQuestionForm();
     }

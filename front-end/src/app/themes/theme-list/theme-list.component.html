@@ -3,6 +3,6 @@
 </h1>
 <div class="theme-list">
   <div class="theme" *ngFor="let quiz of quizList">
-    <a class="selectTheme" style="text-decoration: none" routerLink="/quiz-list">{{quiz.theme}} <br> <br></a>
+    <a class="selectTheme" style="text-decoration: none" routerLink="/{{user.id}}/{{quiz.theme}}"> {{quiz.theme}}<br><br></a>
   </div>
 </div>

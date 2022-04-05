@@ -1,7 +1,10 @@
 <div class="settings">
   <h2>
     <meta charset="UTF-8">
-    Réglage de quiz
+    <button class="goBack-button"
+         (click)="goBack()"> < Retour
+    </button>
+    Réglage du quiz
   </h2>
   <p>Choisissez votre configuration :</p>
   <app-choice-component *ngFor="let choice of choises" [choice]="choice"></app-choice-component>
