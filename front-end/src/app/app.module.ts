@@ -27,6 +27,7 @@ import {ThemeComponent} from './themes/theme/theme.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
+import {GameSpeechComponent} from './game-speech/game-speech.component';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
 import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
@@ -57,6 +58,7 @@ import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
     ThemeListComponent,
     GameManagementComponent,
     ConfigurationProfilComponent,
+    GameSpeechComponent,
     QuizListSelectComponent,
     FinPartieComponent,
   ],
