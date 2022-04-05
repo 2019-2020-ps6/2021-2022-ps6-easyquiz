@@ -30,12 +30,12 @@ export class QuizListSelectComponent implements OnInit {
   }
 
   getQuizzes(): void {
-    let i: number;
+    /*let i: number;
     for (i = 0; i < this.quizList.length; i++) {
       if (!(this.quizList[i].theme === this.theme)) {
         this.quizList.splice(i, 1);
       }
-    }
+    }*/
   }
 
   themeSelected(selected: boolean): void {
