@@ -15,33 +15,10 @@
     <div class="clearfix"></div>
   </div>
   <div class="controls">
-    <button id="play" type="submit">Play</button>
+    <p id="play">APPUYEZ SUR LA BARRE ESPACE POUR ECOUTER LA QUESTION</p>
   </div>
 </form>
 
-<script src="game-speech.component.js"></script>
-<script>
-  'use strict';
-  document.addEventListener('keydown', (event) => {
-    const nomTouche = event.key;
-    if (nomTouche === ' ') {
-      alert('je réecoute la question');
-      return;}
-    if (nomTouche === 'ArrowRight') {
-      alert('Je choisis la réponse de droite');
-      return;}
-    if (nomTouche === 'ArrowLeft') {
-      alert('Je choisis la réponse de gauche');
-      return;}
-    if (nomTouche === 'ArrowUp') {
-      alert('Je choisis la réponse du haut');
-      return;}
-    if (nomTouche === 'ArrowDown') {
-      alert("Je choisis la réponse du bas");
-      return;}
-      alert(`Mauvaise touche ${nomTouche}`);
-  }, true);
-</script>
 </body>
 
 
