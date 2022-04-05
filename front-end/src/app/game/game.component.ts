@@ -23,6 +23,8 @@ export class GameComponent implements OnInit {
   @Output()
   juste: EventEmitter<boolean> = new EventEmitter();
 
+  @Output()
+  fin: EventEmitter<number> = new EventEmitter();
 
   public question: string;
   public answerList: Answer[] = [];
@@ -33,6 +35,7 @@ export class GameComponent implements OnInit {
   public choice: Choice;
   public aJuste: boolean;
   public questionTotale: Question;
+  public nbQuestions : number;
 
 
   constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
@@ -42,18 +45,12 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-
-    console.log("TAILLLLLLE" + this.tout.length);
-
-
     this.questionTotale = this.tout[0];
-
-    console.log("///////" + this.questionTotale.label);
-    console.log("444444" + this.tout[0].label);
-    console.log("444444" + this.tout[1].label);
-
+    this.nbQuestions = this.tout.length;
+    if(this.nbQuestions===0){
+      this.finPartie(0);
+    }
     this.reset();
-
   }
 
 
@@ -66,6 +63,8 @@ export class GameComponent implements OnInit {
     this.question = this.questionTotale.label;
     this.photoURL = this.questionTotale.urlIMG;
     this.answerList = this.questionTotale.answers;
+
+
   }
 
   gestionClick(repChoisie: boolean): void {
@@ -84,35 +83,28 @@ export class GameComponent implements OnInit {
   }
 
   zoom(): void {
+    console.log("on envoie "+this.photoURL);
     this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
   }
 
-  refresh(): void {
+  refresh(event): void {
     this.juste.emit(this.aJuste);
     this.tout.shift();
     this.questionTotale = this.tout[0];
 
-    if(this.tout.length===0){
-      this.router.navigate(['/fin/']);
-    }
-    else {
-
-
-      console.log("///////" + this.questionTotale.label);
-      console.log("444444" + this.tout[0].label);
-
-
+    if (this.tout.length === 0) {
+      this.finPartie(event);
+    } else {
       this.questionTotale = this.tout[0];
-
-      console.log(this.tout[0]);
-
-      console.log(this.questionTotale);
-
       console.log("cest le new");
       this.reset();
+      //this._document.defaultView.location.reload();
     }
+  }
 
-    //this._document.defaultView.location.reload();
+  finPartie(event): void{
+    this.fin.emit(this.nbQuestions);
+
   }
 
 

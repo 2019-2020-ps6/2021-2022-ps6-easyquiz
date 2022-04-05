@@ -11,8 +11,6 @@ import {UserService} from '../../../services/user.service';
 export class ProfileComponent implements OnInit {
 
   public user: User;
-  public userid: string;
-  public quizid: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
     this.userService.userSelected$.subscribe((user) => this.user = user);
