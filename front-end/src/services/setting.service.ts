@@ -1,6 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Choice} from '../app/game/settings/game-setting/choice/models/choice.model';
 import {HttpClient} from '@angular/common/http';
+import {User} from '../models/user.model';
+import {BehaviorSubject} from 'rxjs';
+import {serverUrl} from '../configs/server.config';
 
 
 @Injectable({
@@ -9,8 +12,21 @@ import {HttpClient} from '@angular/common/http';
 
 export class SettingService{
 
-  constructor(private http: HttpClient) {
+  /*
+   The list of user.
+   */
+  choices2: Choice[] = [];
 
+  /*
+   Observable which contains the list of the choices.
+   */
+  public choices$: BehaviorSubject<Choice[]>
+    = new BehaviorSubject([]);
+
+  private userUrl = serverUrl + '/settings';
+
+  constructor(private http: HttpClient) {
+      this.retrieveSettings();
   }
 
   choises: Choice[] = [
@@ -18,21 +34,21 @@ export class SettingService{
       Id: 1,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
       buttonColor: '#fca14e',
-      pageBackGroung: '#56a934',
+      pageBackGround: '#56a934',
       questionBackGround: '#6696ff'
     },
     {
       Id: 2,
       urlImage: 'https://www.pyreweb.com/files/medias/images/Pages/creation_logiciel/ecrans-soft.png',
       buttonColor: '#fca14e',
-      pageBackGroung: '#45656c',
+      pageBackGround: '#45656c',
       questionBackGround: '#b1be60'
     },
     {
       Id: 3,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
       buttonColor: '#fca14e',
-      pageBackGroung: '#ffffff',
+      pageBackGround: '#ffffff',
       questionBackGround: '#797777'
     }
   ];
@@ -40,7 +56,10 @@ export class SettingService{
   choiceSelected: Choice = this.choises[0];
 
   retrieveSettings(): void {
-
+    this.http.get<Choice[]>(this.userUrl).subscribe((choiceList) => {
+      this.choices2 = choiceList;
+      this.choices$.next(this.choices2);
+    });
   }
 
   getSelectedChoice(): Choice {
