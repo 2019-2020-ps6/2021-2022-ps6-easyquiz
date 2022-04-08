@@ -2,11 +2,9 @@
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Answer, Question} from '../../models/question.model';
 import {DOCUMENT} from "@angular/common";
-import {ActivatedRoute, Router} from "@angular/router";
-import {QuizService} from "../../services/quiz.service";
 import {SettingService} from '../../services/setting.service';
 import {Choice} from './settings/game-setting/choice/models/choice.model';
-import {Quiz} from "../../models/quiz.model";
+import {Router} from "@angular/router";
 
 
 @Component({
