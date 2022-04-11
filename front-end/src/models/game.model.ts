@@ -3,6 +3,6 @@ export interface Game{
     quizId : string;
     userId : string;
     nbQuestion : number;
-    Correct : number;
+    correct : number;
     currentQuestion : number;
 }
