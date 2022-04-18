@@ -30,7 +30,7 @@ const routes: Routes = [
   {path: 'settings', component: GameSettingComponent},
   {path: ':id/theme', component: ThemeListComponent},
   {path: ':id/configuration', component : ConfigurationProfilComponent},
-  {path: 'bonjour', component : GameSpeechComponent},
+  {path: 'speech/:id', component : GameSpeechComponent},
   {path: ':id/:theme', component : QuizListSelectComponent},
   {path: ':id/configuration', component : ConfigurationProfilComponent},
   {path: 'fin', component : FinPartieComponent}

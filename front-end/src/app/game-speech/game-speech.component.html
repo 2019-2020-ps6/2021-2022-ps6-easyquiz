@@ -4,17 +4,17 @@
 
 <body>
 
-<p class="Question">La premiere question est : Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953 ?   Lénine. Staline. Molotov. Trotski</p>
+<p class="question"> {{question}}</p>
 
 
-<p class="ReponseHaut" id="haut"> Molotov </p>
+<p class="ReponseHaut" id="haut" > {{answerList[0].value}}  </p>
 <i class="fas fa-arrow-up fa-4x"></i>
 <i class="fas fa-arrow-left fa-4x"></i>
 <i class="fas fa-arrow-right fa-4x"></i>
 <i class="fas fa-arrow-down fa-4x"></i>
-<p class="ReponseDroite" id="droite"> Trotski </p>
-<p class="ReponseBas" id="bas"> Staline </p>
-<p class="ReponseGauche" id="gauche"> Lénine </p>
+<p class="ReponseDroite" id="droite"> {{answerList[1].value}} </p>
+<p class="ReponseBas" id="bas"> {{answerList[2].value}}</p>
+<p class="ReponseGauche" id="gauche"> {{answerList[3].value}} </p>
 
 <form class="Changeme">
   <div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {QuizService} from '../../services/quiz.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../models/user.model';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-game-management',
@@ -13,17 +15,20 @@ export class GameManagementComponent implements OnInit {
 
   public quiz: Quiz;
   private nbCorrecte: number;
+  public user: User;
 
 
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+    this.userService.userSelected$.subscribe((user) => this.user = user);
   }
 
   ngOnInit(): void {
       const idUser = this.route.snapshot.paramMap.get('user');
       const idQuiz = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(idQuiz);
+      this.userService.setSelectedUser(idUser);
       this.nbCorrecte = 0;
     }
 
