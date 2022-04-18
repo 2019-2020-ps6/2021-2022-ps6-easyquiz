@@ -46,7 +46,9 @@ export class QuestionFormComponent implements OnInit {
   }
 
   addAnswer(): void {
+    if (this.answers.length < 4) {
     this.answers.push(this.createAnswer());
+    }
   }
 
   addQuestion(): void {
