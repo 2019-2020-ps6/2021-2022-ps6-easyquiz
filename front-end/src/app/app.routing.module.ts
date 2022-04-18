@@ -13,6 +13,7 @@ import {GameManagementComponent} from './game-management/game-management.compone
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
 import {GameSpeechComponent} from './game-speech/game-speech.component';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
+// @ts-ignore
 import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
 import {FinPartieComponent} from './game/fin-partie/fin-partie.component';
 

@@ -9,6 +9,7 @@ p {
   bottom: 1%;
   font-family: sans-serif;
   text-align: center;
+  color: #3d3b3b;
 }
 .clearfix {
   clear: both;
@@ -18,16 +19,17 @@ label {
   float: left;
   width: 20%;
   line-height: 1.5;
+  color: #3d3b3b;
 }
 
-.rate-value, .pitch-value {
+.rate-value {
   float: right;
   width: 5%;
   margin-left: 15px;
   line-height: 1.5;
 }
 
-#rate, #pitch {
+#rate{
   float: right;
   width: 60%;
   margin-top: 7px;
@@ -43,10 +45,70 @@ label {
   left: 1%;
 }
 
-#play{
+.ReponseGauche{
   position: absolute;
-  bottom: 1%;
-  margin-left: 600px;
+  color: #3d3b3b;
+  top: 50%;
+  left: 10%;
+  right: 75%;
+}
+.ReponseDroite{
+  position: absolute;
+  color: #3d3b3b;
+  top: 50%;
+  right: 10%;
+  left:75%;
+}
+
+.ReponseHaut{
+  position: absolute;
+  color: #3d3b3b;
+  left: 40%;
+  right: 40%;
+  top: 30%;
+}
+
+.ReponseBas{
+  position: absolute;
+  color: #3d3b3b;
+  left: 40%;
+  right: 40%;
+  top: 70%;
+}
+
+.fa-arrow-right{
+  position: absolute;
+  top: 50%;
+  right:30%;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+
+}
+.fa-arrow-up{
+  position: absolute;
+  left: 48%;
+  right:52%;
+  top: 40%;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+
+}
+.fa-arrow-down{
+  position: absolute;
+  left: 48%;
+  right:52%;
+  top: 60%;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+
+}
+.fa-arrow-left {
+  position: absolute;
+  top: 50%;
+  left:30%;
+  color: #ff7f50;
+  text-shadow: #3d3b3b 1px 1px, #3d3b3b -1px -1px, #3d3b3b 1px -1px, #3d3b3b -1px 1px;
+
 }
 
 

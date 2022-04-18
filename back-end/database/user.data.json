@@ -52,5 +52,19 @@
     "lastName": "Di",
     "disease": "Cataracte",
     "id": 1649138432529
+  },
+  {
+    "firstName": "date2",
+    "lastName": "TEST2",
+    "disease": "Cécité",
+    "birthday": "2022-04-14",
+    "id": 1650294272932
+  },
+  {
+    "firstName": "Balou",
+    "lastName": "Nasone",
+    "disease": "Cécité",
+    "birthday": "2001-05-07",
+    "id": 1650294320232
   }
 ]
