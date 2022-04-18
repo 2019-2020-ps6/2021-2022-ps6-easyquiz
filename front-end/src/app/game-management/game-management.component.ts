@@ -4,6 +4,8 @@ import {QuizService} from '../../services/quiz.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
+import {GameService} from "../../services/game.service";
+import {Game} from '../../models/game.model';
 
 @Component({
   selector: 'app-game-management',
@@ -14,7 +16,7 @@ export class GameManagementComponent implements OnInit {
 
 
   public quiz: Quiz;
-  private nbCorrecte: number;
+  private nbCorrecte = 0;
   public user: User;
 
 
@@ -22,7 +24,12 @@ export class GameManagementComponent implements OnInit {
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
     this.userService.userSelected$.subscribe((user) => this.user = user);
+
   }
+
+  private indexQuestion = 0;
+  private game: Game;
+
 
   ngOnInit(): void {
       const idUser = this.route.snapshot.paramMap.get('user');
@@ -30,7 +37,23 @@ export class GameManagementComponent implements OnInit {
       this.quizService.setSelectedQuiz(idQuiz);
       this.userService.setSelectedUser(idUser);
       this.nbCorrecte = 0;
-    }
+
+      console.log('passe');
+      const obj: any = {
+      "quizId": idQuiz,
+      "userId": idUser,
+      "nbQuestion": this.quiz.questions.length,
+      "correct": this.nbCorrecte,
+      'currentQuestion': this.indexQuestion
+    };
+
+      console.log(obj);
+
+    //add notre instance puis ou add instance fin partie ???
+    //this.gameService.setSelectedGame()
+
+
+  }
 
 
     goNextQuestion(juste: boolean): void{

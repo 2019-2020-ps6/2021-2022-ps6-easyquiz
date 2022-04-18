@@ -21,16 +21,10 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
   width: 90%;
   margin: 1%;
   margin-bottom: 2%;
+  -webkit-text-stroke: 2px black;
+
 }
 
-
-.photoBouton{
-  position: absolute;
-  width: 50%;
-  height: 60%;
-  top : 25%;
-  right: 5%;
-}
 
 .zoom{
   position: absolute;
@@ -54,10 +48,26 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
 }
 
 
+.photoBouton{
+  position: absolute;
+  width: 50%;
+  height: 70%;
+  top : 25%;
+  right: 5%;
+  //background-color: red;
+  justify-content: center;
+  display: flex;
+
+}
+
+
+
+
 .photo{
-  width: 100%;
-  height: 80%;
-  top : 30%;
+  max-width: 100%;
+  height: auto;
+  max-height: 80%;
+  object-fit: contain;
   float : right;
 }
 
@@ -69,7 +79,7 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
   font-size: 60px;
   padding: 3px;
   width: 50%;
-  margin-top: 4%;
+  margin-top: 4px;
   border-radius: 10px;
 
 }

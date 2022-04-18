@@ -47,8 +47,6 @@ export class GameSpeechComponent implements OnInit {
       // Ca me met une erreur, value existe pas dans HTML element, je te mets en commentaire pour l'instant
       const rate = document.getElementById('rate').value;
 
-      // const rate = 1;
-
       if (nomTouche === ' ') {
         utterThis = new SpeechSynthesisUtterance(this.question + this.answerList[0].value + this.answerList[1].value + this.answerList[2].value + this.answerList[3].value);
         utterThis.lang = 'fr-FR';
@@ -81,7 +79,7 @@ export class GameSpeechComponent implements OnInit {
         utterThis.rate = rate;
         synth.speak(utterThis);
         this.aJuste = true;
-        this.feedbackAction = "Bravo";
+        this.feedbackAction = 'Bravo';
         this.activeFeedback = true;
         this.refresh(event);
       }

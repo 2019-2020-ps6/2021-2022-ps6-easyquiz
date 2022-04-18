@@ -1,14 +1,14 @@
 <div class="card">
-  <h2>Create a new Quiz</h2>
+  <h2>Créer un nouveau quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="name">
-      Title <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'">
+      Nom du quiz <br>
+      <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="30 caractères max" maxlength="30" required size="20">
     </label>
     <br>
     <label for="theme">
-      Theme <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'">
+      Thème <br>
+      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'" placeholder="30 caractères max" maxlength="30" required size="20">
     </label>
     <br>
     <input type="checkbox" [formControlName]="'cataracteOk'">
