@@ -12,6 +12,13 @@
     </label>
     <br>
     <br>
+    <label for="birthday">Date de naissance</label>
+    <br>
+    <input type="date" id="birthday" name="birthday"
+           value="2022-04-19"
+           min="1900-01-01" max="2200-12-31" [formControlName]="'birthday'">
+    <br>
+    <br>
     Trouble :
     <br>
     <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
