@@ -1,14 +1,14 @@
-
+<h2> Configuration du profil </h2>
   <div class = "infoProfil">
-    Prénom : {{user.firstName}}
-    <br>
-    Nom : {{user.lastName}}
-    <br>
-    Date de naissance : {{user.birthday}}
-    <br>
-    Trouble : {{user.disease}}
-    <br>
-    Ici le profil de la personne selectionner
+    <p> <b>Prénom :</b> <i>  {{user.firstName}}</i>  </p>
+
+    <p> <b>Nom :</b> <i>  {{user.lastName}}</i>  </p>
+
+    <p> <b>Date de naissance : </b>  <i>  {{user.birthday}}</i> </p>
+
+    <p> <b>Trouble :</b> <i>  {{user.disease}}</i> </p>
+
+    Ici le profil de la personne selectionnée
   </div>
 
   <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <span class="changeText">Changer de profil</span></i></a>

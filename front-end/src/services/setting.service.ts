@@ -12,7 +12,7 @@ import {serverUrl} from '../configs/server.config';
 
 export class SettingService{
   /*
-   The list of user.
+   The list of choices.
    */
   choices2: Choice[] = [];
 

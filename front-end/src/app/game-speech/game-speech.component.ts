@@ -20,9 +20,9 @@ export class GameSpeechComponent implements OnInit {
       let utterThis = new SpeechSynthesisUtterance('Hello');
 
       //Ca me met une erreur, value existe pas dans HTML element, je te mets en commentaire pour l'instant
-      const rate = document.getElementById('rate').value;
+      //const rate = document.getElementById('rate').value;
 
-      //const rate = 1;
+      const rate = 1;
 
       if (nomTouche === ' ') {
         utterThis = new SpeechSynthesisUtterance('La premiere question est : Quel célèbre dictateur dirigea l’URSS du milieu des années 1920 à 1953 ?   Lénine. Staline. Molotov. Trotski');
