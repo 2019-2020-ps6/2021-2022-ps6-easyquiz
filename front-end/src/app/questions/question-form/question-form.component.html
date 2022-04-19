@@ -3,7 +3,7 @@
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
       Question <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="60 caractères max" maxlength="60" required size="50">
+      <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="60 caractères max" maxlength="60" required size="60">
     </label>
     <br>
     <label for="urlIMG">
@@ -20,7 +20,7 @@
         <div class="answer-form" [formGroupName]="i">
           <label>
             Réponse
-            <input type="text" [formControlName]="'value'">
+            <input type="text" [formControlName]="'value'" placeholder="30 caractères max" maxlength="30" required size="30">
             <br>
             Correcte
             <input type="checkbox" [formControlName]="'isCorrect'">
