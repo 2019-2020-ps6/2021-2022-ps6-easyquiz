@@ -19,6 +19,7 @@ export class ThemeListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService, public quizService: QuizService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
+      this.getThemes();
     });
     this.userService.userSelected$.subscribe((user) => this.user = user);
   }
@@ -30,10 +31,14 @@ export class ThemeListComponent implements OnInit {
   }
 
   getThemes(): void {
+    console.log('récupération des themes');
+    this.themeList.splice(0, this.themeList.length);
     let i: number;
     this.themeList[0] = this.quizList[0].theme;
     for (i = 1; i < this.quizList.length; i++) {
-      this.themeList.push(this.quizList[i].theme);
+      if(this.themeList[this.themeList.length - 1] !== this.quizList[i].theme){
+        this.themeList.push(this.quizList[i].theme);
+      }
     }
   }
 
