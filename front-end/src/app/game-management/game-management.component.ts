@@ -26,6 +26,10 @@ export class GameManagementComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService : GameService) {
+    this.userService.userSelected$.subscribe((user) => this.user = user);
+    this.gameService.gameSelected$.subscribe((game)=>this.game = game);
+
+
     this.quizService.quizSelected$.subscribe((quiz) =>{
       this.quiz = quiz;
       console.log('passe');
@@ -39,15 +43,17 @@ export class GameManagementComponent implements OnInit {
           'currentQuestion': this.indexQuestion
         };
 
+        //ajouter l'instance
+
         console.log(this.obj);
         console.log('fin');
+
+
     }
 
 
 
     );
-    this.userService.userSelected$.subscribe((user) => this.user = user);
-    this.gameService.gameSelected$.subscribe((game)=>this.game = game);
 
 
   }
@@ -60,9 +66,9 @@ export class GameManagementComponent implements OnInit {
     this.quizService.setSelectedQuiz(idQuiz);
     this.userService.setSelectedUser(idUser);
 
+
     //add notre instance puis ou add instance fin partie ???
     //this.gameService.setSelectedGame()
-
 
   }
 
