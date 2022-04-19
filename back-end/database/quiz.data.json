@@ -27,7 +27,7 @@
     "name": "Minecraft",
     "theme": "Jeux Vidéo",
     "cataracteOk": true,
-    "ceciteOk": false,
+    "ceciteOk": true,
     "alzheimerOk": false,
     "id": 1648541930986
   },
