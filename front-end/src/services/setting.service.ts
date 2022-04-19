@@ -34,6 +34,13 @@ export class SettingService{
       Id: 1,
       urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
       buttonColor: '#fca14e',
+      pageBackGround: 'rgba(148, 239, 156, 0.65)',
+      questionBackGround: '#146385'
+    },
+    {
+      Id: 1,
+      urlImage: 'https://www.meilleure-innovation.com/wp-content/uploads/2021/02/logiciel-definition.jpg',
+      buttonColor: '#fca14e',
       pageBackGround: '#56a934',
       questionBackGround: '#6696ff'
     },
@@ -53,7 +60,7 @@ export class SettingService{
     }
   ];
 
-  choiceSelected: Choice = this.choises[2];
+  choiceSelected: Choice = this.choises[0];
 
 
   retrieveSettings(): void {
