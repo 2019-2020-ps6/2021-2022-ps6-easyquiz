@@ -3,12 +3,12 @@
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="name">
       Nom du quiz <br>
-      <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="30 caractères max" maxlength="30" required size="20">
+      <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="30 caractères max" maxlength="30" required size="30">
     </label>
     <br>
     <label for="theme">
       Thème <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'" placeholder="30 caractères max" maxlength="30" required size="20">
+      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'" placeholder="30 caractères max" maxlength="30" required size="30">
     </label>
     <br>
     <input type="checkbox" [formControlName]="'cataracteOk'">

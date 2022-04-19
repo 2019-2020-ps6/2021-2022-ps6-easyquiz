@@ -17,11 +17,14 @@ export class ThemeListComponent implements OnInit {
   public user: User;
 
   constructor(private route: ActivatedRoute, private userService: UserService, public quizService: QuizService) {
-    this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
-      this.quizList = quizzes;
-      this.getThemes();
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+      this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
+        this.quizList = quizzes;
+        this.themeList.splice(0, this.themeList.length);
+        this.getThemes();
+      });
     });
-    this.userService.userSelected$.subscribe((user) => this.user = user);
   }
 
   ngOnInit(): void {
@@ -32,12 +35,17 @@ export class ThemeListComponent implements OnInit {
 
   getThemes(): void {
     console.log('récupération des themes');
-    this.themeList.splice(0, this.themeList.length);
     let i: number;
-    this.themeList[0] = this.quizList[0].theme;
-    for (i = 1; i < this.quizList.length; i++) {
-      if(this.themeList[this.themeList.length - 1] !== this.quizList[i].theme){
-        this.themeList.push(this.quizList[i].theme);
+    this.themeList[0] = '';
+    for (i = 0; i < this.quizList.length; i++) {
+      console.log('for');
+      if (!(this.themeList[this.themeList.length - 1] === this.quizList[i].theme)){
+        console.log('trouble:' + this.user.disease);
+        console.log('theme:' + this.quizList[i].theme);
+        if ((this.user.disease === 'Cataracte' && this.quizList[i].cataracteOk) ||
+          (this.user.disease === 'Cécité' && this.quizList[i].ceciteOk)) {
+          this.themeList.push(this.quizList[i].theme);
+        }
       }
     }
   }
