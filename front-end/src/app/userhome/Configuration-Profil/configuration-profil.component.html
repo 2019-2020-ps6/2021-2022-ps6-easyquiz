@@ -1,16 +1,18 @@
 <h2> Configuration du profil </h2>
   <div class = "infoProfil">
-    <p> <b>Prénom :</b> <i>  {{user.firstName}}</i>  </p>
-
-    <p> <b>Nom :</b> <i>  {{user.lastName}}</i>  </p>
-
-    <p> <b>Date de naissance : </b>  <i>  {{user.birthday}}</i> </p>
-
-    <p> <b>Trouble :</b> <i>  {{user.disease}}</i> </p>
-
-    Ici le profil de la personne selectionnée
+    Prénom : {{user.firstName}}
+    <br>
+    Nom : {{user.lastName}}
+    <br>
+    Date de naissance : {{user.birthday}}
+    <br>
+    Trouble : {{user.disease}}
+    <br>
+    Ici le profil de la personne selectionné
   </div>
 
-  <a class="home"[routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <span class="changeText">Changer de profil</span></i></a>
+  <a class="deleteProfil">Supprimer le profil : {{user.firstName}} {{user.lastName}} <i class='fas fa-delete'></i></a>
+
+  <a class="home" [routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <span class="changeText">Changer de profil</span></i></a>
   <a class="return" href="javascript:history.go(-1)" style="text-decoration: none">Retour</a>
   <div *ngIf="user.disease==='Cataracte'"><a class="config" [routerLink]="['/settings']" style="text-decoration: none"> <i class='fas fa-cog'> <span class="configText">Configuration des questions</span></i></a></div>

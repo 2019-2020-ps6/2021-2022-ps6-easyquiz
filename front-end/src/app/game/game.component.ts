@@ -102,7 +102,6 @@ export class GameComponent implements OnInit {
 
   finPartie(event): void{
     this.fin.emit(this.nbQuestions);
-
   }
 
 

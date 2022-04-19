@@ -1,4 +1,5 @@
-<app-game class = "jeu" [tout]="quiz.questions" (juste)="goNextQuestion($event)" (fin)="finGame($event)"></app-game>
+<app-game *ngIf="user.disease == 'Cataracte'" class="jeu" [tout]="quiz.questions" (juste)="goNextQuestion($event)" (fin)="finGame($event)"></app-game>
 
+<app-game-speech *ngIf="user.disease == 'Cécité'" class="jeu" [tout]="quiz.questions" (juste)="goNextQuestion($event)" (fin)="finGame($event)"></app-game-speech>
 
 

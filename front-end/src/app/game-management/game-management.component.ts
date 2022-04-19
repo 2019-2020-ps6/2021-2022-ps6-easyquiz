@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {QuizService} from '../../services/quiz.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {User} from '../../models/user.model';
+import {UserService} from '../../services/user.service';
 import {GameService} from "../../services/game.service";
-import {Game} from "../../models/game.model";
+import {Game} from '../../models/game.model';
 
 @Component({
   selector: 'app-game-management',
@@ -14,33 +16,38 @@ export class GameManagementComponent implements OnInit {
 
 
   public quiz: Quiz;
-  private nbCorrecte: number = 0;
-  private indexQuestion : number = 0;
-  private game : Game;
+  private nbCorrecte = 0;
+  public user: User;
 
 
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private gameService : GameService) {
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
     this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
-    this.gameService.gameSelected$.subscribe((game)=>this.game = game);
+    this.userService.userSelected$.subscribe((user) => this.user = user);
+
   }
+
+  private indexQuestion = 0;
+  private game: Game;
+
 
   ngOnInit(): void {
       const idUser = this.route.snapshot.paramMap.get('user');
       const idQuiz = this.route.snapshot.paramMap.get('id');
       this.quizService.setSelectedQuiz(idQuiz);
+      this.userService.setSelectedUser(idUser);
       this.nbCorrecte = 0;
 
-    console.log("passe");
-    const obj: any = {
+      console.log('passe');
+      const obj: any = {
       "quizId": idQuiz,
       "userId": idUser,
       "nbQuestion": this.quiz.questions.length,
       "correct": this.nbCorrecte,
-      "currentQuestion": this.indexQuestion
+      'currentQuestion': this.indexQuestion
     };
 
-    console.log(obj);
+      console.log(obj);
 
     //add notre instance puis ou add instance fin partie ???
     //this.gameService.setSelectedGame()
