@@ -37,6 +37,8 @@ export class GameSpeechComponent implements OnInit {
   public aJuste: boolean;
   public questionTotale: Question;
   public nbQuestions: number;
+  public message: string;
+
   constructor(private route: ActivatedRoute, private userService: UserService, private settingsService: SettingService) {
 
     document.addEventListener('keydown', (event) => {
@@ -45,43 +47,50 @@ export class GameSpeechComponent implements OnInit {
       let utterThis = new SpeechSynthesisUtterance('Hello');
 
       // Ca me met une erreur, value existe pas dans HTML element, je te mets en commentaire pour l'instant
-      const rate = document.getElementById('rate').value;
+      // const rate = document.getElementById('rate').value;
+      const rate = 1;
 
       if (nomTouche === ' ') {
+        // tslint:disable-next-line:max-line-length
         utterThis = new SpeechSynthesisUtterance(this.question + this.answerList[0].value + this.answerList[1].value + this.answerList[2].value + this.answerList[3].value);
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
-
         synth.speak(utterThis);
       }
       if (nomTouche === 'ArrowRight') {
-        utterThis = new SpeechSynthesisUtterance(this.answerList[1].value + '. Vous avez choisi la mauvaise réponse !');
+        this.messages(this.answerList[1].isCorrect);
+        utterThis = new SpeechSynthesisUtterance(this.answerList[1].value + this.message);
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
         synth.speak(utterThis);
+        this.correct(this.answerList[1].isCorrect);
       }
       if (nomTouche === 'ArrowLeft') {
+        this.messages(this.answerList[3].isCorrect);
         utterThis = new SpeechSynthesisUtterance(
-          this.answerList[3].value + '. Vous avez choisi la mauvaise réponse !' );
+          this.answerList[3].value + this.message );
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
         synth.speak(utterThis);
+        this.correct(this.answerList[3].isCorrect);
+
       }
       if (nomTouche === 'ArrowUp') {
-        utterThis = new SpeechSynthesisUtterance( this.answerList[0].value + '. Vous avez choisi la mauvaise réponse !');
+        this.messages(this.answerList[0].isCorrect);
+        utterThis = new SpeechSynthesisUtterance( this.answerList[0].value + this.message);
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
         synth.speak(utterThis);
+        this.correct(this.answerList[0].isCorrect);
+
       }
       if (nomTouche === 'ArrowDown') {
-        utterThis = new SpeechSynthesisUtterance( this.answerList[2].value + '. Vous avez choisi la bonne réponse !');
+        this.messages(this.answerList[2].isCorrect);
+        utterThis = new SpeechSynthesisUtterance( this.answerList[2].value + this.message);
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
         synth.speak(utterThis);
-        this.aJuste = true;
-        this.feedbackAction = 'Bravo';
-        this.activeFeedback = true;
-        this.refresh(event);
+        this.correct(this.answerList[2].isCorrect);
       }
     }, true);
 
@@ -136,7 +145,27 @@ export class GameSpeechComponent implements OnInit {
       this.questionTotale = this.tout[0];
       console.log('cest le new');
       this.reset();
-      //this._document.defaultView.location.reload();
+      // this._document.defaultView.location.reload();
+    }
+  }
+
+  correct(reponse): void {
+    if (reponse){
+      this.aJuste = true;
+      this.feedbackAction = 'Bravo';
+    }else{
+      this.feedbackAction = 'Dommage =>';
+      this.aJuste = false;
+    }
+    this.activeFeedback = true;
+    this.refresh(event);
+  }
+
+  messages(reponse): void {
+    if (reponse){
+      this.message = 'Vous avez choisi la bonne réponse';
+    }else{
+      this.message = 'Vous avez choisi la mauvaise réponse';
     }
   }
 
