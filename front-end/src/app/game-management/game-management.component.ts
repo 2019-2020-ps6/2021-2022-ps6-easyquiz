@@ -17,37 +17,48 @@ export class GameManagementComponent implements OnInit {
 
   public quiz: Quiz;
   private nbCorrecte = 0;
+  private indexQuestion = 0;
   public user: User;
+  private game : Game;
+  private obj : any;
 
 
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService) {
-    this.quizService.quizSelected$.subscribe((quiz) => this.quiz = quiz);
+
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService : GameService) {
+    this.quizService.quizSelected$.subscribe((quiz) =>{
+      this.quiz = quiz;
+      console.log('passe');
+      const idQuiz = this.route.snapshot.paramMap.get('id');
+      const idUser = this.route.snapshot.paramMap.get('user');
+      this.obj = {
+          "quizId": idQuiz,
+          "userId": idUser,
+          "nbQuestion": this.quiz.questions.length,
+          "correct": this.nbCorrecte,
+          'currentQuestion': this.indexQuestion
+        };
+
+        console.log(this.obj);
+        console.log('fin');
+    }
+
+
+
+    );
     this.userService.userSelected$.subscribe((user) => this.user = user);
+    this.gameService.gameSelected$.subscribe((game)=>this.game = game);
+
 
   }
 
-  private indexQuestion = 0;
-  private game: Game;
 
 
   ngOnInit(): void {
-      const idUser = this.route.snapshot.paramMap.get('user');
-      const idQuiz = this.route.snapshot.paramMap.get('id');
-      this.quizService.setSelectedQuiz(idQuiz);
-      this.userService.setSelectedUser(idUser);
-      this.nbCorrecte = 0;
-
-      console.log('passe');
-      const obj: any = {
-      "quizId": idQuiz,
-      "userId": idUser,
-      "nbQuestion": this.quiz.questions.length,
-      "correct": this.nbCorrecte,
-      'currentQuestion': this.indexQuestion
-    };
-
-      console.log(obj);
+    const idUser = this.route.snapshot.paramMap.get('user');
+    const idQuiz = this.route.snapshot.paramMap.get('id');
+    this.quizService.setSelectedQuiz(idQuiz);
+    this.userService.setSelectedUser(idUser);
 
     //add notre instance puis ou add instance fin partie ???
     //this.gameService.setSelectedGame()
@@ -56,7 +67,7 @@ export class GameManagementComponent implements OnInit {
   }
 
 
-    goNextQuestion(juste: boolean): void{
+  goNextQuestion(juste: boolean): void{
     console.log('On est dans goNext');
     console.log(juste);
 
@@ -64,14 +75,14 @@ export class GameManagementComponent implements OnInit {
       this.nbCorrecte++;
     }
 
-    }
+  }
 
-    finGame(tot: number): void{
+  finGame(tot: number): void{
     console.log('on recoitttt' + tot);
     this.router.navigate(['/fin/'], {state: {nb: this.nbCorrecte, tot: tot}});
 
 
-    }
+  }
 
 
 
