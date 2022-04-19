@@ -38,6 +38,8 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
   font-family:  Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
   font-weight: 500;
   border-radius: 10px;
+  -webkit-text-stroke: 2px black;
+
 }
 
 .zoom:hover{
@@ -56,6 +58,8 @@ body {min-height: 100vh; width: 100%; margin: 0; padding: 0; background-color: r
   //background-color: red;
   justify-content: center;
   display: flex;
+  -webkit-text-stroke: 2px black;
+
 
 }
 
