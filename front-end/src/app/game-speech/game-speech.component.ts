@@ -38,41 +38,52 @@ export class GameSpeechComponent implements OnInit {
   public questionTotale: Question;
   public nbQuestions: number;
   public message: string;
+  public rate: number;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private settingsService: SettingService) {
 
+    this.rate = 0.75;
+
+
     document.addEventListener('keydown', (event) => {
       const nomTouche = event.key;
-      const synth = window.speechSynthesis;
+      // tslint:disable-next-line:no-shadowed-variable
+      const synthe = window.speechSynthesis;
       let utterThis = new SpeechSynthesisUtterance('Hello');
 
-      // Ca me met une erreur, value existe pas dans HTML element, je te mets en commentaire pour l'instant
-      // const rate = document.getElementById('rate').value;
+      this.rate = document.getElementById('rate').value;
 
-      const rate = 1;
 
+
+      if (nomTouche === 'Enter'){
+        utterThis = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.' + 'Début du quizz.' );
+        utterThis.lang = 'fr-FR';
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
+      }
       if (nomTouche === ' ') {
         // tslint:disable-next-line:max-line-length
         utterThis = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
         utterThis.lang = 'fr-FR';
-        utterThis.rate = rate;
-        synth.speak(utterThis);
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
       }
       if (nomTouche === 'ArrowRight') {
         this.messages(this.answerList[1].isCorrect);
         utterThis = new SpeechSynthesisUtterance(this.answerList[1].value + this.message);
         utterThis.lang = 'fr-FR';
-        utterThis.rate = rate;
-        synth.speak(utterThis);
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
         this.correct(this.answerList[1].isCorrect);
       }
       if (nomTouche === 'ArrowLeft') {
+        if (nomTouche === 'ArrowLeft') { alert('ca marche'); }
         this.messages(this.answerList[3].isCorrect);
         utterThis = new SpeechSynthesisUtterance(
           this.answerList[3].value + this.message );
         utterThis.lang = 'fr-FR';
-        utterThis.rate = rate;
-        synth.speak(utterThis);
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
         this.correct(this.answerList[3].isCorrect);
 
       }
@@ -80,8 +91,8 @@ export class GameSpeechComponent implements OnInit {
         this.messages(this.answerList[0].isCorrect);
         utterThis = new SpeechSynthesisUtterance( this.answerList[0].value + this.message);
         utterThis.lang = 'fr-FR';
-        utterThis.rate = rate;
-        synth.speak(utterThis);
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
         this.correct(this.answerList[0].isCorrect);
 
       }
@@ -89,8 +100,8 @@ export class GameSpeechComponent implements OnInit {
         this.messages(this.answerList[2].isCorrect);
         utterThis = new SpeechSynthesisUtterance( this.answerList[2].value + this.message);
         utterThis.lang = 'fr-FR';
-        utterThis.rate = rate;
-        synth.speak(utterThis);
+        utterThis.rate = this.rate;
+        synthe.speak(utterThis);
         this.correct(this.answerList[2].isCorrect);
       }
     }, true);
@@ -116,6 +127,12 @@ export class GameSpeechComponent implements OnInit {
     if (this.nbQuestions === 0 ){
       this.finPartie(0);
     }
+    const synth2 = window.speechSynthesis;
+    // tslint:disable-next-line:max-line-length
+    const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.' + 'Début du quizz.');
+    utterThise2.lang = 'fr-FR';
+    utterThise2.rate = this.rate;
+    synth2.speak(utterThise2);
     this.reset();
   }
 
@@ -131,6 +148,12 @@ export class GameSpeechComponent implements OnInit {
     this.jeuActif = true;
     this.question = this.questionTotale.label;
     this.answerList = this.questionTotale.answers;
+    const synth = window.speechSynthesis;
+    // tslint:disable-next-line:max-line-length
+    const utterThise = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
+    utterThise.lang = 'fr-FR';
+    utterThise.rate = this.rate;
+    synth.speak(utterThise);
 
 
   }
