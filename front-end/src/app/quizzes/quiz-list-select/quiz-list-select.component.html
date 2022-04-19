@@ -1,6 +1,8 @@
-<h1>
+<h1 class="titre">
   Quizzes : {{theme}}
 </h1>
+<br>
+<br>
 <div class="quiz-list">
   <div class="quiz-list" *ngFor="let quiz of quizThemeList">
     <a class="selectQuiz" style="text-decoration: none" routerLink="/game/{{userId}}/{{quiz.id}}">{{quiz.name}}<br><br></a>

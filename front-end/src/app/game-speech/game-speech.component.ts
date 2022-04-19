@@ -53,7 +53,7 @@ export class GameSpeechComponent implements OnInit {
 
       if (nomTouche === ' ') {
         // tslint:disable-next-line:max-line-length
-        utterThis = new SpeechSynthesisUtterance(this.question + this.answerList[0].value + this.answerList[1].value + this.answerList[2].value + this.answerList[3].value);
+        utterThis = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
         utterThis.lang = 'fr-FR';
         utterThis.rate = rate;
         synth.speak(utterThis);
@@ -159,14 +159,16 @@ export class GameSpeechComponent implements OnInit {
       this.aJuste = false;
     }
     this.activeFeedback = true;
-    this.refresh(event);
+    setTimeout(() => {
+      this.refresh(event);
+    }, 4000);
   }
 
   messages(reponse): void {
     if (reponse){
-      this.message = 'Vous avez choisi la bonne réponse';
+      this.message = '. Vous avez choisi la bonne réponse. ';
     }else{
-      this.message = 'Vous avez choisi la mauvaise réponse';
+      this.message = '. Vous avez choisi la mauvaise réponse. ';
     }
   }
 
