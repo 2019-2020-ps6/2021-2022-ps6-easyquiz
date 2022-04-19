@@ -15,6 +15,15 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) {
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
+      this.userList.sort((u1, u2) => {
+        if (u1.firstName > u2.firstName) {
+          return 1;
+        }
+        if (u1.firstName < u2.firstName) {
+          return -1;
+        }
+        return 0;
+      });
     });
   }
 
