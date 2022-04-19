@@ -53,7 +53,7 @@ export class SettingService{
     }
   ];
 
-  choiceSelected: Choice = this.choises[0];
+  choiceSelected: Choice = this.choises[2];
 
 
   retrieveSettings(): void {
