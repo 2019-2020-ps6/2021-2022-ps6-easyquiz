@@ -48,6 +48,7 @@ export class GameSpeechComponent implements OnInit {
 
       // Ca me met une erreur, value existe pas dans HTML element, je te mets en commentaire pour l'instant
       // const rate = document.getElementById('rate').value;
+
       const rate = 1;
 
       if (nomTouche === ' ') {
