@@ -11,9 +11,17 @@
     'background-color': choice.questionBackGround
     }"> {{question}} </div>
 
+  <ng-template [ngIf]="photoURL" >
   <div class = "listQuestion" *ngFor="let rep of answerList">
   <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
   </div>
+  </ng-template>
+
+  <ng-template [ngIf]="photoURL == null" >
+    <div class = "listReponsesSansPhoto" *ngFor="let rep of answerList">
+      <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
+    </div>
+  </ng-template>
 
   <div class = photoBouton *ngIf="photoURL">
   <img class ="photo" src= {{photoURL}} alt=" ">

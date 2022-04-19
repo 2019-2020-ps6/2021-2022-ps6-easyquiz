@@ -35,7 +35,6 @@ export class GameComponent implements OnInit {
   public questionTotale: Question;
   public nbQuestions : number;
 
-
   constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
               private settingsService: SettingService
   ) {
