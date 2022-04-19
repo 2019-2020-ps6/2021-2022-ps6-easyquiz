@@ -1,5 +1,5 @@
 <div class="card">
-  <h2>Créer un nouveau profil</h2>
+  <h2 class="titre">Créer un nouveau profil</h2>
   <form class="user-form" [formGroup]="userForm">
     <label for="firstName">
       Prénom <br>
@@ -10,13 +10,6 @@
       Nom <br>
       <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
     </label>
-    <br>
-    <br>
-    <label for="birthday">Date de naissance</label>
-    <br>
-    <input type="date" id="birthday" name="birthday"
-           value="2022-04-19"
-           min="1900-01-01" max="2200-12-31" [formControlName]="'birthday'">
     <br>
     <br>
     Trouble :
