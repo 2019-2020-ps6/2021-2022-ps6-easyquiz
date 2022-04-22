@@ -23,7 +23,6 @@ import {ChoiceComponentComponent} from './game/settings/game-setting/choice/choi
 import {AnswerButtonComponent} from './game/answer-button/answer-button.component';
 import {ProfileComponent} from './userhome/profile/profile.component';
 import {ZoomPictureComponent} from './game/zoom-picture/zoom-picture.component';
-import {ThemeComponent} from './themes/theme/theme.component';
 import {ThemeListComponent} from './themes/theme-list/theme-list.component';
 import { GameManagementComponent } from './game-management/game-management.component';
 import {ConfigurationProfilComponent} from './userhome/Configuration-Profil/configuration-profil';
@@ -54,7 +53,6 @@ import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
     AnswerButtonComponent,
     ProfileComponent,
     ZoomPictureComponent,
-    ThemeComponent,
     ThemeListComponent,
     GameManagementComponent,
     ConfigurationProfilComponent,
