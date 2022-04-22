@@ -1,22 +1,33 @@
 @import "./variables";
 
 .card {
-  background: $white;
-  border-radius: 2px;
-  display: inline-block;
-  margin: 1rem;
-  position: relative;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-  padding: 0 1em 1em 1em;
+  box-sizing: border-box;
+  box-shadow: lightgray 4px 4px 20px;
+  background-color: #f8b06e;
+  width: fit-content;
+  height: fit-content;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 20px;
+  margin-top: 100px;
+  margin-left: 10px;
+  margin-right: auto;
+  border-radius: 8px;
 }
 
 .button-card {
+  margin-top: 8px;
   background-color: $white;
   border: solid 1px $blue;
-  color: $blue;
+  color: coral;
+  border-radius: 6px;
   font-weight: bold;
   padding: 0.5em 1em;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  font-family: "Segoe UI", Arial, sans-serif;
 }
+
 
 .button-card:hover {
   cursor: pointer;
