@@ -17,17 +17,28 @@ export class AnswerButtonComponent implements OnInit {
   @Input()
   actif: boolean;
 
+  @Input()
+  PhotoHere: boolean;
+
   @Output()
   emetteur: EventEmitter<boolean> = new EventEmitter();
 
   public aucunClick: boolean = true;
   public bonClick: boolean = false;
   public mauvaisClick: boolean = false;
+  public width: string = '40%';
 
   constructor() { }
 
   ngOnInit(): void {
     console.log(this.answer);
+    this.changeStyle();
+  }
+
+  changeStyle(): void {
+    if (!this.PhotoHere) {
+      this.width = '80%';
+    }
   }
 
   clickAnswer(event): void{
