@@ -13,12 +13,18 @@ import {User} from '../../../models/user.model';
 export class ConfigurationProfilComponent implements OnInit {
   public user: User;
 
-  constructor(private router: ActivatedRoute, private userService: UserService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
     this.userService.userSelected$.subscribe((user) => this.user = user);
   }
 
   ngOnInit(): void {
-    const id = this.router.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
   }
+
+  deleteUser(): void {
+    this.userService.deleteUser(this.user);
+    this.router.navigate(['/']);
+  }
+
 }

@@ -18,7 +18,6 @@ export class UserFormComponent implements OnInit {
       firstName: [''],
       lastName: [''],
       disease: [''],
-      birthday: ['']
     });
   }
 
