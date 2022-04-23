@@ -49,7 +49,7 @@ export class GameSpeechComponent implements OnInit {
       const synthe = window.speechSynthesis;
       let utterThis = new SpeechSynthesisUtterance('Hello');
 
-      this.rate = document.getElementById('rate').value;
+      this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
 
 
 
