@@ -1,8 +1,9 @@
 <h1 class="titre">
   Thèmes
 </h1>
+<br><br>
 <div class="theme-list">
   <div class="theme" *ngFor="let theme of themeList">
-    <a class="selectTheme" style="text-decoration: none" routerLink="/{{user.id}}/{{theme}}">{{theme}}<br><br></a>
+    <button *ngIf="theme !== ''"class="select"  routerLink="/{{user.id}}/{{theme}}">{{theme}}<br></button>
   </div>
 </div>
