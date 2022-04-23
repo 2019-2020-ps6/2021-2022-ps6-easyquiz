@@ -40,10 +40,8 @@ export class GameSpeechComponent implements OnInit {
   public message: string;
   public rate: number;
 
+  // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private userService: UserService, private settingsService: SettingService) {
-
-    this.rate = 0.75;
-
 
     document.addEventListener('keydown', (event) => {
       const nomTouche = event.key;
@@ -77,7 +75,6 @@ export class GameSpeechComponent implements OnInit {
         this.correct(this.answerList[1].isCorrect);
       }
       if (nomTouche === 'ArrowLeft') {
-        if (nomTouche === 'ArrowLeft') { alert('ca marche'); }
         this.messages(this.answerList[3].isCorrect);
         utterThis = new SpeechSynthesisUtterance(
           this.answerList[3].value + this.message );
@@ -124,6 +121,7 @@ export class GameSpeechComponent implements OnInit {
     this.answerList = this.questionTotale.answers;
     console.log('coucou');
     this.nbQuestions = this.tout.length;
+    this.rate = document.getElementById('rate').value;
     if (this.nbQuestions === 0 ){
       this.finPartie(0);
     }
