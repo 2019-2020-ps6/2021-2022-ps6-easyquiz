@@ -10,18 +10,17 @@
 </div>
 
 <body>
-
 <p class="question"> {{question}}</p>
 
 
-<p class="ReponseHaut" id="haut" > {{answerList[0].value}}  </p>
+<button class="ReponseHaut" id="haut" [ngStyle]="{'background-color': buttonColorhaut, 'color':colorhaut }"> {{answerList[0].value}}  </button>
 <i class="fas fa-arrow-up fa-4x"></i>
 <i class="fas fa-arrow-left fa-4x"></i>
 <i class="fas fa-arrow-right fa-4x"></i>
 <i class="fas fa-arrow-down fa-4x"></i>
-<p class="ReponseDroite" id="droite"> {{answerList[1].value}} </p>
-<p class="ReponseBas" id="bas"> {{answerList[2].value}}</p>
-<p class="ReponseGauche" id="gauche"> {{answerList[3].value}} </p>
+<button class="ReponseDroite" id="droite" [ngStyle]="{'background-color': buttonColordroit, 'color':colordroit  }"> {{answerList[1].value}} </button>
+<button class="ReponseBas" id="bas" [ngStyle]="{'background-color': buttonColorbas, 'color':colorbas  }"> {{answerList[2].value}}</button>
+<button class="ReponseGauche" id="gauche" [ngStyle]="{'background-color': buttonColorgauche, 'color':colorgauche  }"> {{answerList[3].value}} </button>
 
 <form class="Changeme" >
   <div>

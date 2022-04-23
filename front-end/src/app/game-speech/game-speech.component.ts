@@ -40,6 +40,16 @@ export class GameSpeechComponent implements OnInit {
   public message: string;
   public rate: number;
   public synthe = window.speechSynthesis;
+  public buttonColorhaut = '#3d3b3b';
+  public buttonColorbas = '#3d3b3b';
+  public buttonColordroit = '#3d3b3b';
+  public buttonColorgauche = '#3d3b3b';
+  public colorhaut = '#ff7f50';
+  public colorbas = '#ff7f50';
+  public colordroit = '#ff7f50';
+  public colorgauche = '#ff7f50';
+
+
 
   // tslint:disable-next-line:max-line-length
   constructor(private route: ActivatedRoute, private userService: UserService, private settingsService: SettingService) {
@@ -70,6 +80,13 @@ export class GameSpeechComponent implements OnInit {
       }
       if (nomTouche === 'ArrowRight') {
         this.synthe.cancel();
+        if (this.answerList[1].isCorrect) {
+          this.buttonColordroit = 'forestgreen';
+          this.colordroit = '#FFFFFF';
+        }else{
+          this.buttonColordroit = '#F35757FF';
+          this.colordroit = '#FFFFFF';
+        }
         this.messages(this.answerList[1].isCorrect);
         utterThis = new SpeechSynthesisUtterance(this.answerList[1].value + this.message);
         utterThis.lang = 'fr-FR';
@@ -79,6 +96,13 @@ export class GameSpeechComponent implements OnInit {
       }
       if (nomTouche === 'ArrowLeft') {
         this.synthe.cancel();
+        if (this.answerList[3].isCorrect) {
+          this.buttonColorgauche = 'forestgreen';
+          this.colorgauche = '#FFFFFF';
+        }else{
+          this.buttonColorgauche = '#F35757FF';
+          this.colorgauche = '#FFFFFF';
+        }
         this.messages(this.answerList[3].isCorrect);
         utterThis = new SpeechSynthesisUtterance(
           this.answerList[3].value + this.message );
@@ -90,6 +114,13 @@ export class GameSpeechComponent implements OnInit {
       }
       if (nomTouche === 'ArrowUp') {
         this.synthe.cancel();
+        if (this.answerList[0].isCorrect) {
+          this.buttonColorhaut = 'forestgreen';
+          this.colorhaut = '#FFFFFF';
+        }else{
+          this.buttonColorhaut = '#F35757FF';
+          this.colorhaut = '#FFFFFF';
+        }
         this.messages(this.answerList[0].isCorrect);
         utterThis = new SpeechSynthesisUtterance( this.answerList[0].value + this.message);
         utterThis.lang = 'fr-FR';
@@ -105,6 +136,13 @@ export class GameSpeechComponent implements OnInit {
         utterThis.lang = 'fr-FR';
         utterThis.rate = this.rate;
         this.synthe.speak(utterThis);
+        if (this.answerList[2].isCorrect) {
+          this.buttonColorbas = 'forestgreen';
+          this.colorbas = '#FFFFFF';
+        }else{
+          this.buttonColorbas = '#F35757FF';
+          this.colorbas = '#FFFFFF';
+        }
         this.correct(this.answerList[2].isCorrect);
       }
     }, true);
@@ -170,6 +208,7 @@ export class GameSpeechComponent implements OnInit {
       this.questionTotale = this.tout[0];
       console.log('cest le new');
       this.reset();
+      this.resetColor();
       // this._document.defaultView.location.reload();
     }
   }
@@ -195,6 +234,17 @@ export class GameSpeechComponent implements OnInit {
     }else{
       this.message = '. Vous avez choisi la mauvaise réponse. ';
     }
+  }
+
+  resetColor(): void {
+  this.buttonColorhaut = '#3d3b3b';
+  this.buttonColorbas = '#3d3b3b';
+  this.buttonColordroit = '#3d3b3b';
+  this.buttonColorgauche = '#3d3b3b';
+  this.colorhaut = '#ff7f50';
+  this.colorbas = '#ff7f50';
+  this.colordroit = '#ff7f50';
+  this.colorgauche = '#ff7f50';
   }
 
 
