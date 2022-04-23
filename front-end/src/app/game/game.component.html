@@ -13,13 +13,13 @@
 
   <ng-template [ngIf]="photoURL" >
   <div class = "listQuestion" *ngFor="let rep of answerList">
-  <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
+  <app-answer-button [PhotoHere]="true" [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
   </div>
   </ng-template>
 
   <ng-template [ngIf]="photoURL == null" >
     <div class = "listReponsesSansPhoto" *ngFor="let rep of answerList">
-      <app-answer-button [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
+      <app-answer-button [PhotoHere]="false" [answer]="rep" [actif]="jeuActif" (emetteur)="gestionClick($event)"></app-answer-button>
     </div>
   </ng-template>
 

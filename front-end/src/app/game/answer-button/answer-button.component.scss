@@ -1,6 +1,7 @@
-.button{
+.button:not(.active){
 
   border-radius: 8px;
+  height: 100px;
   color: #eeeeee;
   text-align: center;
   font-size: 60px;
