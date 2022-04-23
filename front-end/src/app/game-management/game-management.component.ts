@@ -85,7 +85,7 @@ export class GameManagementComponent implements OnInit {
 
   finGame(tot: number): void{
     console.log('on recoitttt' + tot);
-    this.router.navigate(['/fin'], {state: {nb: this.nbCorrecte, tot: tot, idUser: this.user.disease}});
+    this.router.navigate(['/fin'], {state: {nb: this.nbCorrecte, tot: tot, idUser: this.user.disease, id: this.user.id}});
 
 
   }
