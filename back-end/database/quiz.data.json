@@ -46,5 +46,13 @@
     "ceciteOk": true,
     "alzheimerOk": false,
     "id": 1650356717709
+  },
+  {
+    "name": "test quiz moins de 4 réponses",
+    "theme": "test",
+    "cataracteOk": true,
+    "ceciteOk": true,
+    "alzheimerOk": false,
+    "id": 1650718324033
   }
 ]

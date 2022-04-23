@@ -3,16 +3,18 @@
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
       Question <br>
-      <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="60 caractères max" maxlength="60" required size="60">
+      <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="60 caractères max"
+             maxlength="60" required size="60">
     </label>
     <br>
-    <label for="urlIMG">
-      URL de l'image (optionel)
-      <br>
-      <input class="input-custom" type="text" id="urlIMG" [formControlName]="'urlIMG'" maxlength="200">
-      <br>
-
-    </label>
+    <div *ngIf="!quiz.ceciteOk">
+      <label for="urlIMG">
+        URL de l'image (optionel)
+        <br>
+        <input class="input-custom" type="text" id="urlIMG" [formControlName]="'urlIMG'" maxlength="200">
+        <br>
+      </label>
+    </div>
     <br>
     <button class="button-card" (click)="addAnswer()">Ajouter une réponse (4 max)</button>
     <div class="answer" formArrayName="answers">
@@ -20,7 +22,8 @@
         <div class="answer-form" [formGroupName]="i">
           <label>
             Réponse
-            <input type="text" [formControlName]="'value'" placeholder="30 caractères max" maxlength="30" required size="30">
+            <input type="text" [formControlName]="'value'" placeholder="30 caractères max" maxlength="30" required
+                   size="30">
             <br>
             Correcte
             <input type="checkbox" [formControlName]="'isCorrect'">
