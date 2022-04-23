@@ -75,7 +75,6 @@ export class GameSpeechComponent implements OnInit {
         this.correct(this.answerList[1].isCorrect);
       }
       if (nomTouche === 'ArrowLeft') {
-        if (nomTouche === 'ArrowLeft') { alert('ca marche'); }
         this.messages(this.answerList[3].isCorrect);
         utterThis = new SpeechSynthesisUtterance(
           this.answerList[3].value + this.message );
