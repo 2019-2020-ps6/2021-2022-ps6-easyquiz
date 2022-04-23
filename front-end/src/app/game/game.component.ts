@@ -34,6 +34,7 @@ export class GameComponent implements OnInit {
   public aJuste: boolean;
   public questionTotale: Question;
   public nbQuestions : number;
+  private indice: number=0;
 
   constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
               private settingsService: SettingService
@@ -42,7 +43,7 @@ export class GameComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.questionTotale = this.tout[0];
+    this.questionTotale = this.tout[this.indice];
     this.nbQuestions = this.tout.length;
     if(this.nbQuestions===0){
       this.finPartie(0);
@@ -66,7 +67,6 @@ export class GameComponent implements OnInit {
 
   gestionClick(repChoisie: boolean): void {
 
-
     this.jeuActif = false;
     if (repChoisie) {
       console.log("Bonne réponse =>");
@@ -86,17 +86,18 @@ export class GameComponent implements OnInit {
 
   refresh(event): void {
     this.juste.emit(this.aJuste);
-    this.tout.shift();
-    this.questionTotale = this.tout[0];
+    this.indice++;
 
-    if (this.tout.length === 0) {
+    if (this.indice === this.tout.length) {
       this.finPartie(event);
     } else {
-      this.questionTotale = this.tout[0];
-      console.log("cest le new");
+      this.questionTotale = this.tout[this.indice];
+      console.log("cest le new"+this.questionTotale.label);
       this.reset();
       //this._document.defaultView.location.reload();
     }
+
+
   }
 
   finPartie(event): void{

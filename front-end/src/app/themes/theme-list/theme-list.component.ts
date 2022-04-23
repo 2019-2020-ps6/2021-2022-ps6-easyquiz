@@ -40,8 +40,8 @@ export class ThemeListComponent implements OnInit {
     for (i = 0; i < this.quizList.length; i++) {
       console.log('for');
       if (!(this.themeList[this.themeList.length - 1] === this.quizList[i].theme)){
-        console.log('trouble:' + this.user.disease);
-        console.log('theme:' + this.quizList[i].theme);
+        //console.log('trouble:' + this.user.disease);
+        //console.log('theme:' + this.quizList[i].theme);
         if ((this.user.disease === 'Cataracte' && this.quizList[i].cataracteOk) ||
           (this.user.disease === 'Cécité' && this.quizList[i].ceciteOk)) {
           this.themeList.push(this.quizList[i].theme);

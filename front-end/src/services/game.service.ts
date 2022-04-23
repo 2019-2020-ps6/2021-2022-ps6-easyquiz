@@ -37,6 +37,7 @@ export class GameService {
   }
 
   addGame(game: Game): void {
+    console.log("le serice gave recoit "+game);
     this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames());
   }
 

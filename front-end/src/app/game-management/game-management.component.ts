@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Quiz} from '../../models/quiz.model';
 import {QuizService} from '../../services/quiz.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -14,57 +14,57 @@ import {Game} from '../../models/game.model';
 })
 export class GameManagementComponent implements OnInit {
 
-
   public quiz: Quiz;
-  private nbCorrecte = 0;
-  private indexQuestion = 0;
   public user: User;
-  private game : Game;
-  private obj : any;
+  private game: Game;
+  private obj: any;
+  private idQuiz;
+  private idUser;
 
 
+  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService: GameService) {
 
+    this.idQuiz = this.route.snapshot.paramMap.get('id');
+    this.idUser = this.route.snapshot.paramMap.get('user');
 
-  constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService : GameService) {
     this.userService.userSelected$.subscribe((user) => this.user = user);
-    this.gameService.gameSelected$.subscribe((game)=>this.game = game);
+    this.gameService.gameSelected$.subscribe((game) => this.game = game);
 
+    this.quizService.quizSelected$.subscribe((quiz) => {
+        this.quiz = quiz;
+        console.log('passe');
 
-    this.quizService.quizSelected$.subscribe((quiz) =>{
-      this.quiz = quiz;
-      console.log('passe');
-      const idQuiz = this.route.snapshot.paramMap.get('id');
-      const idUser = this.route.snapshot.paramMap.get('user');
-      this.obj = {
-          "quizId": idQuiz,
-          "userId": idUser,
+        //Enlever currentQuestion de l'instance
+        this.obj = {
+          "quizId": this.idQuiz,
+          "userId": this.idUser,
           "nbQuestion": this.quiz.questions.length,
-          "correct": this.nbCorrecte,
-          'currentQuestion': this.indexQuestion
+          "correct": 0,
         };
 
+        //////////////////////////////////////////////////////////////
+        this.gameService.addGame(this.obj);
+        console.log("on a add");
+
+
+
+
         //ajouter l'instance
-
+        console.log('eh ho');
         console.log(this.obj);
-        console.log('fin');
 
 
-    }
-
-
-
+      }
     );
 
 
   }
 
 
-
   ngOnInit(): void {
-    const idUser = this.route.snapshot.paramMap.get('user');
-    const idQuiz = this.route.snapshot.paramMap.get('id');
-    this.quizService.setSelectedQuiz(idQuiz);
-    this.userService.setSelectedUser(idUser);
+
+    this.quizService.setSelectedQuiz(this.idQuiz);
+    this.userService.setSelectedUser(this.idUser);
 
 
     //add notre instance puis ou add instance fin partie ???
@@ -73,23 +73,25 @@ export class GameManagementComponent implements OnInit {
   }
 
 
-  goNextQuestion(juste: boolean): void{
+  goNextQuestion(juste: boolean): void {
     console.log('On est dans goNext');
-    console.log(juste);
 
-    if (juste){
-      this.nbCorrecte++;
+    if (juste) {
+      this.obj.correct++;
     }
+    this.obj.currentQuestion++;
+
+    console.log("nbCorrecte vaut" + this.obj.correct+" et cur question "+this.obj.currentQuestion);
+    console.log(this.obj);
 
   }
 
-  finGame(tot: number): void{
-    console.log('on recoitttt' + tot);
-    this.router.navigate(['/fin/'], {state: {nb: this.nbCorrecte, tot: tot}});
+  finGame(tot: number): void {
+    console.log("correct vaut ici "+this.obj.correct);
+    this.router.navigate(['/fin/'], {state: {nb: this.obj.correct, tot: tot}});
 
 
   }
-
 
 
 }
