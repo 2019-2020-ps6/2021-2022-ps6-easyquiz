@@ -81,7 +81,7 @@ export class GameComponent implements OnInit {
 
   zoom(): void {
     console.log("on envoie "+this.photoURL);
-    this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
+    this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL, bgColor: this.choice.pageBackGround}});
   }
 
   refresh(event): void {

@@ -16,7 +16,7 @@ export class FinPartieComponent implements OnInit {
   public totalAnswer: number;
   public user: User;
   public iduser: string;
-  public id: number;
+  public id: string;
 
   // tslint:disable-next-line:variable-name
   constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
@@ -41,7 +41,7 @@ export class FinPartieComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log("this user : " + this.id);
+    console.log('this user : ' + this.id);
     this.userService.setSelectedUser(this.id);
   }
 

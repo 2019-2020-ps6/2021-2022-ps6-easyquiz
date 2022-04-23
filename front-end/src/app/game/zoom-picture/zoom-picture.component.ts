@@ -10,9 +10,11 @@ import {Router} from "@angular/router";
 export class ZoomPictureComponent implements OnInit {
 
   public urlPhoto: string;
+  public pageBackground: string;
 
   constructor(private _location: Location, private router: Router) {
     this.urlPhoto = this.router.getCurrentNavigation().extras.state.link;
+    this.pageBackground = this.router.getCurrentNavigation().extras.state.bgColor;
 
   }
 
