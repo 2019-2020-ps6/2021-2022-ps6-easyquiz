@@ -32,3 +32,19 @@
 .button-card:hover {
   cursor: pointer;
 }
+
+.select {
+  text-align: center;
+  font-size: 2em;
+  border: 2px solid #3d3b3b;
+  color: #3d3b3b;
+  transition-duration: 0.4s;
+  border-radius: 4px;
+  margin-bottom: 15px;
+
+}
+
+.select:hover {
+  background-color: #3d3b3b; /* Green */
+  color: #ff7f50;
+}
