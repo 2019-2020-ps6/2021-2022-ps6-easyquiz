@@ -29,9 +29,19 @@ export class FinPartieComponent implements OnInit {
 
     if (this.iduser !== 'Cataracte'){
       const synth = window.speechSynthesis;
-      const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '.');
+      const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
       utterThise.lang = 'fr-FR';
       synth.speak(utterThise);
+
+      document.addEventListener('keydown', (event) => {
+        const nomTouche = event.key;
+        if (nomTouche === ' '){
+          this.goPlayAgain();
+        }
+        if (nomTouche === 'Enter'){
+          this.goBack();
+        }
+      }, true);
 
     }
 
