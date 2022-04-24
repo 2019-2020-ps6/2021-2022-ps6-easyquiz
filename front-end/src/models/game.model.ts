@@ -4,4 +4,5 @@ export interface Game{
     userId : string;
     nbQuestion : number;
     correct : number;
+    currentQuestion : number;
 }

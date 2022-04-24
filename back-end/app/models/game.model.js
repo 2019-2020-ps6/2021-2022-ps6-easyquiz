@@ -6,4 +6,5 @@ module.exports = new BaseModel('Game', {
   userId: Joi.string().required(),
   nbQuestion: Joi.number().required(),
   correct: Joi.number().required(),
+  currentQuestion: Joi.number().required(),
 })

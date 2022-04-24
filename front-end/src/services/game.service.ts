@@ -9,47 +9,74 @@ import { serverUrl, httpOptionsBase } from '../configs/server.config';
 })
 export class GameService {
   /*
-   The list of user.
+   The list of game.
    */
-  private games: Game[] = [];
+  private game: Game;
 
   /*
-   Observable which contains the list of the user.
+   Observable which contains the list of the games.
    */
-  public games$: BehaviorSubject<Game[]>
-    = new BehaviorSubject([]);
+  //public game$: BehaviorSubject<Game>
+   // = new BehaviorSubject(null);
 
-  public gameSelected$: Subject<Game> = new Subject();
+  public game$: Subject<Game> = new Subject();
 
   private gameUrl = serverUrl + '/game';
 
   private httpOptions = httpOptionsBase;
 
   constructor(private http: HttpClient) {
-    this.retrieveGames();
+    //this.retrieveGames();
+
   }
 
   retrieveGames(): void {
-    this.http.get<Game[]>(this.gameUrl).subscribe((gameList) => {
-      this.games = gameList;
-      this.games$.next(this.games);
+    this.http.get<Game>(this.gameUrl).subscribe((game) => {
+      this.game = game;
+      this.game$.next(this.game);
     });
   }
 
+
   addGame(game: Game): void {
-    console.log("le serice gave recoit "+game);
-    this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe(() => this.retrieveGames());
+    console.log("PASSE ADD SERVICE");
+    this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe((game) => {
+        this.game=game;
+        this.game$.next(game);
+        console.log("FIN ADD SERVICE, on add "+this.game.id);
+      }
+    );
   }
+
+  modify(juste:boolean){
+
+    console.log("juste vaut"+juste+"AAAAAAAAAAAAAA");
+    console.log("thread2");
+
+    if(juste){this.game.correct++; console.log("CORRECT VUAAT"+this.game.correct);}
+
+    this.game.currentQuestion++;
+    this.game$.next(this.game);
+
+
+    console.log("fin thread2");
+    console.log(this.game);
+
+  }
+
+
 
   setSelectedGame(gameId: string): void {
     const urlWithId = this.gameUrl + '/' + gameId;
     this.http.get<Game>(urlWithId).subscribe((game) => {
-      this.gameSelected$.next(game);
+      this.game$.next(game);
     });
+    console.log("FIN SET GAME");
   }
 
-  deleteUser(game: Game): void {
+  deleteGame(game: Game): void {
     const urlWithId = this.gameUrl + '/' + game.id;
     this.http.delete<Game>(urlWithId, this.httpOptions).subscribe(() => this.retrieveGames());
   }
+
 }

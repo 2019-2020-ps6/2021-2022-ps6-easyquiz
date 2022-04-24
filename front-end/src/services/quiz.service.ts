@@ -21,6 +21,8 @@ export class QuizService {
    */
   private quizzes: Quiz[] = QUIZ_LIST;
 
+  private quizCourant : Quiz;
+
   /*
    Observable which contains the list of the quiz.
    Naming convention: Add '$' at the end of the variable name to highlight it as an Observable.
@@ -51,12 +53,17 @@ export class QuizService {
   }
 
   setSelectedQuiz(quizId: string): void {
-    console.log("bbbb");
+    console.log("DANS SET SELECTED QUIZ AVEC ID "+quizId);
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
+      this.quizCourant = quiz;
       this.quizSelected$.next(quiz);
       console.log(quiz.questions[0]);
     });
+  }
+
+  getCourant() : Quiz{
+    return this.quizCourant;
   }
 
   deleteQuiz(quiz: Quiz): void {
@@ -65,7 +72,6 @@ export class QuizService {
   }
 
   addQuestion(quiz: Quiz, question: Question): void {
-    console.log("aaaaaaaaaaaa");
     console.log("on voit l'ulr" +question.urlIMG);
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));

@@ -5,6 +5,9 @@ import {DOCUMENT} from "@angular/common";
 import {SettingService} from '../../services/setting.service';
 import {Choice} from './settings/game-setting/choice/models/choice.model';
 import {Router} from "@angular/router";
+import {GameService} from "../../services/game.service";
+import {QuizService} from "../../services/quiz.service";
+import {Game} from "../../models/game.model";
 
 
 @Component({
@@ -15,11 +18,8 @@ import {Router} from "@angular/router";
 
 export class GameComponent implements OnInit {
 
-  @Input()
-  tout: Question[];
-
-  @Output()
-  juste: EventEmitter<boolean> = new EventEmitter();
+  //@Input()
+  //tout: Question[];
 
   @Output()
   fin: EventEmitter<number> = new EventEmitter();
@@ -34,25 +34,52 @@ export class GameComponent implements OnInit {
   public aJuste: boolean;
   public questionTotale: Question;
   public nbQuestions : number;
-  private indice: number=0;
+  private game: Game;
+  private tout:Question[];
 
-  constructor(@Inject(DOCUMENT) private _document: Document, private router: Router,
-              private settingsService: SettingService
+
+
+  constructor(@Inject(DOCUMENT) private _document: Document, private router: Router, private gameService : GameService,
+              private settingsService: SettingService, private quizService :QuizService
   ) {
+
+
+    this.gameService.game$.subscribe( (game) => {
+      this.game = game;
+      console.log("GAME ID vaut" + this.game.id);
+      console.log("on va lancer le quirservice subscribe");
+
+      console.log("dans lance 2, quiz id "+this.game.quizId);
+      //this.quizService.setSelectedQuiz(this.game.quizId);
+      this.tout = this.quizService.getCourant().questions;
+      console.log("on a recup" + this.tout.length);
+      this.debut();
+    });
+
+
+  }
+
+  ngOnInit(): void {
+
   }
 
 
-  ngOnInit(): void {
-    this.questionTotale = this.tout[this.indice];
+  debut() : void{
+    console.log("PASSSSE DEBUT");
+    console.log("on lui PASSE "+this.game.currentQuestion);
+    this.questionTotale = this.tout[this.game.currentQuestion];
     this.nbQuestions = this.tout.length;
     if(this.nbQuestions===0){
-      this.finPartie(0);
+      this.finPartie();
     }
     this.reset();
   }
 
 
+
+
   reset(): void {
+    console.log("passe reset");
     this.choice = this.settingsService.getSelectedChoice();
     this.feedbackAction = "";
     this.activeFeedback = false;
@@ -61,8 +88,6 @@ export class GameComponent implements OnInit {
     this.question = this.questionTotale.label;
     this.photoURL = this.questionTotale.urlIMG;
     this.answerList = this.questionTotale.answers;
-
-
   }
 
   gestionClick(repChoisie: boolean): void {
@@ -84,14 +109,22 @@ export class GameComponent implements OnInit {
     this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL}});
   }
 
-  refresh(event): void {
-    this.juste.emit(this.aJuste);
-    this.indice++;
+  async refresh(): Promise<void> {
 
-    if (this.indice === this.tout.length) {
-      this.finPartie(event);
+    console.log("avant modify "+this.game.currentQuestion);
+
+    await this.gameService.modify(this.aJuste);
+
+    console.log("thread1");
+
+    console.log(this.game.currentQuestion);
+
+
+
+    if (this.game.currentQuestion === this.tout.length) {
+      this.finPartie();
     } else {
-      this.questionTotale = this.tout[this.indice];
+      this.questionTotale = this.tout[this.game.currentQuestion];
       console.log("cest le new"+this.questionTotale.label);
       this.reset();
       //this._document.defaultView.location.reload();
@@ -100,8 +133,11 @@ export class GameComponent implements OnInit {
 
   }
 
-  finPartie(event): void{
-    this.fin.emit(this.nbQuestions);
+  finPartie(): void{
+    console.log("correct vaut ici "+this.game.correct);
+    console.log("game vaut");console.log(this.game);
+    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion}});
+
   }
 
 

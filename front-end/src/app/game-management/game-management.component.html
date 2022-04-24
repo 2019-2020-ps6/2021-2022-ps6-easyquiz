@@ -1,7 +1,7 @@
 
 
-<app-game *ngIf="user!=undefined && user.disease == 'Cataracte'" class="jeu" [tout]="quiz.questions" (juste)="goNextQuestion($event)" (fin)="finGame($event)"></app-game>
+<app-game *ngIf="user!=undefined && user.disease == 'Cataracte'"  class="jeu"></app-game>
 
-<app-game-speech *ngIf="user!=undefined && user.disease == 'Cécité'" class="jeu" [tout]="quiz.questions" (juste)="goNextQuestion($event)" (fin)="finGame($event)"></app-game-speech>
+<app-game-speech *ngIf="user!=undefined && user.disease == 'Cécité'" class="jeu" [tout]="quiz.questions"  ></app-game-speech>
 
 
