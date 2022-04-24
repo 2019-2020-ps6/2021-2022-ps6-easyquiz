@@ -3,16 +3,21 @@
 
 .bandeau{
 
-  display: inline-block;
+  //display: inline-block;
   background-color: #146385;
   color: #eeeeee;
   text-align: center;
   font-size: 65px;
+  height: 75px;
   font-family: Tahoma,Verdana,Segoe,sans-serif;
   font-weight: 700;
-  padding: 2%;
-  width: 90%;
-  margin: 1%;
+  margin-top: 25px;
+  padding-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  //padding: 2%;
+  //width: 90%;
+  //margin: 1%;
   margin-bottom: 2%;
   -webkit-text-stroke: 2px black;
 
@@ -34,6 +39,33 @@
 
 
 
+}
+
+.buttons-fin{
+
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  padding-top: 250px;
+
+}
+
+.button{
+  background-color: #fca14e;
+  font-size: 30px;
+  padding: 8px 32px;
+  border: none;
+  border-radius: 4px;
+  transition-duration: 0.1s;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 30px;
+}
+
+.button:hover{
+  background-color: #cecece;
+  color: #363636;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 *{

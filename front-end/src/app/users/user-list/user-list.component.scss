@@ -14,26 +14,42 @@
 }
 
 .users{
+  flex-wrap: wrap;
   display:flex;
   margin: auto;
   justify-content: center;
   margin-top: 40px;
+  margin-left: 2em;
+  margin-right: 2em;
+  border-style: solid;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 28em;
 }
 
 .creationProfil{
-  margin-top: -50px;
+  /*margin-top: -50px;
   position: relative;
   text-align: center;
+  font-size: 30px;*/
+  margin: auto;
+  bottom: 2em;
+  left: 2em;
+  position: absolute;
+  text-align: center;
   font-size: 30px;
+
 }
+
 .fa-plus-circle{
   color: #9a2c2c;
 }
 
 .creationQuiz{
-  bottom: 20px;
-  right: 20px;
+  bottom: 2em;
+  right: 2em;
   position: absolute;
   text-align: center;
   font-size: 30px;
+  color: #9a2c2c;
 }

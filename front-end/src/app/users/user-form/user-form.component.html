@@ -3,12 +3,12 @@
   <form class="user-form" [formGroup]="userForm">
     <label for="firstName">
       Prénom <br>
-      <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'">
+      <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" placeholder="20 caractères max" maxlength="20" required size="20">
     </label>
     <br>
     <label for="lastName">
       Nom <br>
-      <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'">
+      <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" placeholder="20 caractères max" maxlength="20" required size="20">
     </label>
     <br>
     <br>

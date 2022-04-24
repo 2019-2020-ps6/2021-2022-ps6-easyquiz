@@ -9,7 +9,7 @@
     Ici le profil de la personne selectionné
   </div>
 
-  <button class="button-card"> Supprimer le profil : {{user.firstName}} {{user.lastName}} <i class='fas fa-delete'></i></button>
+<button class="button-card" id="delete" (click)="deleteUser()"> <i class='fas fa-trash'></i> Supprimer le profil : {{user.firstName}} {{user.lastName}}</button>
 
   <a class="home" [routerLink]="['/']" style="text-decoration: none"><i class='fas fa-user'> <span class="changeText">Changer de profil</span></i></a>
   <a class="return" href="javascript:history.go(-1)" style="text-decoration: none">Retour</a>

@@ -53,38 +53,39 @@ label {
 
 .ReponseGauche{
   position: absolute;
-  color: #3d3b3b;
   font-size: 40px;
-
+  border-radius: 6px;
   top: 53%;
   left: 10%;
   right: 75%;
 }
 .ReponseDroite{
   position: absolute;
-  color: #3d3b3b;
   top: 53%;
   right: 10%;
   font-size: 40px;
   left:75%;
+  border-radius: 6px;
 }
 
 .ReponseHaut{
   position: absolute;
-  color: #3d3b3b;
   font-size: 40px;
   left: 40%;
   right: 40%;
-  top: 30%;
+  top: 34%;
+  border-radius: 6px;
+
 }
 
 .ReponseBas{
   position: absolute;
-  color: #3d3b3b;
   font-size: 40px;
   left: 40%;
   right: 40%;
   top: 80%;
+  border-radius: 6px;
+
 }
 
 .fa-arrow-right{
@@ -124,7 +125,10 @@ label {
 
 
 .question{
-  position: relative;
-  font-size: 50px;
+  position: absolute;
+  top: 12%;
+  left: 5%;
+  right: 5%;
+  font-size: 45px;
 }
 
