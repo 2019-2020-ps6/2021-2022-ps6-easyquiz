@@ -119,8 +119,10 @@ export class GameComponent implements OnInit {
   finPartie(): void{
     console.log("correct vaut ici "+this.game.correct);
     console.log("game vaut");console.log(this.game);
-    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion}});
+    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion, idUser: this.game.userId}});
   }
+
+
 
 
 }

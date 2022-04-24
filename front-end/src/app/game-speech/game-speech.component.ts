@@ -51,6 +51,7 @@ export class GameSpeechComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private quizService : QuizService, private userService: UserService, private settingsService: SettingService) {
 
+    console.log("passe constructeur");
     this.gameService.game$.subscribe( (game) => {
       this.game = game;
       console.log("GAME ID vaut" + this.game.id);
@@ -188,11 +189,11 @@ export class GameSpeechComponent implements OnInit {
   }
 
   finPartie(): void{
+    console.log("FIN DE PARTIE");
     this.synthe.cancel();
     console.log("correct vaut ici "+this.game.correct);
     console.log("game vaut");console.log(this.game);
-    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion}});
-  }
+    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion, idUser: this.game.userId}});  }
 
   reset(): void {
     this.choice = this.settingsService.getSelectedChoice();
@@ -216,7 +217,8 @@ export class GameSpeechComponent implements OnInit {
     console.log("thread1");
     console.log(this.game.currentQuestion);
 
-    if (this.game.currentQuestion === this.tout.length) {
+    console.log("on a "+this.game.currentQuestion+" et "+this.tout.length);
+    if (this.game.currentQuestion >= this.tout.length) {
       this.finPartie();
     } else {
       this.questionTotale = this.tout[this.game.currentQuestion];

@@ -23,36 +23,37 @@ export class FinPartieComponent implements OnInit {
     this.nbGoodAnswer = this.router.getCurrentNavigation().extras.state.nb;
     this.totalAnswer = this.router.getCurrentNavigation().extras.state.tot;
     this.iduser = this.router.getCurrentNavigation().extras.state.idUser;
-    this.id = this.router.getCurrentNavigation().extras.state.id;
 
-    this.userService.userSelected$.subscribe((user) => this.user = user);
+    this.userService.userSelected$.subscribe((user) => {
+      this.user = user;
+      console.log("FIN NOTRE MALADE"+this.user.disease);
+      if (this.user.disease !== 'Cataracte') {
+        console.log("ON VA LIRE");
+        const synth = window.speechSynthesis;
+        const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
+        utterThise.lang = 'fr-FR';
+        synth.speak(utterThise);
 
-    if (this.iduser !== 'Cataracte'){
-      const synth = window.speechSynthesis;
-      const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
-      utterThise.lang = 'fr-FR';
-      synth.speak(utterThise);
+        document.addEventListener('keydown', (event) => {
+          const nomTouche = event.key;
+          if (nomTouche === ' ') {
+            this.goPlayAgain();
+          }
+          if (nomTouche === 'Enter') {
+            this.goBack();
+          }
+        }, true);
 
-      document.addEventListener('keydown', (event) => {
-        const nomTouche = event.key;
-        if (nomTouche === ' '){
-          this.goPlayAgain();
-        }
-        if (nomTouche === 'Enter'){
-          this.goBack();
-        }
-      }, true);
+      }
 
-    }
-
+    });
   }
 
 
 
 
   ngOnInit(): void {
-    console.log('this user : ' + this.id);
-    this.userService.setSelectedUser(this.id);
+    this.userService.setSelectedUser(this.iduser);
   }
 
   goBack(): void{
