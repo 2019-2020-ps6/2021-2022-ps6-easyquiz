@@ -25,6 +25,8 @@ export class GameService {
 
   private httpOptions = httpOptionsBase;
 
+  private enCours: boolean= false;
+
   constructor(private http: HttpClient) {
     //this.retrieveGames();
 
@@ -39,8 +41,15 @@ export class GameService {
 
 
   addGame(game: Game): void {
+    /**
+    if(this.enCours){console.log("on return car en cours");return;}
+    else{
+      console.log("PAS en cours");
+    }
+     **/
     console.log("PASSE ADD SERVICE");
     this.http.post<Game>(this.gameUrl, game, this.httpOptions).subscribe((game) => {
+      this.enCours=true;
         this.game=game;
         this.game$.next(game);
         console.log("FIN ADD SERVICE, on add "+this.game.id);
@@ -61,6 +70,9 @@ export class GameService {
 
     console.log("fin thread2");
     console.log(this.game);
+
+    if(this.game.currentQuestion===this.game.nbQuestion){this.enCours=false;}
+    console.log("en cours vaut"+this.enCours);
 
   }
 

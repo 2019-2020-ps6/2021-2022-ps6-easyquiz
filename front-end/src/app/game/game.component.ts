@@ -1,7 +1,6 @@
 /* tslint:disable:whitespace no-trailing-whitespace */
 import {Component, EventEmitter, Inject, Input, OnInit, Output} from '@angular/core';
 import {Answer, Question} from '../../models/question.model';
-import {DOCUMENT} from "@angular/common";
 import {SettingService} from '../../services/setting.service';
 import {Choice} from './settings/game-setting/choice/models/choice.model';
 import {Router} from "@angular/router";
@@ -18,12 +17,6 @@ import {Game} from "../../models/game.model";
 
 export class GameComponent implements OnInit {
 
-  //@Input()
-  //tout: Question[];
-
-  @Output()
-  fin: EventEmitter<number> = new EventEmitter();
-
   public question: string;
   public answerList: Answer[] = [];
   public photoURL: string;
@@ -39,22 +32,21 @@ export class GameComponent implements OnInit {
 
 
 
-  constructor(@Inject(DOCUMENT) private _document: Document, private router: Router, private gameService : GameService,
+  constructor(private router: Router, private gameService : GameService,
               private settingsService: SettingService, private quizService :QuizService
   ) {
 
+    console.log("constreucteur game component");
 
     this.gameService.game$.subscribe( (game) => {
       this.game = game;
       console.log("GAME ID vaut" + this.game.id);
-      console.log("on va lancer le quirservice subscribe");
-
-      console.log("dans lance 2, quiz id "+this.game.quizId);
-      //this.quizService.setSelectedQuiz(this.game.quizId);
       this.tout = this.quizService.getCourant().questions;
       console.log("on a recup" + this.tout.length);
       this.debut();
     });
+
+
 
 
   }
@@ -65,8 +57,7 @@ export class GameComponent implements OnInit {
 
 
   debut() : void{
-    console.log("PASSSSE DEBUT");
-    console.log("on lui PASSE "+this.game.currentQuestion);
+    console.log("on passe debut avec "+this.game.currentQuestion);
     this.questionTotale = this.tout[this.game.currentQuestion];
     this.nbQuestions = this.tout.length;
     if(this.nbQuestions===0){
@@ -110,16 +101,10 @@ export class GameComponent implements OnInit {
   }
 
   async refresh(): Promise<void> {
-
     console.log("avant modify "+this.game.currentQuestion);
-
     await this.gameService.modify(this.aJuste);
-
     console.log("thread1");
-
     console.log(this.game.currentQuestion);
-
-
 
     if (this.game.currentQuestion === this.tout.length) {
       this.finPartie();
@@ -127,9 +112,7 @@ export class GameComponent implements OnInit {
       this.questionTotale = this.tout[this.game.currentQuestion];
       console.log("cest le new"+this.questionTotale.label);
       this.reset();
-      //this._document.defaultView.location.reload();
     }
-
 
   }
 
@@ -137,7 +120,6 @@ export class GameComponent implements OnInit {
     console.log("correct vaut ici "+this.game.correct);
     console.log("game vaut");console.log(this.game);
     this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion}});
-
   }
 
 

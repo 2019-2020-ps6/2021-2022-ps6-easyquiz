@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 import {Answer, Question} from '../../models/question.model';
@@ -7,6 +7,9 @@ import {DOCUMENT} from '@angular/common';
 import {SettingService} from '../../services/setting.service';
 // @ts-ignore
 import {Choice} from './settings/game-setting/choice/models/choice.model';
+import {Game} from "../../models/game.model";
+import {GameService} from "../../services/game.service";
+import {QuizService} from "../../services/quiz.service";
 
 // @ts-ignore
 // @ts-ignore
@@ -18,15 +21,6 @@ import {Choice} from './settings/game-setting/choice/models/choice.model';
 })
 export class GameSpeechComponent implements OnInit {
 
-
-  @Input()
-  tout: Question[];
-
-  @Output()
-  juste: EventEmitter<boolean> = new EventEmitter();
-
-  @Output()
-  fin: EventEmitter<number> = new EventEmitter();
 
   public question: string;
   public answerList: Answer[] = [];
@@ -40,8 +34,19 @@ export class GameSpeechComponent implements OnInit {
   public message: string;
   public rate: number;
 
+  private game: Game;
+  private tout:Question[];
+
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private userService: UserService, private settingsService: SettingService) {
+  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private quizService : QuizService, private userService: UserService, private settingsService: SettingService) {
+
+    this.gameService.game$.subscribe( (game) => {
+      this.game = game;
+      console.log("GAME ID vaut" + this.game.id);
+      this.tout = this.quizService.getCourant().questions;
+      console.log("on a recup" + this.tout.length);
+      this.debut();
+    });
 
     document.addEventListener('keydown', (event) => {
       const nomTouche = event.key;
@@ -117,14 +122,8 @@ export class GameSpeechComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
-    this.questionTotale = this.tout[0];
-    this.answerList = this.questionTotale.answers;
     console.log('coucou');
-    this.nbQuestions = this.tout.length;
     this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
-    if (this.nbQuestions === 0 ){
-      this.finPartie(0);
-    }
     const synth2 = window.speechSynthesis;
     // tslint:disable-next-line:max-line-length
     const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.' + 'Début du quizz.');
@@ -134,8 +133,20 @@ export class GameSpeechComponent implements OnInit {
     this.reset();
   }
 
-  finPartie(event): void{
-    this.fin.emit(this.nbQuestions);
+  debut() : void{
+    console.log("on passe debut avec "+this.game.currentQuestion);
+    this.questionTotale = this.tout[this.game.currentQuestion];
+    this.nbQuestions = this.tout.length;
+    if(this.nbQuestions===0){
+      this.finPartie();
+    }
+    this.reset();
+  }
+
+  finPartie(): void{
+    console.log("correct vaut ici "+this.game.correct);
+    console.log("game vaut");console.log(this.game);
+    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion}});
   }
 
   reset(): void {
@@ -156,19 +167,20 @@ export class GameSpeechComponent implements OnInit {
 
   }
 
-  refresh(event): void {
-    this.juste.emit(this.aJuste);
-    this.tout.shift();
-    this.questionTotale = this.tout[0];
+  async refresh(): Promise<void> {
+    console.log("avant modify "+this.game.currentQuestion);
+    await this.gameService.modify(this.aJuste);
+    console.log("thread1");
+    console.log(this.game.currentQuestion);
 
-    if (this.tout.length === 0) {
-      this.finPartie(event);
+    if (this.game.currentQuestion === this.tout.length) {
+      this.finPartie();
     } else {
-      this.questionTotale = this.tout[0];
-      console.log('cest le new');
+      this.questionTotale = this.tout[this.game.currentQuestion];
+      console.log("cest le new"+this.questionTotale.label);
       this.reset();
-      // this._document.defaultView.location.reload();
     }
+
   }
 
   correct(reponse): void {
@@ -181,7 +193,7 @@ export class GameSpeechComponent implements OnInit {
     }
     this.activeFeedback = true;
     setTimeout(() => {
-      this.refresh(event);
+      this.refresh();
     }, 4000);
   }
 

@@ -6,6 +6,7 @@ import {User} from '../../models/user.model';
 import {UserService} from '../../services/user.service';
 import {GameService} from "../../services/game.service";
 import {Game} from '../../models/game.model';
+import {isBooleanLiteralLike} from "codelyzer/util/utils";
 
 @Component({
   selector: 'app-game-management',
@@ -23,7 +24,6 @@ export class GameManagementComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService: GameService) {
 
-    console.log("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ");
 
     this.idQuiz = this.route.snapshot.paramMap.get('id');
     this.idUser = this.route.snapshot.paramMap.get('user');
@@ -41,21 +41,15 @@ export class GameManagementComponent implements OnInit {
         "correct": 0,
         "currentQuestion": 0
       };
-      console.log("ON VA AJOUTER UN TRUC");
       this.gameService.addGame(this.obj);
-
-      console.log('eh ho');
-      console.log(this.obj);
-
+      console.log('eh ho'); console.log(this.obj);
     });
-
   }
 
   ngOnInit(): void {
     this.quizService.setSelectedQuiz(this.idQuiz);
     this.userService.setSelectedUser(this.idUser);
   }
-
 
 
 }
