@@ -1,7 +1,8 @@
 
 <div class = "bandeau" >Fin de la partie </div>
 
-<div class = "retour" id="retourr"> Vous avez {{nbGoodAnswer}} bonnes réponses sur {{totalAnswer}}</div>
+<div class = "retour"  *ngIf="nbGoodAnswer > 1"> Vous avez {{nbGoodAnswer}} bonnes réponses sur {{totalAnswer}}</div>
+<div class = "retour"  *ngIf="nbGoodAnswer <=1 "> Vous avez {{nbGoodAnswer}} bonne réponse sur {{totalAnswer}}</div>
 
 <div class="buttons-fin">
   <button class="button"
