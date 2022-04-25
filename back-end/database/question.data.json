@@ -57,6 +57,12 @@
     "id": 1650886445363
   },
   {
+    "label": "De quelle couleur est le cheval camarguais ?",
+    "label": "Quelle est la spécialité de Camargue ?",
+    "quizId": 1650884940585,
+    "id": 1650886445364
+  },
+  {
     "label": "Quelle est la voiture représentée ?",
     "quizId": 1650900587658,
     "urlIMG": "https://www.autoscout24.fr/assets/auto/images/model/fiat/fiat-ritmo/fiat-ritmo-l-01.jpg",

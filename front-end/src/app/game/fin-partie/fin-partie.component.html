@@ -1,15 +1,26 @@
+<div *ngIf="data.disease==='cataracte'">
+  <div class="bandeau">FIN DE LA PARTIE</div>
+  <div class="retour" *ngIf="nbGoodAnswer > 1"> VOUS AVEZ {{nbGoodAnswer}} BONNES RÉPONSES SUR {{totalAnswer}}</div>
+  <div class="retour" *ngIf="nbGoodAnswer <=1 "> VOUS AVEZ {{nbGoodAnswer}} BONNE RÉPONSE SUR {{totalAnswer}}</div>
+  <div class="buttons-fin">
+    <button class="button"
+            (click)="goBack()"
+    >Retour vers le profil
+    </button>
+    <button class="button"
+            (click)="goPlayAgain()"
+    >Faire un autre quiz
+    </button>
+  </div>
+</div>
 
-<div class = "bandeau" >FIN DE LA PARTIE </div>
-
-<div class = "retour"  *ngIf="nbGoodAnswer > 1"> VOUS AVEZ {{nbGoodAnswer}} BONNES RÉPONSES SUR {{totalAnswer}}</div>
-<div class = "retour"  *ngIf="nbGoodAnswer <=1 "> VOUS AVEZ {{nbGoodAnswer}} BONNE RÉPONSE SUR {{totalAnswer}}</div>
-
-<div class="buttons-fin">
-  <button class="button"
-          (click)="goBack()"
-  >Retour vers le profil</button>
-  <button class="button"
-          (click)="goPlayAgain()"
-  >Faire un autre quiz</button>
+<div *ngIf="data.disease==='cécité'">
+  <div class="endTitle">Fin de la partie</div>
+  <br>
+  <div class="score">Score : {{nbGoodAnswer}}/{{totalAnswer}}</div>
+  <br>
+  <span class="navigate">Entrée : Reour vers le profil</span>
+  <br>
+  <span class="navigate">Espace : Faire un autre quiz</span>
 </div>
 
