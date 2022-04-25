@@ -85,12 +85,12 @@ export class GameComponent implements OnInit {
 
     this.jeuActif = false;
     if (repChoisie) {
-      console.log("Bonne réponse =>");
+      console.log("Suivant");
       this.aJuste = true;
-      this.feedbackAction = "Bravo";
+      this.feedbackAction = "Suivant";
     } else {
       console.log("raté");
-      this.feedbackAction = "Dommage =>"
+      this.feedbackAction = "Suivant"
     }
     this.activeFeedback = true;
   }
