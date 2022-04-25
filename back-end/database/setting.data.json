@@ -12,5 +12,19 @@
     "pageBackGround": "#ffffff",
     "questionBackGround": "#797777",
     "id": 1649152848736
+  },
+  {
+    "Id": 3,
+    "buttonColor": "#fca14e",
+    "pageBackGround": "#ecc19c",
+    "questionBackGround": "#1e847f",
+    "id": 1650906398940
+  },
+  {
+    "Id": 4,
+    "buttonColor": "#fca14e",
+    "pageBackGround": "#fff1e1",
+    "questionBackGround": "#1d3c45",
+    "id": 1650907905813
   }
 ]

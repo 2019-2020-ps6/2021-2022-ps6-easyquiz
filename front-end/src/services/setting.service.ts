@@ -28,7 +28,9 @@ export class SettingService{
       this.retrieveSettings();
   }
 
-
+  /*
+  / Les configurations de base stockés en dur dans le cas où le serveur ne réponderai pas
+  */
   choises: Choice[] = [
     {
       Id: 1,
@@ -60,6 +62,7 @@ export class SettingService{
     }
   ];
 
+  // Choix de base
   choiceSelected: Choice = this.choises[0];
 
 
