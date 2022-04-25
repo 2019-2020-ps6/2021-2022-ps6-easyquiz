@@ -20,6 +20,7 @@ export class GameManagementComponent implements OnInit {
   private obj: any;
   private idQuiz;
   private idUser;
+  private indiceDebut = 0;
 
 
   constructor(private route: ActivatedRoute, private quizService: QuizService, private router: Router, private userService: UserService, private gameService: GameService) {
@@ -34,15 +35,7 @@ export class GameManagementComponent implements OnInit {
       this.quiz = quiz;
       console.log("a");
 
-      this.obj = {
-        "quizId": this.idQuiz,
-        "userId": this.idUser,
-        "nbQuestion": this.quiz.questions.length,
-        "correct": 0,
-        "currentQuestion": 0
-      };
-      this.gameService.addGame(this.obj);
-      console.log('eh ho'); console.log(this.obj);
+
     });
   }
 

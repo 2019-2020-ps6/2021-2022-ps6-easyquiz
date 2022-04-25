@@ -51,6 +51,19 @@ export class FinPartieComponent implements OnInit {
   }
 
 
+  /**
+   *  this.obj = {
+   *         "quizId": this.idQuiz,
+   *         "userId": this.idUser,
+   *         "nbQuestion": this.quiz.questions.length,
+   *         "correct": 0,
+   *         "currentQuestion": 0
+   *       };
+   *       this.gameService.addGame(this.obj);
+   *       console.log('eh ho'); console.log(this.obj);
+   */
+
+
 
 
   ngOnInit(): void {
