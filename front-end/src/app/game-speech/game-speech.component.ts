@@ -100,7 +100,7 @@ export class GameSpeechComponent implements OnInit {
     console.log('coucou');
     this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
     // tslint:disable-next-line:max-line-length
-    const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question. ' + 'Début du quizz.');
+    const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question. ' + 'Appuyez sur la barre espace pour débuter le quizz.');
     utterThise2.lang = 'fr-FR';
     utterThise2.rate = this.rate;
     this.synthe.speak(utterThise2);
@@ -109,7 +109,7 @@ export class GameSpeechComponent implements OnInit {
 
 
   finPartie(): void{
-    //alert('go a la fin');
+    // alert('go a la fin');
     this.synthe.cancel();
     console.log('FIN DE PARTIE');
       this.reBuildData()
