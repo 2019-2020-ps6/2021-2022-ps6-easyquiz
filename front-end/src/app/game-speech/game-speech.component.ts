@@ -171,13 +171,11 @@ export class GameSpeechComponent implements OnInit {
     //this.userService.setSelectedUser(id);
     console.log('coucou');
     this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
-    const synth2 = window.speechSynthesis;
     // tslint:disable-next-line:max-line-length
-    const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.' + 'Début du quizz.');
+    const utterThise2 = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question. ' + 'Début du quizz.');
     utterThise2.lang = 'fr-FR';
     utterThise2.rate = this.rate;
     this.synthe.speak(utterThise2);
-    this.reset();
   }
 
   debut() : void{
@@ -205,12 +203,11 @@ export class GameSpeechComponent implements OnInit {
     this.jeuActif = true;
     this.question = this.questionTotale.label;
     this.answerList = this.questionTotale.answers;
-    const synth = window.speechSynthesis;
     // tslint:disable-next-line:max-line-length
-    const utterThise = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
-    utterThise.lang = 'fr-FR';
-    utterThise.rate = this.rate;
-    this.synthe.speak(utterThise);
+    const utterThise2 = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
+    utterThise2.lang = 'fr-FR';
+    utterThise2.rate = this.rate;
+    this.synthe.speak(utterThise2);
   }
 
   async refresh(): Promise<void> {
@@ -227,6 +224,12 @@ export class GameSpeechComponent implements OnInit {
       console.log("cest le new"+this.questionTotale.label);
       this.reset();
       this.resetColor();
+      this.synthe.cancel();
+      // tslint:disable-next-line:max-line-length
+      const utterThise = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
+      utterThise.lang = 'fr-FR';
+      utterThise.rate = this.rate;
+      this.synthe.speak(utterThise);
       // this._document.defaultView.location.reload();
     }
 

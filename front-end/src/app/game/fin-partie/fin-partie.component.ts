@@ -17,6 +17,8 @@ export class FinPartieComponent implements OnInit {
   public user: User;
   public iduser: string;
   public id: string;
+  public synth = window.speechSynthesis;
+
 
   // tslint:disable-next-line:variable-name
   constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
@@ -27,13 +29,12 @@ export class FinPartieComponent implements OnInit {
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
       console.log("FIN NOTRE MALADE"+this.user.disease);
-      if (this.user.disease !== 'Cataracte') {
+
+      if (this.user.disease === 'Cécité') {
         console.log("ON VA LIRE");
-        const synth = window.speechSynthesis;
         const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
         utterThise.lang = 'fr-FR';
-        synth.speak(utterThise);
-
+        this.synth.speak(utterThise);
         document.addEventListener('keydown', (event) => {
           const nomTouche = event.key;
           if (nomTouche === ' ') {
@@ -58,9 +59,13 @@ export class FinPartieComponent implements OnInit {
 
   goBack(): void{
     this.router.navigate(['/profile/' + this.user.id]);
+    this.synth.cancel();
+
   }
 
   goPlayAgain(): void{
     this.router.navigate(['/' + this.user.id + '/theme']);
+    this.synth.cancel();
+
   }
 }
