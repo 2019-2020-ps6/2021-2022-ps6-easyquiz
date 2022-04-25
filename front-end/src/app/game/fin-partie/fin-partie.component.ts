@@ -18,6 +18,8 @@ export class FinPartieComponent implements OnInit {
   public iduser: string;
   public id: string;
   public synth = window.speechSynthesis;
+  private disease: string;
+  public lecture = true;
 
 
   // tslint:disable-next-line:variable-name
@@ -28,25 +30,24 @@ export class FinPartieComponent implements OnInit {
 
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      console.log("FIN NOTRE MALADE"+this.user.disease);
-
-      if (this.user.disease === 'Cécité') {
-        console.log("ON VA LIRE");
+      this.disease = this.user.disease;
+      console.log('FIN NOTRE MALADE' + this.user.disease);
+      if (this.disease === 'Cécité') {
+        console.log('ON VA LIRE');
         const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
         utterThise.lang = 'fr-FR';
         this.synth.speak(utterThise);
         document.addEventListener('keydown', (event) => {
-          const nomTouche = event.key;
-          if (nomTouche === ' ') {
+          const nomTouches = event.key;
+          if (nomTouches === ' ' && this.lecture === true) {
             this.goPlayAgain();
           }
-          if (nomTouche === 'Enter') {
+          if (nomTouches === 'Enter' && this.lecture === true) {
             this.goBack();
           }
-        }, true);
+          }, true);
 
-      }
-
+        }
     });
   }
 
@@ -68,17 +69,21 @@ export class FinPartieComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.setSelectedUser(this.iduser);
+    alert('ca se lance');
   }
 
   goBack(): void{
-    this.router.navigate(['/profile/' + this.user.id]);
     this.synth.cancel();
-
+    this.synth.pause();
+    this.lecture = false;
+    this.router.navigate(['/profile/' + this.user.id]);
   }
 
   goPlayAgain(): void{
-    this.router.navigate(['/' + this.user.id + '/theme']);
     this.synth.cancel();
+    this.synth.pause();
+    this.lecture = false;
+    this.router.navigate(['/' + this.user.id + '/theme']);
 
   }
 }

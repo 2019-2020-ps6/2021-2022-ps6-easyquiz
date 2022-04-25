@@ -190,5 +190,13 @@
     "ceciteOk": true,
     "alzheimerOk": false,
     "id": 1650718324018
+  },
+  {
+    "name": "Un quiz test sur la Camargue",
+    "theme": "Un thème pour toute la France ",
+    "cataracteOk": true,
+    "ceciteOk": true,
+    "alzheimerOk": true,
+    "id": 1650884940585
   }
 ]
