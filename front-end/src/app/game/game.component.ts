@@ -77,7 +77,7 @@ export class GameComponent implements OnInit {
 
     this.jeuActif = false;
     if (repChoisie) {
-      console.log("Suivant");
+      console.log("SUivant");
       this.aJuste = true;
       this.feedbackAction = "Suivant";
     } else {

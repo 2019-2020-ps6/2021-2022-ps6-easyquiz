@@ -9,7 +9,7 @@
 
   <div class = "question" [ngStyle]="{
     'background-color': choice.questionBackGround
-    }"> {{question}} </div>
+    }"> {{question.toUpperCase()}} </div>
 
   <ng-template [ngIf]="photoURL" >
   <div class = "listQuestion" *ngFor="let rep of answerList">
@@ -25,12 +25,12 @@
 
   <div class = photoBouton *ngIf="photoURL">
   <img class ="photo" src= {{photoURL}} alt=" ">
-  <input class = zoom type="button" value="Agrandir" (click)="zoom()">
+  <input class = zoom type="button" value="AGRANDIR" (click)="zoom()">
   </div>
 
 
   <div class="feeddback" *ngIf="activeFeedback">
-    <input class = buttonFeedback type="button" value="{{feedbackAction}}" (click)="refresh()">
+    <input class = buttonFeedback type="button" value="{{feedbackAction.toUpperCase()}}" (click)="refresh()">
   </div>
 
 
