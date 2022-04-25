@@ -198,5 +198,13 @@
     "ceciteOk": true,
     "alzheimerOk": true,
     "id": 1650884940585
+  },
+  {
+    "name": "Les bases ",
+    "theme": "Informatique",
+    "cataracteOk": true,
+    "ceciteOk": false,
+    "alzheimerOk": false,
+    "id": 1650900083956
   }
 ]
