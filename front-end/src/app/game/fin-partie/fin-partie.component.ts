@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../../models/user.model';
-import {UserService} from '../../../services/user.service';
 import {logger} from 'codelyzer/util/logger';
+import {GameService} from "../../../services/game.service";
 
 @Component({
   selector: 'app-fin-partie',
@@ -15,24 +15,23 @@ export class FinPartieComponent implements OnInit {
   public nbGoodAnswer: number;
   public totalAnswer: number;
   public user: User;
-  public iduser: string;
   public id: string;
   public synth = window.speechSynthesis;
   private disease: string;
   public lecture = true;
-
+  private idquiz: string;
+  private data : any;
 
   // tslint:disable-next-line:variable-name
-  constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
-    this.nbGoodAnswer = this.router.getCurrentNavigation().extras.state.nb;
-    this.totalAnswer = this.router.getCurrentNavigation().extras.state.tot;
-    this.iduser = this.router.getCurrentNavigation().extras.state.idUser;
+  constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private gameService : GameService) {
+    this.data = this.router.getCurrentNavigation().extras.state.data;
+    this.nbGoodAnswer = this.data.correct;
+    this.totalAnswer = this.data.questions.length;
+    this.idquiz = this.data.quizId;
 
-    this.userService.userSelected$.subscribe((user) => {
-      this.user = user;
-      this.disease = this.user.disease;
-      console.log('FIN NOTRE MALADE' + this.user.disease);
-      if (this.disease === 'Cécité') {
+
+      console.log('FIN NOTRE MALADE' + this.data.disease);
+      if (this.data.disease === 'cécité') {
         console.log('ON VA LIRE');
         const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
         utterThise.lang = 'fr-FR';
@@ -48,7 +47,23 @@ export class FinPartieComponent implements OnInit {
           }, true);
 
         }
-    });
+      this.createInstance();
+
+  }
+
+
+  createInstance(): void{
+    let obj : any;
+    obj = {
+      "quizId": this.data.quizId,
+      "userId": this.data.userId,
+      "nbQuestion": this.data.questions.length,
+      "correct": this.data.correct,
+    };
+
+    this.gameService.addGame(obj);
+    console.log('on vient de add obj : '); console.log(obj);
+
   }
 
 
@@ -68,22 +83,21 @@ export class FinPartieComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.userService.setSelectedUser(this.iduser);
-    alert('ca se lance');
+    //alert('ca se lance');
   }
 
   goBack(): void{
     this.synth.cancel();
     this.synth.pause();
     this.lecture = false;
-    this.router.navigate(['/profile/' + this.user.id]);
+    this.router.navigate(['/profile/' + this.data.userId]);
   }
 
   goPlayAgain(): void{
     this.synth.cancel();
     this.synth.pause();
     this.lecture = false;
-    this.router.navigate(['/' + this.user.id + '/theme']);
+    this.router.navigate(['/' + this.data.userId + '/theme']);
 
   }
 }

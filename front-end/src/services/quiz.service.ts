@@ -21,7 +21,6 @@ export class QuizService {
    */
   private quizzes: Quiz[] = QUIZ_LIST;
 
-  private quizCourant : Quiz;
 
   /*
    Observable which contains the list of the quiz.
@@ -56,15 +55,11 @@ export class QuizService {
     console.log("DANS SET SELECTED QUIZ AVEC ID "+quizId);
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
-      this.quizCourant = quiz;
       this.quizSelected$.next(quiz);
       console.log(quiz.questions[0]);
     });
   }
 
-  getCourant() : Quiz{
-    return this.quizCourant;
-  }
 
   deleteQuiz(quiz: Quiz): void {
     const urlWithId = this.quizUrl + '/' + quiz.id;

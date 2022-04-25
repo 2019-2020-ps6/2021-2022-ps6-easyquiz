@@ -11,10 +11,13 @@ export class ZoomPictureComponent implements OnInit {
 
   public urlPhoto: string;
   public pageBackground: string;
+  public data: any;
 
   constructor(private _location: Location, private router: Router) {
     this.urlPhoto = this.router.getCurrentNavigation().extras.state.link;
     this.pageBackground = this.router.getCurrentNavigation().extras.state.bgColor;
+    this.data = this.router.getCurrentNavigation().extras.state.data;
+
 
   }
 
@@ -23,7 +26,7 @@ export class ZoomPictureComponent implements OnInit {
   }
 
   backClicked() {
-    this._location.back();
+    this.router.navigate(['/game/cataracte'], {state: {data : this.data}});
   }
 
 }

@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {GameService} from "../../services/game.service";
 import {QuizService} from "../../services/quiz.service";
 import {Game} from "../../models/game.model";
+import {Quiz} from "../../models/quiz.model";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {Game} from "../../models/game.model";
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
+
 
 export class GameComponent implements OnInit {
 
@@ -27,45 +29,33 @@ export class GameComponent implements OnInit {
   public aJuste: boolean;
   public questionTotale: Question;
   public nbQuestions : number;
-  private game: Game;
-  private tout:Question[];
+  private indice: number;
+  private bonneRep : number;
+  private data:any;
 
 
 
   constructor(private router: Router, private gameService : GameService,
-              private settingsService: SettingService, private quizService :QuizService
+              private settingsService: SettingService
   ) {
 
-    console.log("constreucteur game component");
+    this.data = this.router.getCurrentNavigation().extras.state.data;
+    console.log("data vaut");
+    console.log(this.data);
 
-    this.gameService.game$.subscribe( (game) => {
-      this.game = game;
-      console.log("GAME ID vaut" + this.game.id);
-      this.tout = this.quizService.getCourant().questions;
-      console.log("on a recup" + this.tout.length);
-      this.debut();
-    });
-
-
-
-
+    console.log("JEXISTE");
+      this.bonneRep = this.data.correct;
+      this.indice = this.data.currentQuestion;
+      this.questionTotale = this.data.questions[this.indice];
+      this.nbQuestions = this.data.questions.length;
+      if(this.nbQuestions===0){this.finPartie();}
+      this.reset();
   }
+
 
   ngOnInit(): void {
 
   }
-
-
-  debut() : void{
-    console.log("on passe debut avec "+this.game.currentQuestion);
-    this.questionTotale = this.tout[this.game.currentQuestion];
-    this.nbQuestions = this.tout.length;
-    if(this.nbQuestions===0){
-      this.finPartie();
-    }
-    this.reset();
-  }
-
 
 
 
@@ -96,20 +86,19 @@ export class GameComponent implements OnInit {
   }
 
   zoom(): void {
+    this.reBuildData();
     console.log("on envoie "+this.photoURL);
-    this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL, bgColor: this.choice.pageBackGround}});
+    this.router.navigate(['/game/zoom/'], {state: {link: this.photoURL, bgColor: this.choice.pageBackGround, data:this.data}});
   }
 
-  async refresh(): Promise<void> {
-    console.log("avant modify "+this.game.currentQuestion);
-    await this.gameService.modify(this.aJuste);
-    console.log("thread1");
-    console.log(this.game.currentQuestion);
+  refresh(): void {
+    if(this.aJuste){this.bonneRep++;}
+    this.indice++;
 
-    if (this.game.currentQuestion === this.tout.length) {
+    if (this.indice === this.nbQuestions) {
       this.finPartie();
     } else {
-      this.questionTotale = this.tout[this.game.currentQuestion];
+      this.questionTotale = this.data.questions[this.indice];
       console.log("cest le new"+this.questionTotale.label);
       this.reset();
     }
@@ -117,9 +106,23 @@ export class GameComponent implements OnInit {
   }
 
   finPartie(): void{
-    console.log("correct vaut ici "+this.game.correct);
-    console.log("game vaut");console.log(this.game);
-    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion, idUser: this.game.userId}});
+    this.reBuildData()
+    this.router.navigate(['/fin/'], {state: {data : this.data}});
+  }
+
+
+  //Vaut qu'on build la on peut ajouter nous meme la maladie au debut ???
+  reBuildData() : any {
+    this.data = {
+      "quizId": this.data.quizId,
+      "userId": this.data.userId,
+      "questions": this.data.questions,
+      "currentQuestion": this.indice,
+      "correct": this.bonneRep,
+      "disease" : "cataracte",
+
+    };
+
   }
 
 

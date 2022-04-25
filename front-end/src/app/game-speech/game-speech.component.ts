@@ -46,25 +46,27 @@ export class GameSpeechComponent implements OnInit {
   public keydownEventDate: Date | null = null;
   public derniereEvent: Date;
   public compter = 0;
-  private game: Game;
-  private tout: Question[];
+  private data :any;
+  private bonneRep : number;
+  private indice : number;
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private quizService: QuizService, private userService: UserService, private settingsService: SettingService) {
+  constructor(private router: Router, private route: ActivatedRoute, private settingsService: SettingService) {
     this.synthe.cancel();
     this.synthe.resume();
 
-    console.log('passe constructeur');
 
-    this.gameService.game$.subscribe( (game) => {
-      console.log('je passe ici');
-      this.game = game;
-      console.log('GAME ID vaut' + this.game.id);
-      console.log('HE OH' + this.game.id);
-      this.tout = this.quizService.getCourant().questions;
-      console.log('on a recup' + this.tout.length);
-      this.debut();
-    });
+    this.data = this.router.getCurrentNavigation().extras.state.data;
+    console.log("data vaut");
+    console.log(this.data);
+    console.log("JEXISTE");
+    this.bonneRep = this.data.correct;
+    this.indice = this.data.currentQuestion;
+    this.questionTotale = this.data.questions[this.indice];
+    this.nbQuestions = this.data.questions.length;
+    if(this.nbQuestions===0){this.finPartie();}
+    this.reset();
+
 
     document.addEventListener('keydown', (event) => {
       const nomTouche = event.key;
@@ -87,11 +89,9 @@ export class GameSpeechComponent implements OnInit {
     document.getElementById('rate'); {
     }
 
-    this.userService.userSelected$.subscribe((user) => this.user = user);
   }
 
 
-  public user: User;
 
 
   ngOnInit(): void {
@@ -106,24 +106,28 @@ export class GameSpeechComponent implements OnInit {
     this.synthe.speak(utterThise2);
   }
 
-  debut(): void{
-    console.log('on passe debut avec ' + this.game.currentQuestion);
-    this.questionTotale = this.tout[this.game.currentQuestion];
-    this.nbQuestions = this.tout.length;
-    if (this.nbQuestions === 0){
-      this.finPartie();
-    }else{
-      this.reset();
-    }
-  }
+
 
   finPartie(): void{
-    alert('go a la fin');
+    //alert('go a la fin');
     this.synthe.cancel();
     console.log('FIN DE PARTIE');
-    console.log('correct vaut ici ' + this.game.correct);
-    console.log('game vaut'); console.log(this.game);
-    this.router.navigate(['/fin/'], {state: {nb: this.game.correct, tot: this.game.nbQuestion, idUser: this.game.userId}});  }
+      this.reBuildData()
+      this.router.navigate(['/fin/'], {state: {data : this.data}});
+    }
+
+  reBuildData() : any {
+    this.data = {
+      "quizId": this.data.quizId,
+      "userId": this.data.userId,
+      "questions": this.data.questions,
+      "currentQuestion": this.indice,
+      "correct": this.bonneRep,
+      "disease" : "cécité",
+
+    };
+
+  }
 
   reset(): void {
     this.choice = this.settingsService.getSelectedChoice();
@@ -135,22 +139,24 @@ export class GameSpeechComponent implements OnInit {
     this.answerList = this.questionTotale.answers;
   }
 
-  async refresh(): Promise<void> {
-    console.log('avant modify ' + this.game.currentQuestion);
-    await this.gameService.modify(this.aJuste);
-    console.log('thread1');
-    console.log(this.game.currentQuestion);
-    alert(this.game.currentQuestion);
 
-    console.log('on a ' + this.game.currentQuestion + ' et ' + this.tout.length);
-    if (this.game.currentQuestion === this.tout.length) {
+
+
+
+  refresh(): void {
+    this.indice++;
+    if(this.aJuste){this.bonneRep++;}
+    //alert(this.game.currentQuestion);
+
+    if (this.indice === this.data.questions.length) {
       this.finPartie();
     } else {
-      this.questionTotale = this.tout[this.game.currentQuestion];
+      this.questionTotale = this.data.questions[this.indice];
       console.log('cest le new' + this.questionTotale.label);
       // this.reset();
       this.resetColor();
       this.synthe.cancel();
+      this.reset();
       // tslint:disable-next-line:max-line-length
       const utterThise = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
       utterThise.lang = 'fr-FR';
