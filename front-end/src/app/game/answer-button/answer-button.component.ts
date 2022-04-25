@@ -51,7 +51,7 @@ export class AnswerButtonComponent implements OnInit {
 
   changeStyle(): void {
     if (!this.PhotoHere) {
-      this.width = '85%';
+      this.width = '89%';
     }
   }
 

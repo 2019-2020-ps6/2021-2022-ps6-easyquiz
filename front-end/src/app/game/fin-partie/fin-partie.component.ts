@@ -20,7 +20,7 @@ export class FinPartieComponent implements OnInit {
   private disease: string;
   public lecture = true;
   private idquiz: string;
-  private data : any;
+  private data: any;
 
   // tslint:disable-next-line:variable-name
   constructor(private _location: Location, private router: Router, private route: ActivatedRoute, private gameService : GameService) {
