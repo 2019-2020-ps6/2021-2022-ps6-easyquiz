@@ -52,9 +52,11 @@ export class GameSpeechComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private gameService: GameService, private quizService : QuizService, private userService: UserService, private settingsService: SettingService) {
 
     console.log("passe constructeur");
+
     this.gameService.game$.subscribe( (game) => {
+      console.log("je passe ici");
       this.game = game;
-      console.log("GAME ID vaut" + this.game.id);
+      console.log("HE OH" + this.game.id);
       this.tout = this.quizService.getCourant().questions;
       console.log("on a recup" + this.tout.length);
       this.debut();
@@ -165,8 +167,8 @@ export class GameSpeechComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.userService.setSelectedUser(id);
+    //const id = this.route.snapshot.paramMap.get('id');
+    //this.userService.setSelectedUser(id);
     console.log('coucou');
     this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
     const synth2 = window.speechSynthesis;
