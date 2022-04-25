@@ -55,9 +55,12 @@ export class GameSpeechComponent implements OnInit {
     this.synthe.resume();
 
     console.log('passe constructeur');
+
     this.gameService.game$.subscribe( (game) => {
+      console.log('je passe ici');
       this.game = game;
       console.log('GAME ID vaut' + this.game.id);
+      console.log('HE OH' + this.game.id);
       this.tout = this.quizService.getCourant().questions;
       console.log('on a recup' + this.tout.length);
       this.debut();
@@ -145,7 +148,7 @@ export class GameSpeechComponent implements OnInit {
     } else {
       this.questionTotale = this.tout[this.game.currentQuestion];
       console.log('cest le new' + this.questionTotale.label);
-      //this.reset();
+      // this.reset();
       this.resetColor();
       this.synthe.cancel();
       // tslint:disable-next-line:max-line-length
