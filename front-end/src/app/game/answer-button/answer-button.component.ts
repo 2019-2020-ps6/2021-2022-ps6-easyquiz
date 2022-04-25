@@ -1,5 +1,6 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter, SimpleChanges} from '@angular/core';
 import {Answer} from "../../../models/question.model";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-answer-button',
@@ -23,6 +24,10 @@ export class AnswerButtonComponent implements OnInit {
   @Output()
   emetteur: EventEmitter<boolean> = new EventEmitter();
 
+
+
+
+
   public aucunClick: boolean = true;
   public bonClick: boolean = false;
   public mauvaisClick: boolean = false;
@@ -34,6 +39,15 @@ export class AnswerButtonComponent implements OnInit {
     console.log(this.answer);
     this.changeStyle();
   }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("CHANGEMENT");
+    if(!this.actif) {this.checkShowAnswer();}
+  }
+
+
+
 
   changeStyle(): void {
     if (!this.PhotoHere) {
@@ -58,5 +72,13 @@ export class AnswerButtonComponent implements OnInit {
     this.mauvaisClick=true;
     }
   }
+
+  checkShowAnswer(): void{
+    if(!this.actif && this.answer.isCorrect){
+      console.log("bonsoir");
+      this.bonClick=true;
+    }
+  }
+
 
 }

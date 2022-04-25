@@ -8,6 +8,7 @@ import {GameService} from "../../services/game.service";
 import {QuizService} from "../../services/quiz.service";
 import {Game} from "../../models/game.model";
 import {Quiz} from "../../models/quiz.model";
+import {Subject} from "rxjs";
 
 
 @Component({
@@ -18,6 +19,7 @@ import {Quiz} from "../../models/quiz.model";
 
 
 export class GameComponent implements OnInit {
+
 
   public question: string;
   public answerList: Answer[] = [];
@@ -32,6 +34,7 @@ export class GameComponent implements OnInit {
   private indice: number;
   private bonneRep : number;
   private data:any;
+
 
 
 
@@ -56,7 +59,6 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
 
 
   reset(): void {
