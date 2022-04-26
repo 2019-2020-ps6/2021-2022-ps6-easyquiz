@@ -222,7 +222,7 @@ export class GameSpeechComponent implements OnInit {
     this.rate = Number((document.getElementById('rate') as HTMLInputElement).value);
     if (nomTouche === 'Enter'){
       this.synthe.cancel();
-      utterThis = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.' + 'Début du quizz.' );
+      utterThis = new SpeechSynthesisUtterance('Après la lecture de chaque question, les réponses sont données dans cet ordre : haut, droite, bas, gauche. Appuyez sur la flèche correspondant à la réponse pour valider. Vous pouvez aussi appuyer sur espace pour réécouter la question.');
       utterThis.lang = 'fr-FR';
       utterThis.rate = this.rate;
       this.synthe.speak(utterThis);
