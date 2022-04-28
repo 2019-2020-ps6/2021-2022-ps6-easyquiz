@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { Quiz } from '../models/quiz.model';
-import { QUIZ_LIST } from '../mocks/quiz-list.mock';
-import { Question } from '../models/question.model';
-import { serverUrl, httpOptionsBase } from '../configs/server.config';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Subject} from 'rxjs';
+import {Quiz} from '../models/quiz.model';
+import {QUIZ_LIST} from '../mocks/quiz-list.mock';
+import {Question} from '../models/question.model';
+import {serverUrl, httpOptionsBase} from '../configs/server.config';
 
 @Injectable({
   providedIn: 'root'
@@ -52,7 +52,7 @@ export class QuizService {
   }
 
   setSelectedQuiz(quizId: string): void {
-    console.log("DANS SET SELECTED QUIZ AVEC ID "+quizId);
+    console.log('DANS SET SELECTED QUIZ AVEC ID ' + quizId);
     const urlWithId = this.quizUrl + '/' + quizId;
     this.http.get<Quiz>(urlWithId).subscribe((quiz) => {
       this.quizSelected$.next(quiz);
@@ -67,7 +67,7 @@ export class QuizService {
   }
 
   addQuestion(quiz: Quiz, question: Question): void {
-    console.log("on voit l'ulr" +question.urlIMG);
+    console.log('on voit l\'ulr' + question.urlIMG);
     const questionUrl = this.quizUrl + '/' + quiz.id + '/' + this.questionsPath;
     this.http.post<Question>(questionUrl, question, this.httpOptions).subscribe(() => this.setSelectedQuiz(quiz.id));
   }
@@ -79,9 +79,30 @@ export class QuizService {
 
   getThemes(): string[] {
     const res: string[] = [];
-    for (const quiz of this.quizzes){
+    for (const quiz of this.quizzes) {
       res.push(quiz.theme);
     }
+    res.sort((s1, s2) => {
+      if (s1 > s2) {
+        return 1;
+      }
+      if (s1 < s2) {
+        return -1;
+      }
+    });
+    console.log('size before filter: ' + res.length);
+    let i = 1;
+    while (i < res.length) {
+      if (res[i - 1] === res[i]) {
+        res.splice(i, 1);
+      } else {
+        i++;
+      }
+    }
+    console.log('size after filter: ' + res.length);
+    /*res.filter((elem, index, self) => {
+      return !index || elem !== self[index - 1];
+    });*/
     return res;
   }
 
