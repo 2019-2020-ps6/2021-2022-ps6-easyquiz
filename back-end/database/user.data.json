@@ -366,5 +366,11 @@
     "lastName": "testnom",
     "disease": "Cataracte",
     "id": 3650722684890
+  },
+  {
+    "firstName": "prenom1",
+    "lastName": "nom1",
+    "disease": "Cécité",
+    "id": 1650953790165
   }
 ]

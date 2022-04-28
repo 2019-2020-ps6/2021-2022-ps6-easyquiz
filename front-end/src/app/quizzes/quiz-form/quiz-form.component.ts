@@ -20,7 +20,11 @@ export class QuizFormComponent implements OnInit {
    */
   public quizForm: FormGroup;
 
+  public themeList: string[];
+
   constructor(public formBuilder: FormBuilder, public quizService: QuizService) {
+    this.themeList = quizService.getThemes();
+    console.log('first theme: ' + this.themeList[0]);
     this.quizForm = this.formBuilder.group({
       name: [''],
       theme: [''],

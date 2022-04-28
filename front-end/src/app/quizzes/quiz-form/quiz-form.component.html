@@ -8,7 +8,12 @@
     <br>
     <label for="theme">
       Thème <br>
-      <input class="input-custom" type="text" id="theme" [formControlName]="'theme'" placeholder="30 caractères max" maxlength="30" required size="30">
+      <input type="text" [formControlName]="'theme'" id="theme" list="themes" placeholder="30 caractères max" maxlength="30" required size="30">
+      <datalist id="themes">
+        <option *ngFor="let theme of themeList">
+          {{theme}}
+        </option>
+      </datalist>
     </label>
     <br>
     <input type="checkbox" [formControlName]="'cataracteOk'">
