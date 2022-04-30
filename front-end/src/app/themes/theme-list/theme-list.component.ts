@@ -15,8 +15,12 @@ export class ThemeListComponent implements OnInit {
   public quizList: Quiz[] = [];
   public themeList: string[] = [];
   public user: User;
+  public currentTheme: number;
+  public synthe = window.speechSynthesis;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, public quizService: QuizService) {
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
+    this.synthe.cancel();
+    this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
       this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -31,15 +35,50 @@ export class ThemeListComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
     this.getThemes();
+    this.currentTheme = 0;
+
+    document.addEventListener('keydown', (event) => {
+      let utterThis = new SpeechSynthesisUtterance('Hello');
+      const nomTouche = event.key;
+      switch (nomTouche) {
+        case 'ArrowUp':
+          if (this.currentTheme === 0) {
+            //cannot go upper
+          } else {
+            this.currentTheme--;
+            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
+            utterThis.lang = 'fr-FR';
+            this.synthe.speak(utterThis);
+          }
+          break;
+        case 'ArrowDown':
+          if (this.currentTheme === this.themeList.length - 1) {
+            //cannot go downer
+          } else {
+            this.currentTheme++;
+            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
+            utterThis.lang = 'fr-FR';
+            this.synthe.speak(utterThis);
+          }
+          break;
+        case 'Enter':
+          utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème ' + this.themeList[this.currentTheme]);
+          utterThis.lang = 'fr-FR';
+          this.synthe.speak(utterThis);
+          this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
+      }
+    }, true);
   }
 
   getThemes(): void {
     console.log('récupération des themes');
     let i: number;
-    this.themeList[0] = '';
+    if (this.quizList.length === 0) {
+      return;
+    }
+    this.themeList[0] = this.quizList[0].theme;
     for (i = 0; i < this.quizList.length; i++) {
-      console.log('for');
-      if (!(this.themeList[this.themeList.length - 1] === this.quizList[i].theme)){
+      if (!(this.themeList[this.themeList.length - 1] === this.quizList[i].theme)) {
         //console.log('trouble:' + this.user.disease);
         //console.log('theme:' + this.quizList[i].theme);
         if ((this.user.disease === 'Cataracte' && this.quizList[i].cataracteOk) ||
@@ -48,9 +87,5 @@ export class ThemeListComponent implements OnInit {
         }
       }
     }
-  }
-
-  themeSelected(selected: boolean): void {
-    console.log('event received from child:', selected);
   }
 }
