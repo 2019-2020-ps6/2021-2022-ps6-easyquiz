@@ -1,10 +1,15 @@
 <h1 class="titre">
   Quizzes : {{theme}}
 </h1>
-<br>
-<br>
+<div *ngIf="user.disease==='Cécité'">
+  <i class="fas fa-arrow-circle-up"></i>Naviguer <br>
+  <i class="fas fa-arrow-circle-down"></i> <br><br>
+  <span class="keyboard" >Entrée</span>
+  Valider
+</div>
+<br><br>
 <div class="quiz-list">
   <div class="quiz-list" *ngFor="let quiz of quizThemeList">
-    <button class="select" style="text-decoration: none" routerLink="/game/{{user.id}}/{{quiz.id}}">{{quiz.name}}<br></button>
+    <i class="fas fa-arrow-right" *ngIf="user.disease==='Cécité' && quizThemeList[currentQuiz] === quiz"></i><button class="select" routerLink="/game/{{user.id}}/{{quiz.id}}">{{quiz.name}}<br></button>
   </div>
 </div>
