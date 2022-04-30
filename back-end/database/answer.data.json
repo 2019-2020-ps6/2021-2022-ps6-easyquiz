@@ -546,7 +546,7 @@
     "id": 1650886445369
   },
   {
-    "value": "Marron",
+    "value": "Maron",
     "isCorrect": false,
     "questionId": 1650886445363,
     "id": 1650886445365
@@ -748,5 +748,29 @@
     "isCorrect": false,
     "questionId": 1650951852347,
     "id": 1650951852363
+  },
+  {
+    "value": "acteur",
+    "isCorrect": true,
+    "questionId": 1650953922014,
+    "id": 1650953922019
+  },
+  {
+    "value": "chanteur",
+    "isCorrect": false,
+    "questionId": 1650953922014,
+    "id": 1650953922023
+  },
+  {
+    "value": "sportif",
+    "isCorrect": false,
+    "questionId": 1650953922014,
+    "id": 1650953922030
+  },
+  {
+    "value": "entrepreneur",
+    "isCorrect": false,
+    "questionId": 1650953922014,
+    "id": 1650953922032
   }
 ]

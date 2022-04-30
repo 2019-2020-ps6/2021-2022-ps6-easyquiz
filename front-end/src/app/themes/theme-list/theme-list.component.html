@@ -4,6 +4,6 @@
 <br><br>
 <div class="theme-list">
   <div class="theme" *ngFor="let theme of themeList">
-    <button *ngIf="theme !== ''"class="select"  routerLink="/{{user.id}}/{{theme}}">{{theme}}<br></button>
+    <i class="fas fa-arrow-right" *ngIf="themeList[currentTheme]===theme"></i> <button class="select"  routerLink="/{{user.id}}/{{theme}}">{{theme}}<br></button>
   </div>
 </div>

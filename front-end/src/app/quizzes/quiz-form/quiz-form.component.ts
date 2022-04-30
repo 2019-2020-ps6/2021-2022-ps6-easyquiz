@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { QuizService } from '../../../services/quiz.service';
@@ -13,6 +13,9 @@ export class QuizFormComponent implements OnInit {
 
   // Note: We are using here ReactiveForms to create our form. Be careful when you look for some documentation to
   // avoid TemplateDrivenForm (another type of form)
+
+  @Input()
+  themeList: string[];
 
   /**
    * QuizForm: Object which manages the form in our component.

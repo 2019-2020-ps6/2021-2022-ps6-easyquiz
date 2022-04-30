@@ -12,9 +12,13 @@ export class QuizListComponent implements OnInit {
 
   public quizList: Quiz[] = [];
 
+  public themeList: string[] = [];
+
   constructor(private router: Router, public quizService: QuizService) {
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
       this.quizList = quizzes;
+      this.themeList = quizService.getThemes();
+      console.log('first theme: ' + this.themeList[0]);
     });
   }
 
