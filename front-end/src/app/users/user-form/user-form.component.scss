@@ -4,11 +4,49 @@
   border-radius: 6px ;
 }
 
-.button-card{
-  width: 100%;
+.button-card1{
+  width: 20%;
+  position: absolute;
+  margin-left: 55%;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+}
+
+.button-card2{
+  width: 20%;
+  position: absolute;
+  margin-left: 25%;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+}
+
+.button-card1:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
+}
+.button-card2:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
 }
 
 .card{
   margin-left: auto;
 }
 
+.firstName{
+  font-size: 25px;
+}
+
+.input-custom{
+  width: 20%;
+}
+
+.firstName{
+  font-size: 25px;
+}

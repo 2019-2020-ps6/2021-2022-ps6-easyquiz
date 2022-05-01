@@ -1,30 +1,35 @@
-<div class="card">
-  <h2 class="titre">Créer un nouveau profil</h2>
+<div class="car">
   <form class="user-form" [formGroup]="userForm">
-    <label for="firstName">
-      Prénom <br>
-      <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" placeholder="20 caractères max" maxlength="20" required size="20">
-    </label>
+   <div class =" firstName">
+     <label for="firstName">
+       Prénom
+       <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" placeholder="20 caractères max" maxlength="20" required size="20">
+     </label>
+   </div>
     <br>
-    <label for="lastName">
-      Nom <br>
-      <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" placeholder="20 caractères max" maxlength="20" required size="20">
-    </label>
+    <div class="lastName">
+      <label for="lastName">
+        Nom
+        <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" placeholder="20 caractères max" maxlength="20" required size="20">
+      </label>
+    </div>
     <br>
     <br>
-    Trouble :
-    <br>
-    <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
-    <label for="cataracte">Cataracte</label>
-    <br>
-    <input type="radio" id="cecite" name="groupe1" value="Cécité" [formControlName]="'disease'">
-    <label for="cecite">Cecité</label>
-    <br>
-    <input type="radio" id="alzheimer" name="groupe1" value="Alzheimer" [formControlName]="'disease'">
-    <label for="alzheimer">Alzheimer</label>
+    <div>
+      Trouble :
+      <br>
+      <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
+      <label for="cataracte">Cataracte</label>
+      <br>
+      <input type="radio" id="cecite" name="groupe1" value="Cécité" [formControlName]="'disease'">
+      <label for="cecite">Cecité</label>
+      <br>
+      <input type="radio" id="alzheimer" name="groupe1" value="Alzheimer" [formControlName]="'disease'">
+      <label for="alzheimer">Alzheimer</label>
+    </div>
     <br><br>
-    <button type="submit" class="button-card" (click)="addUser()"> Créer un profil</button>
-    <br>
-    <button type="submit" class="button-card" [routerLink]="['/user-list']" style="text-decoration: none" > Retour</button>
+
+    <button type="submit" class="button-card1"  (click)="addUser()"> Créer un profil</button>
+    <button type="submit" class="button-card2" [routerLink]="['/user-list']" style="text-decoration: none" > Retour</button>
   </form>
 </div>
