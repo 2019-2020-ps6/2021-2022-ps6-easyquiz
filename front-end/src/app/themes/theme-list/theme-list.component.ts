@@ -23,6 +23,9 @@ export class ThemeListComponent implements OnInit {
     this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
+      if (this.user.disease === 'Cécité') {
+        this.setAudioControls();
+      }
       this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
         this.quizList = quizzes;
         this.themeList.splice(0, this.themeList.length);
@@ -35,39 +38,7 @@ export class ThemeListComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.userService.setSelectedUser(id);
     this.getThemes();
-    this.currentTheme = 0;
-
-    document.addEventListener('keydown', (event) => {
-      let utterThis = new SpeechSynthesisUtterance('Hello');
-      const nomTouche = event.key;
-      switch (nomTouche) {
-        case 'ArrowUp':
-          if (this.currentTheme === 0) {
-            //cannot go upper
-          } else {
-            this.currentTheme--;
-            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
-            utterThis.lang = 'fr-FR';
-            this.synthe.speak(utterThis);
-          }
-          break;
-        case 'ArrowDown':
-          if (this.currentTheme === this.themeList.length - 1) {
-            //cannot go downer
-          } else {
-            this.currentTheme++;
-            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
-            utterThis.lang = 'fr-FR';
-            this.synthe.speak(utterThis);
-          }
-          break;
-        case 'Enter':
-          utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème ' + this.themeList[this.currentTheme]);
-          utterThis.lang = 'fr-FR';
-          this.synthe.speak(utterThis);
-          this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
-      }
-    }, true);
+    this.currentTheme = -1;
   }
 
   getThemes(): void {
@@ -87,5 +58,45 @@ export class ThemeListComponent implements OnInit {
         }
       }
     }
+  }
+
+  setAudioControls(): void {
+    let utterThis = new SpeechSynthesisUtterance('Choisissez maintenant un thème. Pour vous déplacer dans les thèmes, utilisez les flèches du haut et du bas. Pour sélectionner un thème, appuyez sur la touche entrée.');
+    utterThis.lang = 'fr-FR';
+    this.synthe.speak(utterThis);
+
+    document.addEventListener('keydown', (event) => {
+      this.synthe.cancel();
+      const nomTouche = event.key;
+      switch (nomTouche) {
+        case 'ArrowUp':
+          if (this.currentTheme <= 0) {
+            // cannot go upper
+          } else {
+            this.currentTheme--;
+            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
+            utterThis.lang = 'fr-FR';
+            this.synthe.speak(utterThis);
+          }
+          break;
+        case 'ArrowDown':
+          if (this.currentTheme === this.themeList.length - 1) {
+            // cannot go downer
+          } else {
+            this.currentTheme++;
+            utterThis = new SpeechSynthesisUtterance(this.themeList[this.currentTheme]);
+            utterThis.lang = 'fr-FR';
+            this.synthe.speak(utterThis);
+          }
+          break;
+        case 'Enter':
+          if (this.currentTheme >= 0) {
+            utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème, ' + this.themeList[this.currentTheme]);
+            utterThis.lang = 'fr-FR';
+            this.synthe.speak(utterThis);
+            this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
+          }
+      }
+    }, true);
   }
 }
