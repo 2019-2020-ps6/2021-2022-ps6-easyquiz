@@ -17,6 +17,7 @@ export class ThemeListComponent implements OnInit {
   public user: User;
   public currentTheme: number;
   public synthe = window.speechSynthesis;
+  public gotCataracte = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
     this.synthe.cancel();
@@ -26,6 +27,7 @@ export class ThemeListComponent implements OnInit {
       if (this.user.disease === 'Cécité') {
         this.setAudioControls();
       }
+      else{this.gotCataracte = true;}
       this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
         this.quizList = quizzes;
         this.themeList.splice(0, this.themeList.length);
