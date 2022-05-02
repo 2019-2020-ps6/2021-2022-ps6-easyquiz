@@ -18,7 +18,8 @@ export class QuizListSelectComponent implements OnInit {
   public user: User;
   public currentQuiz: number;
   public synthe = window.speechSynthesis;
-  public gotCataracte : boolean = false;
+  public gotCataracte = false;
+  public isAudioSet = false;
 
   constructor(private route: ActivatedRoute, private router: Router, public quizService: QuizService, public userService: UserService) {
     this.synthe.cancel();
@@ -28,10 +29,15 @@ export class QuizListSelectComponent implements OnInit {
       console.log('quizzes subscribed');
     });
     this.userService.userSelected$.subscribe((user) => {
-      if(user.disease==='Cataracte'){console.log("on a cata"); this.gotCataracte = true;}
+      if (user.disease === 'Cataracte') {
+        console.log('on a cata');
+        this.gotCataracte = true;
+      }
       this.user = user;
       console.log('user subscribed');
-      this.setAudioControls();
+      if (this.user.disease === 'Cécité' && !this.isAudioSet) {
+        this.setAudioControls();
+      }
       this.getQuizzes();
     });
   }
@@ -93,5 +99,6 @@ export class QuizListSelectComponent implements OnInit {
           }
       }
     }, true);
+    this.isAudioSet = true;
   }
 }

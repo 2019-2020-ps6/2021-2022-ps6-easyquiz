@@ -18,13 +18,14 @@ export class ThemeListComponent implements OnInit {
   public currentTheme: number;
   public synthe = window.speechSynthesis;
   public gotCataracte = false;
+  public isAudioSet = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
     this.synthe.cancel();
     this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      if (this.user.disease === 'Cécité') {
+      if (this.user.disease === 'Cécité' && !this.isAudioSet) {
         this.setAudioControls();
       }
       else{this.gotCataracte = true;}
@@ -100,5 +101,6 @@ export class ThemeListComponent implements OnInit {
           }
       }
     }, true);
+    this.isAudioSet = true;
   }
 }
