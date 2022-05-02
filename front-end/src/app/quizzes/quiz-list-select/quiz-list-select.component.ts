@@ -92,9 +92,11 @@ export class QuizListSelectComponent implements OnInit {
           break;
         case 'Enter':
           if (this.currentQuiz >= 0) {
+            /*
             utterThis = new SpeechSynthesisUtterance('Vous avez choisi le quiz, ' + this.quizThemeList[this.currentQuiz].name);
             utterThis.lang = 'fr-FR';
             this.synthe.speak(utterThis);
+             */
             this.router.navigate(['/game/' + this.user.id + '/' + this.quizThemeList[this.currentQuiz].id]);
           }
       }

@@ -94,9 +94,11 @@ export class ThemeListComponent implements OnInit {
           break;
         case 'Enter':
           if (this.currentTheme >= 0) {
+            /*
             utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème, ' + this.themeList[this.currentTheme]);
             utterThis.lang = 'fr-FR';
             this.synthe.speak(utterThis);
+             */
             this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
           }
       }
