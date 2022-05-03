@@ -4,11 +4,65 @@
   border-radius: 6px ;
 }
 
-.button-card{
-  width: 100%;
+.button-card1{
+  width: 20%;
+  position: absolute;
+  margin-left: 53%;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+}
+
+.button-card2{
+  width: 20%;
+  position: absolute;
+  margin-left: 22%;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+}
+
+.button-card1:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
+}
+.button-card2:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
 }
 
 .card{
   margin-left: auto;
 }
+
+.input-custom{
+  width: 20%;
+}
+
+.firstName{
+  font-size: 25px;
+  margin-left: 40%;
+  margin-top: 5%;
+}
+
+.lastName{
+  font-size: 25px;
+  margin-left: 42%;
+}
+
+.trouble{
+  margin-left: 45%;
+  font-size: 25px;
+}
+
+
+.titree{
+  text-align: center;
+  margin-left: 4%;
+}
+
 

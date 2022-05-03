@@ -3,13 +3,13 @@
 <h1 class="titre" [ngClass]="{'titreCata': gotCataracte }">
   Thèmes
 </h1>
-<div *ngIf="user.disease==='Cécité'">
+<span class="instruction"*ngIf="user.disease==='Cécité'">
   <i class="fas fa-arrow-circle-up"></i>Naviguer <br>
   <i class="fas fa-arrow-circle-down"></i> <br><br>
   <span class="keyboard" >Entrée</span>
   Valider
-</div>
-<br><br>
+</span>
+<br>
 <div class="theme-list">
   <div class="theme" *ngFor="let theme of themeList"   [ngClass]="{'themeCata': gotCataracte }">
     <i class="fas fa-arrow-right" *ngIf="themeList[currentTheme]===theme && user.disease==='Cécité'"></i>
