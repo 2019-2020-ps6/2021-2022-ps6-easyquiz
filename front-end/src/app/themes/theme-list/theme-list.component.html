@@ -1,11 +1,15 @@
 
 <div [ngClass]="gotCataracte ? 'tout' : 'existepas'"
-     [ngStyle]="{
+     [ngStyle]="gotCataracte ?  {
     'background-color': choice.pageBackGround
+    } : {
+    'background-color': ''
     }">
 <h1 class="titre" [ngClass]="{'titreCata': gotCataracte }"
-    [ngStyle]="{
+    [ngStyle]="gotCataracte ?  {
     'background-color': choice.questionBackGround
+    } : {
+    'background-color': ''
     }">
   Thèmes
 </h1>
