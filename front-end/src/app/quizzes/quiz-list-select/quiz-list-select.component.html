@@ -1,4 +1,7 @@
-<h1 class="titre">
+
+<div [ngClass]="gotCataracte ? 'tout' : 'existepas'" >
+
+<h1 class="titre" [ngClass]="{'titreCata': gotCataracte }">
   Quizzes : {{theme}}
 </h1>
 <div *ngIf="user.disease==='Cécité'">
@@ -10,6 +13,10 @@
 <br><br>
 <div class="quiz-list">
   <div class="quiz-list" *ngFor="let quiz of quizThemeList">
-    <i class="fas fa-arrow-right" *ngIf="user.disease==='Cécité' && quizThemeList[currentQuiz] === quiz"></i><button class="select" routerLink="/game/{{user.id}}/{{quiz.id}}">{{quiz.name}}<br></button>
+    <i class="fas fa-arrow-right" *ngIf="user.disease==='Cécité' && quizThemeList[currentQuiz] === quiz"></i>
+    <button class="select" [ngClass]="gotCataracte ? 'listeCata' : 'select'" routerLink="/game/{{user.id}}/{{quiz.id}}">{{quiz.name}}<br></button>
   </div>
 </div>
+
+</div>
+

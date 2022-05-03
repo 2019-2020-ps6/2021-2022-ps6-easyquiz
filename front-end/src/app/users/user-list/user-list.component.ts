@@ -13,6 +13,7 @@ export class UserListComponent implements OnInit {
   public userList: User[] = [];
 
   constructor(private userService: UserService) {
+    window.speechSynthesis.cancel();
     this.userService.users$.subscribe((users: User[]) => {
       this.userList = users;
       this.userList.sort((u1, u2) => {

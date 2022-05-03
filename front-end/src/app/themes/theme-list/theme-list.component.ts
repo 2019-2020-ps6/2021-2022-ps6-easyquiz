@@ -17,15 +17,18 @@ export class ThemeListComponent implements OnInit {
   public user: User;
   public currentTheme: number;
   public synthe = window.speechSynthesis;
+  public gotCataracte = false;
+  public isAudioSet = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
     this.synthe.cancel();
     this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      if (this.user.disease === 'Cécité') {
+      if (this.user.disease === 'Cécité' && !this.isAudioSet) {
         this.setAudioControls();
       }
+      else{this.gotCataracte = true;}
       this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
         this.quizList = quizzes;
         this.themeList.splice(0, this.themeList.length);
@@ -91,12 +94,15 @@ export class ThemeListComponent implements OnInit {
           break;
         case 'Enter':
           if (this.currentTheme >= 0) {
+            /*
             utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème, ' + this.themeList[this.currentTheme]);
             utterThis.lang = 'fr-FR';
             this.synthe.speak(utterThis);
+             */
             this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
           }
       }
     }, true);
+    this.isAudioSet = true;
   }
 }

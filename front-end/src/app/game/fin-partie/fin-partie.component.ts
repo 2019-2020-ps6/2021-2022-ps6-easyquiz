@@ -33,7 +33,15 @@ export class FinPartieComponent implements OnInit {
     console.log('FIN NOTRE MALADE' + this.data.disease);
     if (this.data.disease === 'cécité') {
       console.log('ON VA LIRE');
-      const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
+      let toSpeak = 'Vous avez : ';
+      if (this.nbGoodAnswer === 1){
+        toSpeak += 'une';
+      } else {
+        toSpeak += this.nbGoodAnswer;
+      }
+      toSpeak += ' bonne réponses sur ' + this.totalAnswer + '. Pour rejouer un nouveau quizz, appuyez sur la barre espace. Sinon, appuyez sur la touche entrée pour arrêter et revenir au profil. ';
+      //const utterThise = new SpeechSynthesisUtterance('Vous avez' + this.nbGoodAnswer + 'bonnes réponses sur' + this.totalAnswer + '. Pour rejouer un nouveau quizz appuyez sur la barre espace. Sinon appuyez sur la touche entrée pour arrêter et revenir au profil. ');
+      const utterThise = new SpeechSynthesisUtterance(toSpeak);
       utterThise.lang = 'fr-FR';
       this.synth.speak(utterThise);
       document.addEventListener('keydown', (event) => {
