@@ -1,6 +1,12 @@
 
-<div [ngClass]="gotCataracte ? 'tout' : 'existepas'" >
-<h1 class="titre" [ngClass]="{'titreCata': gotCataracte }">
+<div [ngClass]="gotCataracte ? 'tout' : 'existepas'"
+     [ngStyle]="{
+    'background-color': choice.pageBackGround
+    }">
+<h1 class="titre" [ngClass]="{'titreCata': gotCataracte }"
+    [ngStyle]="{
+    'background-color': choice.questionBackGround
+    }">
   Thèmes
 </h1>
 <span class="instruction"*ngIf="user.disease==='Cécité'">
