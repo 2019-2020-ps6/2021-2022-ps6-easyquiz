@@ -1,6 +1,16 @@
+<html>
+<head>
+  <script src="https://kit.fontawesome.com/fb05d3cbe1.js" crossorigin="anonymous"></script>
+</head>
 <div class="card">
   <h2>
     <i class="fab fa-leanpub"></i>
+    <i class="fa-regular fa-futbol"></i>
+    <i *ngIf="quiz.theme=== 'sport'" class="fab fa-dumbbell"></i>
+    <i *ngIf="quiz.theme ==='sport'" class="fa-solid fa-dumbbell"></i>
+    <i *ngIf=" quiz.theme ==='sport'" class="fab-thin fa-dumbbell"></i>
+    <i *ngIf="quiz.theme==='sport'" class="fab-thin fa-dumbbell"></i>
+    <i *ngIf="quiz.theme==='Cinéma'" class="fa-solid fa-spa"></i>
 
     {{quiz.name}}
   </h2>
@@ -17,3 +27,5 @@
   <button class="button-card edit" routerLink="/edit-quiz/{{quiz.id}}">Modifier</button>
   <button class="button-card" (click)="delete()">Supprimer</button>
 </div>
+
+</html>
