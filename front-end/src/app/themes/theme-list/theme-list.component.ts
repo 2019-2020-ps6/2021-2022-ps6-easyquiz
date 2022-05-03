@@ -4,6 +4,8 @@ import {QuizService} from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {UserService} from '../../../services/user.service';
 import {User} from '../../../models/user.model';
+import {SettingService} from '../../../services/setting.service';
+import {Choice} from '../../game/settings/game-setting/choice/models/choice.model';
 
 @Component({
   selector: 'app-theme-list',
@@ -19,8 +21,10 @@ export class ThemeListComponent implements OnInit {
   public synthe = window.speechSynthesis;
   public gotCataracte = false;
   public isAudioSet = false;
+  public choice: Choice;
 
-  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
+  constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService,
+              private settingService: SettingService) {
     this.synthe.cancel();
     this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
@@ -36,6 +40,7 @@ export class ThemeListComponent implements OnInit {
         this.getThemes();
       });
     });
+    this.choice = this.settingService.getSelectedChoice();
   }
 
   ngOnInit(): void {
