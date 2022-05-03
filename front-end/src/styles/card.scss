@@ -3,7 +3,7 @@
 .card {
   box-sizing: border-box;
   box-shadow: lightgray 4px 4px 20px;
-  background-color: #f8b06e;
+  background-color: rgba(248, 176, 110, 0.72);
   width: fit-content;
   height: fit-content;
   padding-left: 25px;
@@ -15,22 +15,19 @@
   border-radius: 8px;
 }
 
-.button-card {
-  margin-top: 8px;
-  background-color: $white;
-  border: solid 1px $blue;
-  color: coral;
+.button-card{
   border-radius: 6px;
-  font-weight: bold;
-  padding: 0.5em 1em;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.08), 0 0 6px rgba(0, 0, 0, 0.05);
-  font-weight: 600;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+  font-size: 20px;
+  margin: 5px;
 
+}
 
 .button-card:hover {
   cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
 }
 
 .select {

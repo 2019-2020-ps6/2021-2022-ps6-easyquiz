@@ -1,8 +1,9 @@
-<div class="card">
-  <h2>Créer une nouvelle question</h2>
+<div class="car">
+  <br>
+  <h2 class="titre">Créer une nouvelle question</h2>
   <form class="quiz-form" [formGroup]="questionForm">
     <label for="label">
-      Question <br>
+      Question
       <input class="input-custom" type="text" id="label" [formControlName]="'label'" placeholder="60 caractères max"
              maxlength="60" required size="60">
     </label>
@@ -10,7 +11,6 @@
     <div *ngIf="!quiz.ceciteOk">
       <label for="urlIMG">
         URL de l'image (optionel)
-        <br>
         <input class="input-custom" type="text" id="urlIMG" [formControlName]="'urlIMG'" maxlength="200">
         <br>
       </label>
@@ -24,14 +24,14 @@
             Réponse
             <input type="text" [formControlName]="'value'" placeholder="30 caractères max" maxlength="30" required
                    size="30">
-            <br>
             Correcte
             <input type="checkbox" [formControlName]="'isCorrect'">
           </label>
         </div>
       </div>
     </div>
-    <button type="submit" class="button-card" (click)="addQuestion()">Créer</button>
+    <br>
+    <button type="submit" class="button-card2" (click)="addQuestion()">Créer</button>
   </form>
 </div>
 

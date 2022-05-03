@@ -1,7 +1,6 @@
-<button class="button-card" routerLink="/quiz-list" xmlns="http://www.w3.org/1999/html">Retour</button>
-
 <ng-container *ngIf="quiz">
-    <h2>Modifier le quiz <span class="quizName">{{quiz.name}}</span></h2>
+  <button class="button-card2" routerLink="/quiz-list" xmlns="http://www.w3.org/1999/html">Retour</button>
+    <h2 class="titre">Modifier le quiz <span class="quizName">{{quiz.name}}</span></h2>
     <app-question-form [quiz]="quiz"></app-question-form>
     <app-question-list [quiz]="quiz"></app-question-list>
 </ng-container>
