@@ -1,7 +1,37 @@
 @import '../../../styles/card.scss';
 
-.card{
+.car{
   margin-left: auto;
   margin-top: 3%;
   margin-bottom: 25px;
 }
+
+.TITRE{
+  text-align: center;
+  font-size: 60px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #ff7f50;
+  -webkit-text-stroke: 2px #3d3b3b;
+}
+
+.quiz-form{
+  text-align: center;
+  font-size: 25px;
+}
+
+
+.button-card2{
+  width: 20%;
+  border-radius: 6px;
+  font-size: 25px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+}
+
+.button-card2:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
+}
+
+

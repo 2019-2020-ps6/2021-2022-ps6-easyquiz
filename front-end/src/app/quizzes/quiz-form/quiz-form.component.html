@@ -1,13 +1,14 @@
-<div class="card">
-  <h2>Créer un nouveau quiz</h2>
+<div class="car">
+  <h2 class="TITRE">Créer un nouveau quiz</h2>
   <form class="quiz-form" [formGroup]="quizForm">
     <label for="name">
-      Nom du quiz <br>
+      Nom du quiz
       <input class="input-custom" type="text" id="name" [formControlName]="'name'" placeholder="30 caractères max" maxlength="30" required size="30">
     </label>
     <br>
+    <br>
     <label for="theme">
-      Thème <br>
+      Thème
       <input type="text" [formControlName]="'theme'" id="theme" list="themes" placeholder="30 caractères max" maxlength="30" required size="30">
       <datalist id="themes">
         <option *ngFor="let theme of themeList">
@@ -15,6 +16,7 @@
         </option>
       </datalist>
     </label>
+    <br>
     <br>
     <input type="checkbox" [formControlName]="'cataracteOk'">
     Convient à la cataracte
@@ -25,8 +27,10 @@
     <input type="checkbox" [formControlName]="'alzheimerOk'">
     Convient à Alzheimer
     <br>
-    <button type="submit" class="button-card" (click)="addQuiz()">Créer</button>
+    <br>
+    <button type="submit" class="button-card2" (click)="addQuiz()">Créer</button>
   </form>
+  <br>
 </div>
 <!-- Uncomment below to see your form structure and how it changes-->
 <!-- <br><br>{{quizForm.getRawValue() | json}} -->
