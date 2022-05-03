@@ -4,6 +4,8 @@ import {QuizService} from '../../../services/quiz.service';
 import {Quiz} from '../../../models/quiz.model';
 import {User} from '../../../models/user.model';
 import {UserService} from '../../../services/user.service';
+import {Choice} from '../../game/settings/game-setting/choice/models/choice.model';
+import {SettingService} from '../../../services/setting.service';
 
 @Component({
   selector: 'app-quiz-list-select-list',
@@ -20,8 +22,10 @@ export class QuizListSelectComponent implements OnInit {
   public synthe = window.speechSynthesis;
   public gotCataracte = false;
   public isAudioSet = false;
+  public choice: Choice;
 
-  constructor(private route: ActivatedRoute, private router: Router, public quizService: QuizService, public userService: UserService) {
+  constructor(private route: ActivatedRoute, private router: Router, public quizService: QuizService, public userService: UserService,
+              private settingService: SettingService) {
     this.synthe.cancel();
     this.synthe.resume();
     this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
@@ -40,6 +44,7 @@ export class QuizListSelectComponent implements OnInit {
       }
       this.getQuizzes();
     });
+    this.choice = this.settingService.getSelectedChoice();
   }
 
   ngOnInit(): void {
