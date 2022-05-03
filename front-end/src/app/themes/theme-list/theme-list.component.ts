@@ -17,14 +17,18 @@ export class ThemeListComponent implements OnInit {
   public user: User;
   public currentTheme: number;
   public synthe = window.speechSynthesis;
+  public gotCataracte = false;
+  public isAudioSet = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private userService: UserService, public quizService: QuizService) {
     this.synthe.cancel();
     this.synthe.resume();
     this.userService.userSelected$.subscribe((user) => {
       this.user = user;
-      if (this.user.disease === 'Cécité') {
+      if (this.user.disease === 'Cécité' && !this.isAudioSet) {
         this.setAudioControls();
+      } else {
+        this.gotCataracte = true;
       }
       this.quizService.quizzes$.subscribe((quizzes: Quiz[]) => {
         this.quizList = quizzes;
@@ -47,17 +51,16 @@ export class ThemeListComponent implements OnInit {
     if (this.quizList.length === 0) {
       return;
     }
-    this.themeList[0] = this.quizList[0].theme;
+    this.themeList[0] = '';
     for (i = 0; i < this.quizList.length; i++) {
       if (!(this.themeList[this.themeList.length - 1] === this.quizList[i].theme)) {
-        //console.log('trouble:' + this.user.disease);
-        //console.log('theme:' + this.quizList[i].theme);
         if ((this.user.disease === 'Cataracte' && this.quizList[i].cataracteOk) ||
           (this.user.disease === 'Cécité' && this.quizList[i].ceciteOk)) {
           this.themeList.push(this.quizList[i].theme);
         }
       }
     }
+    this.themeList.splice(0, 1);
   }
 
   setAudioControls(): void {
@@ -91,12 +94,15 @@ export class ThemeListComponent implements OnInit {
           break;
         case 'Enter':
           if (this.currentTheme >= 0) {
+            /*
             utterThis = new SpeechSynthesisUtterance('Vous avez choisi le thème, ' + this.themeList[this.currentTheme]);
             utterThis.lang = 'fr-FR';
             this.synthe.speak(utterThis);
+             */
             this.router.navigate(['/' + this.user.id + '/' + this.themeList[this.currentTheme]]);
           }
       }
     }, true);
+    this.isAudioSet = true;
   }
 }

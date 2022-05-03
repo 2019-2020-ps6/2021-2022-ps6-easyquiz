@@ -1,5 +1,10 @@
 @import '../../../styles/card.scss';
 
+
+.tout{
+    cursor:url(https://zupimages.net/up/22/13/5yh0.png), auto;
+  background-color: #C5F7ED;
+}
 .theme{
   color: #3d3b3b;
 }
@@ -22,3 +27,52 @@
 .fa-arrow-circle-down{
   font-size: 3em;
 }
+
+.themeCata{
+
+}
+.titreCata{
+  text-transform: uppercase;
+  cursor:url(https://zupimages.net/up/22/13/5yh0.png), auto;
+  display: inline-block;
+  background-color: #146385;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 65px;
+  font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-weight: 700;
+  padding: 2%;
+  width: 90%;
+  margin-left: 3%;
+  margin-bottom: 1%;
+  -webkit-text-stroke: 3px black;
+  line-height: 1em;
+}
+
+.listeCata{
+  cursor:url(https://zupimages.net/up/22/13/5yh0.png), auto;
+  background-color: #9d6ede;
+  text-transform: uppercase;
+  border-radius: 8px;
+  height: 100px;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 55px;
+  width: 90%;
+  padding: 6px;
+  margin-bottom: 10px;
+  margin-left: 5%;
+  font-family:   Segoe UI,Frutiger,Frutiger Linotype,Dejavu Sans,Helvetica Neue,Arial,sans-serif;
+  //font-family: Tahoma,Verdana,Segoe,sans-serif;
+  font-weight: 700;
+  -webkit-text-stroke: 3px black;
+
+}
+
+.listeCata:hover{
+  font-size: 65px;
+  background-color: #8c5ece;
+}
+
+
+

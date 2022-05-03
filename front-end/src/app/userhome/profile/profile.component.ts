@@ -13,6 +13,7 @@ export class ProfileComponent implements OnInit {
   public user: User;
 
   constructor(private route: ActivatedRoute, private userService: UserService) {
+    window.speechSynthesis.cancel();
     this.userService.userSelected$.subscribe((user) => this.user = user);
   }
 
