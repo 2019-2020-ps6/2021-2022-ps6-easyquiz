@@ -25,14 +25,20 @@
   margin-left: 40%;
   border-radius: 6px;
   font-size: 25px;
-  color: #3d3b3b;
-  border-color: #3d3b3b;
+  color: #000000;
+  border-color: #000000;
+  background-color: #ffae90;
 }
 
 .button-card2:hover {
   cursor: pointer;
-  transition-duration: 0.75s;
+  transition-duration: 0.1s;
   background-color: coral;
+}
+
+.button-card2:active{
+  background-color: #9a6242;
+  animation-duration: 0.1s;
 }
 
 .handicap{
