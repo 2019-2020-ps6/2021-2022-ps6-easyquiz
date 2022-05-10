@@ -24,7 +24,6 @@ export const QUIZ_LIST: Quiz[] = [
     questions: [],
     cataracteOk: false,
     ceciteOk: true,
-    alzheimerOk: false,
   },
   {
     id: '2',
@@ -32,6 +31,5 @@ export const QUIZ_LIST: Quiz[] = [
     questions: [],
     cataracteOk: true,
     ceciteOk: false,
-    alzheimerOk: true,
   }
 ];

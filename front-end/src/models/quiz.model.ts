@@ -7,5 +7,4 @@ export interface Quiz {
     questions: Question[];
     cataracteOk: boolean;
     ceciteOk: boolean;
-    alzheimerOk: boolean;
 }

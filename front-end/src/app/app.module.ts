@@ -30,6 +30,7 @@ import {GameSpeechComponent} from './game-speech/game-speech.component';
 import {Configuration} from 'jasmine-spec-reporter/built/configuration';
 import {QuizListSelectComponent} from './quizzes/quiz-list-select/quiz-list-select.component';
 import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
+import { StatistiqueComponent } from './statistique/statistique.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { FinPartieComponent } from './game/fin-partie/fin-partie.component';
     GameSpeechComponent,
     QuizListSelectComponent,
     FinPartieComponent,
+    StatistiqueComponent,
   ],
   imports: [
     BrowserModule,

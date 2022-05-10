@@ -28,8 +28,7 @@ export class QuizFormComponent implements OnInit {
       name: [''],
       theme: [''],
       cataracteOk: false,
-      ceciteOk: false,
-      alzheimerOk: false
+      ceciteOk: false
     });
     // You can also add validators to your inputs such as required, maxlength or even create your own validator!
     // More information: https://angular.io/guide/reactive-forms#simple-form-validation
