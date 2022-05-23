@@ -162,7 +162,7 @@
   },
   {
     "name": "Un quiz test sur la Camargue",
-    "theme": "Un thème pour toute la France ",
+    "theme": "La France",
     "cataracteOk": true,
     "ceciteOk": true,
     "id": 1650884940585
@@ -182,13 +182,6 @@
     "id": 1650900587658
   },
   {
-    "name": "Les Cévennes",
-    "theme": "Un thème pour toute la France",
-    "cataracteOk": true,
-    "ceciteOk": false,
-    "id": 1651178989022
-  },
-  {
     "name": "quiztest",
     "theme": "Automobile",
     "cataracteOk": false,
@@ -197,24 +190,10 @@
   },
   {
     "name": "Nîmes",
-    "theme": "Un thème pour toute la France",
+    "theme": "La France",
     "cataracteOk": false,
     "ceciteOk": false,
     "id": 1652169122480
-  },
-  {
-    "name": "Les Cévennes",
-    "theme": "Automobile",
-    "cataracteOk": false,
-    "ceciteOk": false,
-    "id": 1652170101382
-  },
-  {
-    "name": "Les Cévennes",
-    "theme": "Automobile",
-    "cataracteOk": false,
-    "ceciteOk": false,
-    "id": 1652170145617
   },
   {
     "name": "quiztest",
@@ -222,5 +201,12 @@
     "cataracteOk": false,
     "ceciteOk": false,
     "id": 1652170372321
+  },
+  {
+    "name": "Les Cévennes",
+    "theme": "La France",
+    "cataracteOk": true,
+    "ceciteOk": false,
+    "id": 1653301487582
   }
 ]
