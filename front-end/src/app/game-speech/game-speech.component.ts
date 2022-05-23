@@ -158,7 +158,7 @@ export class GameSpeechComponent implements OnInit {
       this.synthe.cancel();
       this.reset();
       // tslint:disable-next-line:max-line-length
-      const utterThise = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
+      const utterThise = new SpeechSynthesisUtterance(this.question + '. Flèche du haut. ' + this.answerList[0].value + '. Flèche de droite. ' + this.answerList[1].value + '. Flèche du bas. ' + this.answerList[2].value + '. Flèche de gauche. ' + this.answerList[3].value + '. ');
       utterThise.lang = 'fr-FR';
       utterThise.rate = this.rate;
       this.synthe.speak(utterThise);
@@ -230,7 +230,7 @@ export class GameSpeechComponent implements OnInit {
     if (nomTouche === ' ') {
       this.synthe.cancel();
       // tslint:disable-next-line:max-line-length
-      utterThis = new SpeechSynthesisUtterance(this.question + '. ' + this.answerList[0].value + '. ' + this.answerList[1].value + '. ' + this.answerList[2].value + '. ' + this.answerList[3].value + '. ');
+      utterThis = new SpeechSynthesisUtterance(this.question + '. Flèche du haut. ' + this.answerList[0].value + '. Flèche de droite. ' + this.answerList[1].value + '. Flèche du bas. ' + this.answerList[2].value + '. Flèche de gauche. ' + this.answerList[3].value + '. ');
       utterThis.lang = 'fr-FR';
       utterThis.rate = this.rate;
       this.synthe.speak(utterThis);
