@@ -1,16 +1,18 @@
 <div class="car">
   <form class="user-form" [formGroup]="userForm">
-   <div class =" firstName">
-     <label for="firstName">
-       Prénom
-       <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'" placeholder="20 caractères max" maxlength="20" required size="20">
-     </label>
-   </div>
+    <div class=" firstName">
+      <label for="firstName">
+        Prénom
+        <input class="input-custom" type="text" id="firstName" [formControlName]="'firstName'"
+               placeholder="20 caractères max" maxlength="20" required size="20">
+      </label>
+    </div>
     <br>
     <div class="lastName">
       <label for="lastName">
         Nom
-        <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'" placeholder="20 caractères max" maxlength="20" required size="20">
+        <input class="input-custom" type="text" id="lastName" [formControlName]="'lastName'"
+               placeholder="20 caractères max" maxlength="20" required size="20">
       </label>
     </div>
     <br>
@@ -19,19 +21,18 @@
       </span>
       <br>
       <div class="diffT">
-      <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
-      <label for="cataracte">Cataracte</label>
-      <br>
-      <input type="radio" id="cecite" name="groupe1" value="Cécité" [formControlName]="'disease'">
-      <label for="cecite">Cecité</label>
-      <br>
-      <input type="radio" id="alzheimer" name="groupe1" value="Alzheimer" [formControlName]="'disease'">
-      <label for="alzheimer">Alzheimer</label>
-        </div>
+        <input type="radio" id="cataracte" name="groupe1" value="Cataracte" [formControlName]="'disease'" checked>
+        <label for="cataracte">Cataracte</label>
+        <br>
+        <input type="radio" id="cecite" name="groupe1" value="Cécité" [formControlName]="'disease'">
+        <label for="cecite">Cecité</label>
+        <br>
+      </div>
     </div>
     <br><br>
 
-    <button type="submit" class="button-card1"  (click)="addUser()"> Créer un profil</button>
-    <button type="submit" class="button-card2" [routerLink]="['/user-list']" style="text-decoration: none" > Retour</button>
+    <button type="submit" class="button-card1" (click)="addUser()"> Créer un profil</button>
+    <button type="submit" class="button-card2" [routerLink]="['/user-list']" style="text-decoration: none"> Retour
+    </button>
   </form>
 </div>

@@ -3,3 +3,17 @@
 .edit {
     margin-left: 0.3em;
 }
+
+.button-card2{
+  border-radius: 6px;
+  color: #3d3b3b;
+  border-color: #3d3b3b;
+  font-size: 20px;
+  margin: 5px;
+}
+
+.button-card2:hover {
+  cursor: pointer;
+  transition-duration: 0.75s;
+  background-color: coral;
+}
